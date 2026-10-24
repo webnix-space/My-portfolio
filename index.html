@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Sanib Malik — Principal Full-Stack & Autonomous AI Systems Engineer | Webnix Space</title>
+  <meta name="description" content="Sanib Malik (Webnix Space) — Architecting deterministic sub-second Groq Llama-3 pipelines, multi-agent Python swarms, and high-frequency Next.js web infrastructure.">
+
+  <!-- Fonts: Inter + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Inter"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            obsidian: '#000000',
+            elevated: '#070709',
+            mac: {
+              blue: '#2997FF',
+              green: '#30D158',
+              amber: '#FFD60A',
+              red: '#FF453A',
+              purple: '#BF5AF2',
+              cyan: '#64D2FF'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --bg-obsidian: #000000;
+      --mac-blue: #2997FF;
+      --mac-green: #30D158;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      background-color: #000000;
+      color: #F5F5F7;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      overflow-x: hidden;
+      width: 100%;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Studio Ambient Radial Lighting */
+    .studio-lighting {
+      background:
+        radial-gradient(80% 50% at 50% -10%, rgba(41, 151, 255, 0.14), transparent 70%),
+        radial-gradient(60% 40% at 85% 25%, rgba(48, 209, 88, 0.07), transparent 65%),
+        radial-gradient(60% 50% at 15% 65%, rgba(191, 90, 242, 0.07), transparent 65%);
+    }
+
+    /* Subtle Precision Grid */
+    .bg-mac-grid {
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      mask-image: radial-gradient(ellipse 90% 60% at 50% 25%, black 35%, transparent 95%);
+      -webkit-mask-image: radial-gradient(ellipse 90% 60% at 50% 25%, black 35%, transparent 95%);
+    }
+
+    /* Apple Sequoia / VisionOS Dark Glass Card */
+    .mac-card {
+      position: relative;
+      background: linear-gradient(165deg, rgba(28, 28, 34, 0.72) 0%, rgba(10, 10, 14, 0.88) 100%);
+      backdrop-filter: blur(36px) saturate(180%);
+      -webkit-backdrop-filter: blur(36px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      box-shadow:
+        0 20px 50px -12px rgba(0, 0, 0, 0.85),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.16);
+      border-radius: 22px;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.35s ease;
+      overflow: hidden;
+    }
+
+    @media (min-width: 768px) {
+      .mac-card:hover {
+        transform: translateY(-3px);
+        border-color: rgba(255, 255, 255, 0.2);
+        box-shadow:
+          0 28px 65px -12px rgba(0, 0, 0, 0.92),
+          inset 0 1px 0 0 rgba(255, 255, 255, 0.25),
+          0 0 36px -8px rgba(41, 151, 255, 0.15);
+      }
+    }
+
+    /* Dynamic Cursor Spotlight Overlay (Desktop) */
+    .mac-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: radial-gradient(
+        500px circle at var(--mouse-x, -500px) var(--mouse-y, -500px),
+        rgba(255, 255, 255, 0.06),
+        transparent 40%
+      );
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Unified Single-Bar Adaptive Glass Header */
+    .mac-navbar {
+      background: rgba(8, 8, 12, 0.82);
+      backdrop-filter: blur(28px) saturate(190%);
+      -webkit-backdrop-filter: blur(28px) saturate(190%);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+    }
+
+    /* Recessed Dark Well */
+    .mac-well {
+      background: rgba(0, 0, 0, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.75);
+      border-radius: 14px;
+    }
+
+    /* Pill Badge - Strictly Single Line */
+    .mac-pill {
+      display: inline-flex;
+      align-items: center;
+      white-space: nowrap;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+
+    /* Primary Apple Blue Button */
+    .btn-mac-primary {
+      background: linear-gradient(180deg, #38A1FF 0%, #0071E3 100%);
+      box-shadow:
+        0 8px 24px -4px rgba(41, 151, 255, 0.45),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.35);
+      color: #FFFFFF;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .btn-mac-primary:hover {
+      background: linear-gradient(180deg, #4CAaff 0%, #0077ED 100%);
+      box-shadow:
+        0 12px 30px -4px rgba(41, 151, 255, 0.6),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.45);
+    }
+    .btn-mac-primary:active {
+      transform: scale(0.98);
+    }
+
+    /* Secondary Glass Action Button */
+    .btn-mac-glass {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.14);
+      color: #F5F5F7;
+      transition: all 0.2s ease;
+    }
+    .btn-mac-glass:hover {
+      background: rgba(255, 255, 255, 0.11);
+      border-color: rgba(255, 255, 255, 0.24);
+    }
+
+    /* Titanium Display Gradient Text */
+    .text-titanium {
+      background: linear-gradient(180deg, #FFFFFF 0%, #E5E5EA 55%, #86868B 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .text-accent-gradient {
+      background: linear-gradient(135deg, #64D2FF 0%, #2997FF 50%, #5E5CE6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #000000; }
+    ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.18); border-radius: 9999px; }
+  </style>
+</head>
+
+<body class="selection:bg-mac-blue selection:text-white antialiased">
+
+  <!-- Ambient Studio Background -->
+  <div class="fixed inset-0 pointer-events-none -z-10 studio-lighting">
+    <div class="absolute inset-0 bg-mac-grid"></div>
+  </div>
+
+  <!-- Dynamic Island Toast Notification -->
+  <div id="mac-toast" class="fixed top-20 left-1/2 -translate-x-1/2 z-[70] pointer-events-none opacity-0 -translate-y-4 transition-all duration-300">
+    <div class="px-4 py-2.5 rounded-full bg-black/95 backdrop-blur-2xl border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.9)] flex items-center gap-2.5 whitespace-nowrap">
+      <span class="w-2 h-2 rounded-full bg-mac-green shadow-[0_0_10px_#30D158]"></span>
+      <span id="mac-toast-text" class="text-xs font-mono font-medium text-white">Copied to clipboard</span>
+    </div>
+  </div>
+
+  <!-- Spotlight Command Palette Modal (⌘K) -->
+  <div id="cmd-modal" class="fixed inset-0 z-[80] hidden items-start justify-center pt-20 px-4 bg-black/75 backdrop-blur-md transition-opacity">
+    <div class="mac-card w-full max-w-lg rounded-2xl border border-white/20 overflow-hidden shadow-2xl">
+      <div class="px-4 py-3.5 border-b border-white/10 flex items-center gap-3 bg-white/[0.03]">
+        <svg class="w-4 h-4 text-mac-blue shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+        </svg>
+        <input id="cmd-input" type="text" placeholder="Jump to repo, trigger action, or contact..." class="w-full bg-transparent text-sm text-white placeholder-[#86868B] focus:outline-none font-sans" oninput="filterCommands(this.value)">
+        <button onclick="toggleCommandPalette()" class="text-[10px] font-mono px-2 py-1 rounded bg-white/10 text-[#A1A1A6] hover:text-white shrink-0">ESC</button>
+      </div>
+      <div id="cmd-list" class="p-2 max-h-72 overflow-y-auto divide-y divide-white/5 text-xs">
+        <a href="https://wa.me/919105358684?text=Hi%20Sanib,%20saw%20your%20portfolio%20and%20want%20to%20discuss%20a%20project" target="_blank" rel="noopener noreferrer" class="cmd-item flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors">
+          <div class="flex items-center gap-2.5">
+            <span class="w-2 h-2 rounded-full bg-mac-green"></span>
+            <span class="text-white font-medium">Message Sanib on WhatsApp</span>
+          </div>
+          <span class="font-mono text-[10px] text-[#86868B]">+91 9105358684</span>
+        </a>
+        <a href="https://t.me/Surebreeze" target="_blank" rel="noopener noreferrer" class="cmd-item flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors">
+          <div class="flex items-center gap-2.5">
+            <span class="w-2 h-2 rounded-full bg-mac-cyan"></span>
+            <span class="text-white font-medium">Open Telegram Direct (@Surebreeze)</span>
+          </div>
+          <span class="font-mono text-[10px] text-[#86868B]">t.me/Surebreeze</span>
+        </a>
+        <button onclick="triggerEmailCopy(); toggleCommandPalette();" class="cmd-item w-full flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors text-left">
+          <div class="flex items-center gap-2.5">
+            <span class="w-2 h-2 rounded-full bg-mac-purple"></span>
+            <span class="text-white font-medium">Copy Direct Email Address</span>
+          </div>
+          <span class="font-mono text-[10px] text-[#86868B]">sanibmalik850@gmail.com</span>
+        </button>
+        <a href="https://github.com/webnix-space/sososignal" target="_blank" rel="noopener noreferrer" class="cmd-item flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors">
+          <span class="text-white font-mono">repo: webnix-space/sososignal</span>
+          <span class="font-mono text-[10px] text-mac-green">Groq Llama-3</span>
+        </a>
+        <a href="https://github.com/webnix-space/Shadowsignal" target="_blank" rel="noopener noreferrer" class="cmd-item flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors">
+          <span class="text-white font-mono">repo: webnix-space/Shadowsignal</span>
+          <span class="font-mono text-[10px] text-mac-cyan">Python Swarm</span>
+        </a>
+        <a href="https://github.com/webnix-space/vendor-guard" target="_blank" rel="noopener noreferrer" class="cmd-item flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors">
+          <span class="text-white font-mono">repo: webnix-space/vendor-guard</span>
+          <span class="font-mono text-[10px] text-mac-purple">Zero-Trust CLI</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- UNIFIED ADAPTIVE STICKY HEADER (Fixes double-bar mobile overlap & right-edge clipping) -->
+  <header class="sticky top-0 z-50 mac-navbar w-full">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Primary Row -->
+      <div class="h-14 flex items-center justify-between gap-2">
+        
+        <!-- Brand Identity (Strictly Non-Wrapping) -->
+        <a href="#" class="flex items-center gap-2.5 shrink-0 group">
+          <div class="w-8 h-8 rounded-full bg-gradient-to-b from-white/20 to-white/5 border border-white/20 flex items-center justify-center font-mono font-bold text-xs text-white shadow-inner group-hover:border-mac-blue transition-colors">
+            SM
+          </div>
+          <div class="flex items-center gap-1.5 whitespace-nowrap">
+            <span class="font-semibold text-white text-sm tracking-tight">Sanib Malik</span>
+            <span class="text-white/25 font-mono text-xs">/</span>
+            <span class="text-[11px] font-mono text-mac-blue bg-mac-blue/10 border border-mac-blue/30 px-2 py-0.5 rounded-md font-medium">Webnix</span>
+          </div>
+        </a>
+
+        <!-- Desktop Center Navigation Links -->
+        <nav class="hidden md:flex items-center gap-1 bg-white/[0.04] border border-white/10 rounded-full p-1 text-xs font-medium text-[#A1A1A6]">
+          <a href="#overview" class="px-3.5 py-1.5 rounded-full hover:text-white hover:bg-white/[0.07] transition-all whitespace-nowrap">Overview</a>
+          <a href="#telemetry" class="px-3.5 py-1.5 rounded-full hover:text-white hover:bg-white/[0.07] transition-all whitespace-nowrap">Telemetry</a>
+          <a href="#work" class="px-3.5 py-1.5 rounded-full hover:text-white hover:bg-white/[0.07] transition-all whitespace-nowrap">Repositories</a>
+          <a href="#services" class="px-3.5 py-1.5 rounded-full hover:text-white hover:bg-white/[0.07] transition-all whitespace-nowrap">Engagements</a>
+          <a href="#contact" class="px-3.5 py-1.5 rounded-full hover:text-white hover:bg-white/[0.07] transition-all whitespace-nowrap">Direct Access</a>
+        </nav>
+
+        <!-- Right Controls: Spotlight + Clock (Desktop) + WhatsApp Pill -->
+        <div class="flex items-center gap-2 shrink-0">
+          <button onclick="toggleCommandPalette()" class="px-2.5 py-1.5 rounded-lg bg-white/[0.06] hover:bg-white/[0.12] border border-white/10 text-[#E5E5EA] font-mono text-[11px] flex items-center gap-1.5 transition-colors whitespace-nowrap">
+            <svg class="w-3.5 h-3.5 text-[#86868B]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+            <span class="hidden sm:inline">Spotlight</span>
+            <kbd class="text-[10px] text-[#86868B] font-mono">⌘K</kbd>
+          </button>
+
+          <span id="mac-clock" class="hidden lg:inline-block font-mono text-[11px] text-[#86868B] whitespace-nowrap pl-1">IST --:--:--</span>
+
+          <a href="https://wa.me/919105358684?text=Hi%20Sanib,%20saw%20your%20portfolio%20and%20want%20to%20discuss%20a%20project"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="px-3.5 py-1.5 rounded-full btn-mac-primary text-xs font-semibold flex items-center gap-1.5 whitespace-nowrap">
+            <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+            <span>Hire / Chat</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Mobile-Only Clean Single-Row Sub-Nav (100% fits width, zero clipping) -->
+      <nav class="flex md:hidden items-center justify-between border-t border-white/[0.07] py-2 text-[11px] font-medium text-[#A1A1A6]">
+        <a href="#overview" class="px-2 py-1 rounded-md hover:text-white hover:bg-white/5 transition-colors whitespace-nowrap">Overview</a>
+        <a href="#telemetry" class="px-2 py-1 rounded-md hover:text-white hover:bg-white/5 transition-colors whitespace-nowrap">Telemetry</a>
+        <a href="#work" class="px-2 py-1 rounded-md hover:text-white hover:bg-white/5 transition-colors whitespace-nowrap">Repos (5)</a>
+        <a href="#services" class="px-2 py-1 rounded-md hover:text-white hover:bg-white/5 transition-colors whitespace-nowrap">Tracks</a>
+        <a href="#contact" class="px-2 py-1 rounded-md text-mac-blue font-semibold whitespace-nowrap">Contact</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- SECTION 01: HERO & SYSTEM ACTIVITY MONITOR -->
+  <section id="overview" class="relative pt-8 pb-16 sm:pt-14 sm:pb-24 lg:pt-20 lg:pb-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+      
+      <!-- Left Column: Senior Positioning & Direct CTAs -->
+      <div class="lg:col-span-7 flex flex-col items-start text-left">
+        
+        <!-- Single-Line Availability Badge -->
+        <div class="mac-pill px-3.5 py-1.5 rounded-full mb-6 gap-2">
+          <span class="relative flex h-2 w-2 shrink-0">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-mac-green opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-mac-green"></span>
+          </span>
+          <span class="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-[#E5E5EA] font-medium truncate">
+            AVAILABLE FOR CONTRACT & WHITE-LABEL ARCHITECTURE
+          </span>
+        </div>
+
+        <!-- Hero Display Headline -->
+        <h1 class="text-3xl sm:text-5xl lg:text-[60px] font-bold tracking-tight leading-[1.08] mb-5 text-titanium">
+          Engineering Sub-Second AI Systems &amp; <span class="text-accent-gradient">Production Web Infrastructure.</span>
+        </h1>
+
+        <!-- Technical Value Prop -->
+        <p class="text-[#A1A1A6] text-sm sm:text-base lg:text-lg leading-relaxed mb-8 max-w-2xl font-normal">
+          I architect high-frequency <span class="text-white font-medium">Next.js</span> web applications, deterministic <span class="text-white font-medium">Groq Llama-3</span> inference pipelines, and autonomous <span class="text-white font-medium">Python multi-agent swarms</span>. Trusted as a zero-overhead white-label partner for digital agencies and principal engineer for high-velocity startups.
+        </p>
+
+        <!-- Primary Action Dock (Responsive Grid on Mobile, Row on Desktop) -->
+        <div class="grid grid-cols-1 sm:flex sm:flex-wrap items-center gap-3 w-full sm:w-auto mb-10">
+          <!-- WhatsApp Direct -->
+          <a href="https://wa.me/919105358684?text=Hi%20Sanib,%20saw%20your%20portfolio%20and%20want%20to%20discuss%20a%20project"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="w-full sm:w-auto px-6 py-3.5 rounded-xl btn-mac-primary font-semibold text-sm flex items-center justify-center gap-2.5 whitespace-nowrap">
+            <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24">
+              <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.299.144.35.49 1.196.533 1.284.043.088.072.19.014.305-.058.115-.087.19-.174.29-.087.101-.183.226-.262.304-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.144.39-.086s1.011.477 1.184.564c.173.087.289.13.332.202.043.073.043.419-.101.824z"/>
+            </svg>
+            <span>WhatsApp Direct</span>
+          </a>
+
+          <!-- Telegram Direct -->
+          <a href="https://t.me/Surebreeze"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="w-full sm:w-auto px-6 py-3.5 rounded-xl btn-mac-glass font-semibold text-sm flex items-center justify-center gap-2.5 whitespace-nowrap">
+            <svg class="w-4 h-4 text-mac-cyan fill-current shrink-0" viewBox="0 0 24 24">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.19-.08-.05-.19-.02-.27 0-.12.03-1.99 1.27-5.62 3.72-.53.36-1.01.54-1.44.53-.47-.01-1.38-.27-2.06-.49-.83-.27-1.49-.42-1.43-.88.03-.24.38-.49 1.03-.75 4.04-1.76 6.74-2.92 8.09-3.49 3.85-1.63 4.65-1.91 5.17-1.92.11 0 .37.03.54.17.14.12.18.28.2.45-.02.07-.02.14-.04.22z"/>
+            </svg>
+            <span>Telegram (@Surebreeze)</span>
+          </a>
+
+          <!-- Copy Email -->
+          <button onclick="triggerEmailCopy()"
+                  class="w-full sm:w-auto px-5 py-3.5 rounded-xl btn-mac-glass font-mono text-xs text-[#E5E5EA] flex items-center justify-center gap-2 whitespace-nowrap">
+            <svg class="w-4 h-4 text-[#86868B] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+            <span id="hero-email-label">sanibmalik850@gmail.com</span>
+          </button>
+        </div>
+
+        <!-- Hardware Spec Strip (3 Clean Columns on Mobile & Desktop) -->
+        <div class="w-full pt-6 border-t border-white/10 grid grid-cols-3 gap-3 sm:gap-6">
+          <div>
+            <div class="text-[10px] font-mono uppercase tracking-wider text-[#86868B] truncate">INFERENCE RTT</div>
+            <div class="text-base sm:text-xl font-bold font-mono text-white mt-0.5 whitespace-nowrap">&lt; 350ms <span class="text-[10px] text-mac-green font-normal hidden sm:inline">P99</span></div>
+          </div>
+          <div>
+            <div class="text-[10px] font-mono uppercase tracking-wider text-[#86868B] truncate">CORE STACK</div>
+            <div class="text-base sm:text-xl font-bold font-mono text-white mt-0.5 whitespace-nowrap">Next.js + Py</div>
+          </div>
+          <div>
+            <div class="text-[10px] font-mono uppercase tracking-wider text-[#86868B] truncate">DELIVERY</div>
+            <div class="text-base sm:text-xl font-bold font-mono text-white mt-0.5 whitespace-nowrap">Zero-Drag PRs</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Column: macOS Sequoia Activity Monitor Widget (Fixed Mobile Layout) -->
+      <div class="lg:col-span-5 w-full">
+        <div class="mac-card p-5 sm:p-6">
+          
+          <!-- Window Header -->
+          <div class="flex items-center justify-between pb-4 mb-4 border-b border-white/10 gap-2">
+            <div class="flex items-center gap-2 min-w-0">
+              <div class="flex items-center gap-1.5 shrink-0">
+                <span class="w-3 h-3 rounded-full bg-mac-red/90 inline-block"></span>
+                <span class="w-3 h-3 rounded-full bg-mac-amber/90 inline-block"></span>
+                <span class="w-3 h-3 rounded-full bg-mac-green/90 inline-block"></span>
+              </div>
+              <span class="text-xs font-mono text-[#A1A1A6] truncate ml-1">Activity Monitor — webnix-core</span>
+            </div>
+            <span class="text-[10px] font-mono uppercase px-2.5 py-0.5 rounded-full bg-mac-green/15 text-mac-green border border-mac-green/30 whitespace-nowrap shrink-0">
+              LIVE STREAM
+            </span>
+          </div>
+
+          <!-- Real-Time LPU Telemetry Readout (Fixed so 241ms never breaks onto 2 lines) -->
+          <div class="flex items-center justify-between gap-2 mb-4">
+            <div>
+              <div class="text-[10px] font-mono uppercase tracking-wider text-[#86868B]">GROQ LLAMA-3-70B LPU STREAM</div>
+              <div class="flex items-baseline gap-2.5 mt-1 whitespace-nowrap">
+                <span id="live-rtt-val" class="text-2xl sm:text-3xl font-bold font-mono text-white">274ms</span>
+                <span class="text-xs font-mono text-mac-green">+940 tok/s</span>
+              </div>
+            </div>
+            <div class="text-right font-mono text-[11px] text-[#86868B] shrink-0 whitespace-nowrap">
+              <div>NODES: <span class="text-white font-semibold">4 ACTIVE</span></div>
+              <div class="mt-0.5">UPTIME: <span class="text-mac-green font-semibold">99.98%</span></div>
+            </div>
+          </div>
+
+          <!-- Live Animated SVG Sparkline -->
+          <div class="mac-well p-3 mb-4 relative overflow-hidden">
+            <svg class="w-full h-20 overflow-visible" viewBox="0 0 300 70" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="sparkGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#2997FF" stop-opacity="0.4"/>
+                  <stop offset="100%" stop-color="#2997FF" stop-opacity="0.0"/>
+                </linearGradient>
+              </defs>
+              <path id="spark-area" d="M0,70 L0,42 L30,36 L60,48 L90,25 L120,30 L150,18 L180,38 L210,29 L240,40 L270,22 L300,26 L300,70 Z" fill="url(#sparkGrad)"/>
+              <path id="spark-line" d="M0,42 L30,36 L60,48 L90,25 L120,30 L150,18 L180,38 L210,29 L240,40 L270,22 L300,26" fill="none" stroke="#2997FF" stroke-width="2.2" stroke-linecap="round"/>
+            </svg>
+          </div>
+
+          <!-- Active Daemons List (Clean Single-Line Rows) -->
+          <div class="space-y-2 font-mono text-xs">
+            <div class="mac-well px-3.5 py-2.5 flex items-center justify-between gap-2">
+              <div class="flex items-center gap-2 min-w-0">
+                <span class="w-2 h-2 rounded-full bg-mac-green shrink-0"></span>
+                <span class="text-white font-medium truncate">sososignal-ws-engine</span>
+              </div>
+              <span class="text-[#86868B] text-[11px] whitespace-nowrap shrink-0">ETF + Orderbook</span>
+            </div>
+            <div class="mac-well px-3.5 py-2.5 flex items-center justify-between gap-2">
+              <div class="flex items-center gap-2 min-w-0">
+                <span class="w-2 h-2 rounded-full bg-mac-cyan shrink-0"></span>
+                <span class="text-white font-medium truncate">shadowsignal-crawler</span>
+              </div>
+              <span class="text-[#86868B] text-[11px] whitespace-nowrap shrink-0">Agent Consensus</span>
+            </div>
+            <div class="mac-well px-3.5 py-2.5 flex items-center justify-between gap-2">
+              <div class="flex items-center gap-2 min-w-0">
+                <span class="w-2 h-2 rounded-full bg-mac-purple shrink-0"></span>
+                <span class="text-white font-medium truncate">vendor-guard-daemon</span>
+              </div>
+              <span class="text-[#86868B] text-[11px] whitespace-nowrap shrink-0">Zero-Trust Audit</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 02: INTERACTIVE RUNTIME TELEMETRY & JSON INSPECTOR -->
+  <section id="telemetry" class="py-16 sm:py-24 relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-10 gap-3">
+      <div>
+        <div class="text-xs font-mono uppercase tracking-widest text-mac-blue font-semibold mb-1.5">01 / INTERACTIVE TELEMETRY</div>
+        <h2 class="text-2xl sm:text-4xl font-bold text-white tracking-tight">Live Engine Runtime Inspector</h2>
+      </div>
+      <p class="text-[#A1A1A6] text-xs sm:text-sm max-w-md">
+        Inspect real-time execution traces and structured JSON payloads across my shipped financial, autonomous agent, and security engines.
+      </p>
+    </div>
+
+    <!-- macOS Split-Pane Window -->
+    <div class="mac-card overflow-hidden">
+      
+      <!-- Window Toolbar (Fixed 3-column tab grid on mobile so vendor-guard never clips) -->
+      <div class="bg-white/[0.03] px-4 sm:px-6 py-3.5 border-b border-white/10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
+        
+        <!-- Top Row on Mobile: Traffic Lights + Benchmark Button -->
+        <div class="flex items-center justify-between gap-2">
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-mac-red/90"></span>
+            <span class="w-3 h-3 rounded-full bg-mac-amber/90"></span>
+            <span class="w-3 h-3 rounded-full bg-mac-green/90"></span>
+            <span class="text-xs font-mono text-[#86868B] ml-1.5 truncate">zsh — webnix@darwin-arm64</span>
+          </div>
+
+          <button id="sim-action-btn" onclick="runSimCycle()" class="lg:hidden px-3 py-1.5 rounded-lg btn-mac-primary text-[11px] font-mono font-semibold flex items-center gap-1.5 whitespace-nowrap shrink-0">
+            <span>▶ Run Cycle</span>
+          </button>
+        </div>
+
+        <!-- Segmented Tab Switcher (Grid of 3 equal columns on mobile, zero overflow) -->
+        <div class="grid grid-cols-3 sm:inline-flex items-center bg-black/70 p-1 rounded-xl border border-white/10 gap-1 w-full lg:w-auto">
+          <button id="sim-btn-1" onclick="switchSim(1)" class="px-2 sm:px-3.5 py-1.5 rounded-lg text-[11px] sm:text-xs font-mono font-medium transition-all bg-white/15 text-white shadow-sm text-center truncate">
+            sososignal.ts
+          </button>
+          <button id="sim-btn-2" onclick="switchSim(2)" class="px-2 sm:px-3.5 py-1.5 rounded-lg text-[11px] sm:text-xs font-mono font-medium transition-all text-[#86868B] hover:text-white text-center truncate">
+            shadowsignal.py
+          </button>
+          <button id="sim-btn-3" onclick="switchSim(3)" class="px-2 sm:px-3.5 py-1.5 rounded-lg text-[11px] sm:text-xs font-mono font-medium transition-all text-[#86868B] hover:text-white text-center truncate">
+            vendor-guard.ts
+          </button>
+        </div>
+
+        <!-- Desktop Benchmark Button -->
+        <button id="sim-action-btn-desktop" onclick="runSimCycle()" class="hidden lg:inline-flex px-4 py-1.5 rounded-lg btn-mac-primary text-xs font-mono font-semibold items-center gap-2 whitespace-nowrap shrink-0">
+          <span>▶ Run Benchmark Cycle</span>
+        </button>
+
+      </div>
+
+      <!-- Split Console Body -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 divide-y lg:divide-y-0 lg:divide-x divide-white/10 bg-black/50 font-mono text-xs">
+        
+        <!-- Left Pane: Execution Trace Stream -->
+        <div class="lg:col-span-7 p-4 sm:p-6 flex flex-col justify-between">
+          
+          <!-- TAB 1: sososignal -->
+          <div id="sim-view-1" class="space-y-3">
+            <div class="flex items-center justify-between gap-2 text-[#86868B] border-b border-white/10 pb-2.5">
+              <span class="text-mac-blue font-semibold truncate">STREAM // /ws/v1/market-intelligence/groq-llama3</span>
+              <span class="text-mac-green flex items-center gap-1.5 shrink-0 whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-mac-green animate-ping"></span> CONNECTED</span>
+            </div>
+            <div class="text-[#A1A1A6] leading-relaxed">
+              <span class="text-[#86868B]">[14:24:01.04]</span> Ingesting SoSoValue institutional ETF flows: <span class="text-white font-semibold">IBIT (+$341.2M)</span>, <span class="text-white font-semibold">FBTC (+$92.8M)</span>
+            </div>
+            <div class="text-[#A1A1A6] leading-relaxed">
+              <span class="text-[#86868B]">[14:24:01.18]</span> Computing L2 orderbook imbalance delta: <span class="text-mac-green font-semibold">+6.14% bid-side absorption wall</span>
+            </div>
+            <div class="text-[#A1A1A6] leading-relaxed">
+              <span class="text-[#86868B]">[14:24:01.31]</span> Dispatching context tensor to Groq Llama-3-70B LPU engine...
+            </div>
+
+            <div class="mac-well p-4 mt-3 border-l-2 border-l-mac-green">
+              <div class="flex items-center justify-between gap-2 mb-1.5">
+                <span class="text-[10px] uppercase tracking-wider text-[#86868B]">DETERMINISTIC OUTPUT</span>
+                <span id="soso-lat-tag" class="text-[11px] px-2 py-0.5 rounded bg-mac-green/15 text-mac-green font-bold whitespace-nowrap">278ms RTT</span>
+              </div>
+              <div id="soso-sig-headline" class="text-xs sm:text-sm font-bold text-white mb-1">
+                STRONG ACCUMULATION — CONFIDENCE: 92.6%
+              </div>
+              <p id="soso-sig-sub" class="text-xs text-[#A1A1A6] font-sans leading-relaxed">
+                Sustained spot ETF inflows verified across institutional desks. Minimal ask-side resistance detected up to key liquidity pivot.
+              </p>
+            </div>
+          </div>
+
+          <!-- TAB 2: Shadowsignal -->
+          <div id="sim-view-2" class="space-y-3 hidden">
+            <div class="flex items-center justify-between gap-2 text-[#86868B] border-b border-white/10 pb-2.5">
+              <span class="text-mac-cyan font-semibold truncate">SWARM // /agents/multi_agent_controller.py</span>
+              <span class="text-mac-cyan flex items-center gap-1.5 shrink-0 whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-mac-cyan animate-ping"></span> 4 WORKERS</span>
+            </div>
+            <div class="text-[#A1A1A6] leading-relaxed">
+              <span class="text-[#86868B]">[WORKER-01]</span> Headless Playwright cluster traversing target SaaS directories...
+            </div>
+            <div class="text-[#A1A1A6] leading-relaxed">
+              <span class="text-[#86868B]">[WORKER-02]</span> Extracting telemetry fingerprints, hiring velocity &amp; buyer intent signals.
+            </div>
+            <div class="text-[#A1A1A6] leading-relaxed">
+              <span class="text-[#86868B]">[CONSENSUS]</span> Cross-verifying schema integrity: 0 honeypots, 0 duplicate records.
+            </div>
+
+            <div class="mac-well p-4 mt-3 border-l-2 border-l-mac-cyan">
+              <div class="flex items-center justify-between gap-2 mb-1.5">
+                <span class="text-[10px] uppercase tracking-wider text-[#86868B]">SWARM DISPATCH STATUS</span>
+                <span class="text-[11px] px-2 py-0.5 rounded bg-mac-cyan/15 text-mac-cyan font-bold whitespace-nowrap">WEBHOOK 200 OK</span>
+              </div>
+              <div id="shadow-sig-headline" class="text-xs sm:text-sm font-bold text-white mb-1">
+                ENRICHED PAYLOAD: 28 High-Intent Enterprise Accounts
+              </div>
+              <p class="text-xs text-[#A1A1A6] font-sans leading-relaxed">
+                Autonomous consensus score evaluated at 96.4%. Dispatched normalized JSON batch directly to HubSpot/CRM ingestion webhook.
+              </p>
+            </div>
+          </div>
+
+          <!-- TAB 3: vendor-guard -->
+          <div id="sim-view-3" class="space-y-3 hidden">
+            <div class="flex items-center justify-between gap-2 text-[#86868B] border-b border-white/10 pb-2.5">
+              <span class="text-mac-purple font-semibold truncate">AUDIT // vendor-guard --strict-zero-trust</span>
+              <span class="text-mac-purple flex items-center gap-1.5 shrink-0 whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-mac-purple animate-ping"></span> ENFORCING</span>
+            </div>
+            <div class="text-[#A1A1A6] leading-relaxed">
+              <span class="text-[#86868B]">[AST-SCAN]</span> Inspecting third-party SDK boundaries, OAuth scopes, and token rotation...
+            </div>
+            <div class="text-[#A1A1A6] leading-relaxed">
+              <span class="text-[#86868B]">[POLICY]</span> Evaluating dependency tree against CVE supply-chain signatures.
+            </div>
+            <div class="text-[#A1A1A6] leading-relaxed">
+              <span class="text-[#86868B]">[VERIFY]</span> Contract SLA &amp; schema validation passed (99.98% compliance).
+            </div>
+
+            <div class="mac-well p-4 mt-3 border-l-2 border-l-mac-purple">
+              <div class="flex items-center justify-between gap-2 mb-1.5">
+                <span class="text-[10px] uppercase tracking-wider text-[#86868B]">SECURITY CLEARANCE</span>
+                <span class="text-[11px] px-2 py-0.5 rounded bg-mac-purple/15 text-mac-purple font-bold whitespace-nowrap">0 VULNERABILITIES</span>
+              </div>
+              <div class="text-xs sm:text-sm font-bold text-white mb-1">
+                SUPPLY-CHAIN AUDIT PASSED — SIGNED MANIFEST
+              </div>
+              <p class="text-xs text-[#A1A1A6] font-sans leading-relaxed">
+                All external vendor APIs conform to strict TypeScript runtime contracts and zero-leakage permission boundaries.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Pane: Live Structured JSON Schema Output -->
+        <div class="lg:col-span-5 p-4 sm:p-6 bg-black/75 flex flex-col justify-between overflow-x-auto">
+          <div>
+            <div class="flex items-center justify-between text-[#86868B] border-b border-white/10 pb-2.5 mb-3">
+              <span class="text-[11px] uppercase tracking-wider">STRUCTURED PAYLOAD INSPECTOR</span>
+              <span class="text-[10px] text-mac-blue">application/json</span>
+            </div>
+            <pre id="json-inspector" class="text-[11px] leading-relaxed text-[#E5E5EA] overflow-x-auto">{
+  "engine": "sososignal-v2",
+  "model": "llama3-70b-8192-groq",
+  "latency_ms": 278,
+  "etf_net_inflow_usd": 434000000,
+  "orderbook_delta": "+6.14%",
+  "signal": {
+    "action": "STRONG_ACCUMULATION",
+    "confidence": 0.926,
+    "invalidated_below": 64200
+  }
+}</pre>
+          </div>
+          <div class="pt-3 mt-4 border-t border-white/10 flex items-center justify-between text-[11px] text-[#86868B]">
+            <span>Schema: Strict Zod / Pydantic</span>
+            <span class="text-mac-green">● Validated</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+  <!-- SECTION 03: BENTO REPOSITORY SHOWCASE (All 5 Production Repos) -->
+  <section id="work" class="py-16 sm:py-24 relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-12 gap-3">
+      <div>
+        <div class="text-xs font-mono uppercase tracking-widest text-mac-blue font-semibold mb-1.5">02 / SHIPPED SYSTEMS</div>
+        <h2 class="text-2xl sm:text-4xl font-bold text-white tracking-tight">Production Proof of Work</h2>
+      </div>
+      <p class="text-[#A1A1A6] text-xs sm:text-sm max-w-md">
+        Every system below is open-source and verifiable on GitHub. Inspect the commit history, TypeScript/Python architecture, and runtime logic directly.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-6 gap-5 sm:gap-6">
+
+      <!-- 1. sososignal -->
+      <div class="mac-card p-6 sm:p-8 md:col-span-3 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between gap-2 mb-5">
+            <div class="flex items-center gap-2 min-w-0">
+              <span class="w-2 h-2 rounded-full bg-mac-green shrink-0"></span>
+              <span class="text-[11px] font-mono uppercase tracking-wider text-mac-green font-semibold truncate">AI CRYPTO TERMINAL</span>
+            </div>
+            <span class="mac-pill px-2.5 py-1 rounded-full text-[11px] font-mono text-[#A1A1A6]">Next.js • TypeScript</span>
+          </div>
+
+          <h3 class="text-xl sm:text-2xl font-bold text-white tracking-tight mb-2.5">sososignal</h3>
+          <p class="text-[#A1A1A6] text-xs sm:text-sm leading-relaxed mb-5">
+            High-frequency crypto &amp; institutional ETF intelligence terminal powered by <span class="text-white font-medium">Groq Llama-3</span> and the <span class="text-white font-medium">SoSoValue API</span>. Synthesizes live L2 order books, spot ETF inflows, and macro sentiment into deterministic sub-350ms accumulation/distribution signals.
+          </p>
+
+          <!-- Mini Telemetry Preview -->
+          <div class="mac-well p-3.5 sm:p-4 mb-5 font-mono text-xs">
+            <div class="flex items-center justify-between gap-2 text-[10px] sm:text-[11px] text-[#86868B] mb-2.5 pb-2 border-b border-white/10">
+              <span class="truncate">INSTITUTIONAL ETF DESK</span>
+              <span class="text-mac-green whitespace-nowrap">● SUB-350MS PIPELINE</span>
+            </div>
+            <div class="grid grid-cols-3 gap-2 text-center">
+              <div class="bg-white/[0.03] p-2 rounded-lg">
+                <div class="text-[9px] sm:text-[10px] text-[#86868B] truncate">IBIT INFLOW</div>
+                <div class="text-xs sm:text-sm font-bold text-mac-green mt-0.5">+$341.2M</div>
+              </div>
+              <div class="bg-white/[0.03] p-2 rounded-lg">
+                <div class="text-[9px] sm:text-[10px] text-[#86868B] truncate">FBTC INFLOW</div>
+                <div class="text-xs sm:text-sm font-bold text-mac-green mt-0.5">+$92.8M</div>
+              </div>
+              <div class="bg-white/[0.03] p-2 rounded-lg">
+                <div class="text-[9px] sm:text-[10px] text-[#86868B] truncate">LLAMA-3 BIAS</div>
+                <div class="text-xs sm:text-sm font-bold text-mac-blue mt-0.5">92.6% LONG</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-1.5 mb-6">
+            <span class="mac-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-[#E5E5EA]">Next.js App Router</span>
+            <span class="mac-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-[#E5E5EA]">Groq LPU</span>
+            <span class="mac-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-[#E5E5EA]">SoSoValue API</span>
+          </div>
+        </div>
+
+        <a href="https://github.com/webnix-space/sososignal" target="_blank" rel="noopener noreferrer"
+           class="w-full py-3 px-4 rounded-xl btn-mac-glass text-xs font-mono font-semibold flex items-center justify-between group">
+          <span class="truncate">github.com/webnix-space/sososignal</span>
+          <span class="text-mac-blue group-hover:translate-x-1 transition-transform shrink-0 ml-2">Inspect →</span>
+        </a>
+      </div>
+
+      <!-- 2. Shadowsignal -->
+      <div class="mac-card p-6 sm:p-8 md:col-span-3 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between gap-2 mb-5">
+            <div class="flex items-center gap-2 min-w-0">
+              <span class="w-2 h-2 rounded-full bg-mac-cyan shrink-0"></span>
+              <span class="text-[11px] font-mono uppercase tracking-wider text-mac-cyan font-semibold truncate">AUTONOMOUS AGENT SWARM</span>
+            </div>
+            <span class="mac-pill px-2.5 py-1 rounded-full text-[11px] font-mono text-[#A1A1A6]">Python • FastAPI</span>
+          </div>
+
+          <h3 class="text-xl sm:text-2xl font-bold text-white tracking-tight mb-2.5">Shadowsignal</h3>
+          <p class="text-[#A1A1A6] text-xs sm:text-sm leading-relaxed mb-5">
+            Distributed multi-agent intelligence network built in Python. Coordinates headless browser crawlers to extract enterprise buyer intent, filters noise via consensus verification, and streams enriched payloads into CRM webhooks.
+          </p>
+
+          <!-- Agent Pipeline Visual -->
+          <div class="mac-well p-3.5 sm:p-4 mb-5 font-mono text-xs">
+            <div class="flex items-center justify-between gap-2 text-[10px] sm:text-[11px] text-[#86868B] mb-2.5 pb-2 border-b border-white/10">
+              <span class="truncate">SWARM CONSENSUS TOPOLOGY</span>
+              <span class="text-mac-cyan whitespace-nowrap">● ZERO-TOUCH EXPORT</span>
+            </div>
+            <div class="grid grid-cols-3 gap-2 text-center">
+              <div class="bg-white/[0.03] p-2 rounded-lg">
+                <div class="text-[9px] sm:text-[10px] text-[#86868B] truncate">01. CRAWL</div>
+                <div class="text-xs font-bold text-white mt-0.5">Playwright</div>
+              </div>
+              <div class="bg-white/[0.03] p-2 rounded-lg">
+                <div class="text-[9px] sm:text-[10px] text-[#86868B] truncate">02. VERIFY</div>
+                <div class="text-xs font-bold text-mac-cyan mt-0.5">96.4% Match</div>
+              </div>
+              <div class="bg-white/[0.03] p-2 rounded-lg">
+                <div class="text-[9px] sm:text-[10px] text-[#86868B] truncate">03. DISPATCH</div>
+                <div class="text-xs font-bold text-mac-green mt-0.5">CRM Webhook</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-1.5 mb-6">
+            <span class="mac-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-[#E5E5EA]">Python Asyncio</span>
+            <span class="mac-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-[#E5E5EA]">Multi-Agent Swarm</span>
+            <span class="mac-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-[#E5E5EA]">FastAPI</span>
+          </div>
+        </div>
+
+        <a href="https://github.com/webnix-space/Shadowsignal" target="_blank" rel="noopener noreferrer"
+           class="w-full py-3 px-4 rounded-xl btn-mac-glass text-xs font-mono font-semibold flex items-center justify-between group">
+          <span class="truncate">github.com/webnix-space/Shadowsignal</span>
+          <span class="text-mac-cyan group-hover:translate-x-1 transition-transform shrink-0 ml-2">Inspect →</span>
+        </a>
+      </div>
+
+      <!-- 3. vendor-guard -->
+      <div class="mac-card p-6 sm:p-7 md:col-span-2 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between gap-2 mb-4">
+            <span class="text-[11px] font-mono uppercase tracking-wider text-mac-purple font-semibold truncate">● ZERO-TRUST SECURITY</span>
+            <span class="mac-pill px-2 py-0.5 rounded-full text-[10px] font-mono text-[#86868B]">TypeScript</span>
+          </div>
+
+          <h3 class="text-lg sm:text-xl font-bold text-white tracking-tight mb-2">vendor-guard</h3>
+          <p class="text-[#A1A1A6] text-xs sm:text-sm leading-relaxed mb-5">
+            Enterprise dependency and vendor API boundary auditor. Enforces strict schema contracts, scans OAuth permission scopes, and blocks supply-chain leaks in CI/CD pipelines.
+          </p>
+        </div>
+
+        <div>
+          <div class="flex flex-wrap gap-1.5 mb-4">
+            <span class="mac-pill px-2 py-0.5 rounded text-[10px] font-mono text-[#A1A1A6]">Zero-Dependency</span>
+            <span class="mac-pill px-2 py-0.5 rounded text-[10px] font-mono text-[#A1A1A6]">CI/CD Security</span>
+          </div>
+          <a href="https://github.com/webnix-space/vendor-guard" target="_blank" rel="noopener noreferrer"
+             class="w-full py-2.5 px-3.5 rounded-xl btn-mac-glass text-xs font-mono font-semibold flex items-center justify-between group">
+            <span class="truncate">Inspect vendor-guard</span>
+            <span class="text-mac-purple group-hover:translate-x-1 transition-transform">→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 4. webnix-AI -->
+      <div class="mac-card p-6 sm:p-7 md:col-span-2 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between gap-2 mb-4">
+            <span class="text-[11px] font-mono uppercase tracking-wider text-mac-blue font-semibold truncate">● LLM MIDDLEWARE</span>
+            <span class="mac-pill px-2 py-0.5 rounded-full text-[10px] font-mono text-[#86868B]">Edge Runtime</span>
+          </div>
+
+          <h3 class="text-lg sm:text-xl font-bold text-white tracking-tight mb-2">webnix-AI</h3>
+          <p class="text-[#A1A1A6] text-xs sm:text-sm leading-relaxed mb-5">
+            Unified inference orchestration layer for Groq, OpenAI, and Anthropic. Provides deterministic JSON schema tool-calling, context window compression, and edge streaming.
+          </p>
+        </div>
+
+        <div>
+          <div class="flex flex-wrap gap-1.5 mb-4">
+            <span class="mac-pill px-2 py-0.5 rounded text-[10px] font-mono text-[#A1A1A6]">Groq SDK</span>
+            <span class="mac-pill px-2 py-0.5 rounded text-[10px] font-mono text-[#A1A1A6]">Tool Calling</span>
+          </div>
+          <a href="https://github.com/webnix-space/webnix-AI" target="_blank" rel="noopener noreferrer"
+             class="w-full py-2.5 px-3.5 rounded-xl btn-mac-glass text-xs font-mono font-semibold flex items-center justify-between group">
+            <span class="truncate">Inspect webnix-AI</span>
+            <span class="text-mac-blue group-hover:translate-x-1 transition-transform">→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 5. Salon-service -->
+      <div class="mac-card p-6 sm:p-7 md:col-span-2 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between gap-2 mb-4">
+            <span class="text-[11px] font-mono uppercase tracking-wider text-mac-amber font-semibold truncate">● MULTI-TENANT SAAS</span>
+            <span class="mac-pill px-2 py-0.5 rounded-full text-[10px] font-mono text-[#86868B]">Full-Stack</span>
+          </div>
+
+          <h3 class="text-lg sm:text-xl font-bold text-white tracking-tight mb-2">Salon-service</h3>
+          <p class="text-[#A1A1A6] text-xs sm:text-sm leading-relaxed mb-5">
+            Commercial appointment &amp; multi-provider booking platform. Engineered with atomic slot locking to prevent double-bookings, dynamic catalog pricing, and mobile checkout.
+          </p>
+        </div>
+
+        <div>
+          <div class="flex flex-wrap gap-1.5 mb-4">
+            <span class="mac-pill px-2 py-0.5 rounded text-[10px] font-mono text-[#A1A1A6]">React / Next.js</span>
+            <span class="mac-pill px-2 py-0.5 rounded text-[10px] font-mono text-[#A1A1A6]">State Sync</span>
+          </div>
+          <a href="https://github.com/webnix-space/Salon-service" target="_blank" rel="noopener noreferrer"
+             class="w-full py-2.5 px-3.5 rounded-xl btn-mac-glass text-xs font-mono font-semibold flex items-center justify-between group">
+            <span class="truncate">Inspect Salon-service</span>
+            <span class="text-mac-amber group-hover:translate-x-1 transition-transform">→</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 04: ENGAGEMENT ARCHITECTURE (Fixed Badge & Button Alignment) -->
+  <section id="services" class="py-16 sm:py-24 relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
+      <div class="text-xs font-mono uppercase tracking-widest text-mac-blue font-semibold mb-1.5">03 / ENGAGEMENT ARCHITECTURE</div>
+      <h2 class="text-2xl sm:text-4xl font-bold text-white tracking-tight">Built for High-Velocity Teams</h2>
+      <p class="text-[#A1A1A6] text-xs sm:text-sm mt-2.5">
+        Zero onboarding drag. Choose between confidential white-label agency execution or dedicated principal engineering for your startup.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      
+      <!-- Track 01: White-Label Agency Partner -->
+      <div class="mac-card p-6 sm:p-10 flex flex-col justify-between">
+        <div>
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-6">
+            <span class="mac-pill px-3 py-1 rounded-full text-[11px] font-mono text-white font-semibold">TRACK 01 // AGENCY OVERFLOW</span>
+            <span class="text-xs font-mono text-mac-green whitespace-nowrap">● 100% NDA &amp; IP Assignment</span>
+          </div>
+
+          <h3 class="text-xl sm:text-3xl font-bold text-white tracking-tight mb-3">White-Label Architecture Partner</h3>
+          <p class="text-[#A1A1A6] text-xs sm:text-sm leading-relaxed mb-6">
+            When your agency closes complex Next.js or AI automation retainers beyond internal bandwidth, I operate as your silent senior engineering arm. Hand over Figma files or system specs; receive production-tested pull requests under your brand.
+          </p>
+
+          <div class="space-y-3.5 mb-8 text-xs sm:text-sm text-[#E5E5EA]">
+            <div class="flex items-start gap-3">
+              <span class="w-5 h-5 rounded-full bg-mac-green/15 text-mac-green flex items-center justify-center text-xs shrink-0 mt-0.5">✓</span>
+              <div><strong class="text-white">Strict Ghost Execution:</strong> Commits pushed directly to your client repositories under your organization profile.</div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="w-5 h-5 rounded-full bg-mac-green/15 text-mac-green flex items-center justify-center text-xs shrink-0 mt-0.5">✓</span>
+              <div><strong class="text-white">Zero Managerial Overhead:</strong> Autonomous architectural decisions, clean TypeScript documentation, and edge-case testing.</div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="w-5 h-5 rounded-full bg-mac-green/15 text-mac-green flex items-center justify-center text-xs shrink-0 mt-0.5">✓</span>
+              <div><strong class="text-white">Flexible Commercials:</strong> Fixed milestone sprints or dedicated monthly overflow retainers.</div>
+            </div>
+          </div>
+        </div>
+
+        <a href="https://wa.me/919105358684?text=Hey%20Sanib,%20I%20run%20an%20agency%20and%20want%20to%20discuss%20white-label%20dev%20overflow"
+           target="_blank" rel="noopener noreferrer"
+           class="w-full py-3.5 px-5 rounded-xl btn-mac-primary font-semibold text-xs sm:text-sm text-center flex items-center justify-center gap-2">
+          <span>Book White-Label Partnership on WhatsApp</span>
+          <span class="shrink-0">→</span>
+        </a>
+      </div>
+
+      <!-- Track 02: Remote Startup Principal Engineer -->
+      <div class="mac-card p-6 sm:p-10 flex flex-col justify-between">
+        <div>
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-6">
+            <span class="mac-pill px-3 py-1 rounded-full text-[11px] font-mono text-mac-cyan font-semibold border-mac-cyan/30">TRACK 02 // STARTUP VELOCITY</span>
+            <span class="text-xs font-mono text-mac-cyan whitespace-nowrap">● US / EU / UK Overlap</span>
+          </div>
+
+          <h3 class="text-xl sm:text-3xl font-bold text-white tracking-tight mb-3">Remote Startup AI &amp; Full-Stack Engineer</h3>
+          <p class="text-[#A1A1A6] text-xs sm:text-sm leading-relaxed mb-6">
+            High-output contract or full-time engineering for funded and bootstrapped startups. I take ownership of your core product roadmap—from sub-second Groq LLM pipelines and custom scraping swarms to full-stack Next.js interfaces.
+          </p>
+
+          <div class="space-y-3.5 mb-8 text-xs sm:text-sm text-[#E5E5EA]">
+            <div class="flex items-start gap-3">
+              <span class="w-5 h-5 rounded-full bg-mac-cyan/15 text-mac-cyan flex items-center justify-center text-xs shrink-0 mt-0.5">✓</span>
+              <div><strong class="text-white">Day-One Shipping Velocity:</strong> Immediate contribution to production codebases without weeks of ramp-up.</div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="w-5 h-5 rounded-full bg-mac-cyan/15 text-mac-cyan flex items-center justify-center text-xs shrink-0 mt-0.5">✓</span>
+              <div><strong class="text-white">Production Agentic Systems:</strong> Proven track record building multi-agent crawlers and deterministic tool-calling APIs.</div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="w-5 h-5 rounded-full bg-mac-cyan/15 text-mac-cyan flex items-center justify-center text-xs shrink-0 mt-0.5">✓</span>
+              <div><strong class="text-white">Synchronous Comms:</strong> Active daily overlap across Slack, Linear, GitHub, and Discord.</div>
+            </div>
+          </div>
+        </div>
+
+        <a href="https://t.me/Surebreeze"
+           target="_blank" rel="noopener noreferrer"
+           class="w-full py-3.5 px-5 rounded-xl btn-mac-glass font-semibold text-xs sm:text-sm text-center flex items-center justify-center gap-2 border-mac-cyan/40 hover:border-mac-cyan">
+          <span>Discuss Startup Role on Telegram (@Surebreeze)</span>
+          <span class="shrink-0">→</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 05: DIRECT ACCESS MATRIX -->
+  <section id="contact" class="py-16 sm:py-24 relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="text-center max-w-xl mx-auto mb-10 sm:mb-12">
+      <div class="text-xs font-mono uppercase tracking-widest text-mac-blue font-semibold mb-1.5">04 / DIRECT TRANSMISSION</div>
+      <h2 class="text-2xl sm:text-4xl font-bold text-white tracking-tight">Direct Access Channels</h2>
+      <p class="text-[#A1A1A6] text-xs sm:text-sm mt-2">
+        No contact forms or middleman queues. Every channel routes directly to my devices.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      
+      <!-- WhatsApp -->
+      <a href="https://wa.me/919105358684?text=Hi%20Sanib,%20saw%20your%20portfolio%20and%20want%20to%20discuss%20a%20project"
+         target="_blank" rel="noopener noreferrer"
+         class="mac-card p-5 sm:p-6 flex items-center justify-between gap-3 group">
+        <div class="flex items-center gap-3.5 min-w-0">
+          <div class="w-11 h-11 rounded-2xl bg-mac-green/15 border border-mac-green/30 text-mac-green flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.299.144.35.49 1.196.533 1.284.043.088.072.19.014.305-.058.115-.087.19-.174.29-.087.101-.183.226-.262.304-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.144.39-.086s1.011.477 1.184.564c.173.087.289.13.332.202.043.073.043.419-.101.824z"/></svg>
+          </div>
+          <div class="min-w-0">
+            <div class="text-sm font-semibold text-white group-hover:text-mac-green transition-colors truncate">WhatsApp Direct</div>
+            <div class="text-xs font-mono text-[#86868B] truncate">+91 9105358684</div>
+          </div>
+        </div>
+        <span class="text-xs font-mono text-mac-green shrink-0">Chat →</span>
+      </a>
+
+      <!-- Telegram -->
+      <a href="https://t.me/Surebreeze"
+         target="_blank" rel="noopener noreferrer"
+         class="mac-card p-5 sm:p-6 flex items-center justify-between gap-3 group">
+        <div class="flex items-center gap-3.5 min-w-0">
+          <div class="w-11 h-11 rounded-2xl bg-mac-cyan/15 border border-mac-cyan/30 text-mac-cyan flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.19-.08-.05-.19-.02-.27 0-.12.03-1.99 1.27-5.62 3.72-.53.36-1.01.54-1.44.53-.47-.01-1.38-.27-2.06-.49-.83-.27-1.49-.42-1.43-.88.03-.24.38-.49 1.03-.75 4.04-1.76 6.74-2.92 8.09-3.49 3.85-1.63 4.65-1.91 5.17-1.92.11 0 .37.03.54.17.14.12.18.28.2.45-.02.07-.02.14-.04.22z"/></svg>
+          </div>
+          <div class="min-w-0">
+            <div class="text-sm font-semibold text-white group-hover:text-mac-cyan transition-colors truncate">Telegram</div>
+            <div class="text-xs font-mono text-[#86868B] truncate">@Surebreeze</div>
+          </div>
+        </div>
+        <span class="text-xs font-mono text-mac-cyan shrink-0">Open →</span>
+      </a>
+
+      <!-- Email -->
+      <div class="mac-card p-5 sm:p-6 flex items-center justify-between gap-3 group">
+        <a href="mailto:sanibmalik850@gmail.com" class="flex items-center gap-3.5 min-w-0 flex-1">
+          <div class="w-11 h-11 rounded-2xl bg-mac-purple/15 border border-mac-purple/30 text-mac-purple flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <div class="min-w-0">
+            <div class="text-sm font-semibold text-white group-hover:text-mac-purple transition-colors truncate">Direct Email</div>
+            <div class="text-xs font-mono text-[#86868B] truncate">sanibmalik850@gmail.com</div>
+          </div>
+        </a>
+        <button onclick="triggerEmailCopy()" class="px-3 py-1.5 rounded-lg btn-mac-glass text-xs font-mono text-mac-purple shrink-0">
+          Copy
+        </button>
+      </div>
+
+      <!-- LinkedIn -->
+      <a href="https://www.linkedin.com/in/sanib-malik-89b9a5175"
+         target="_blank" rel="noopener noreferrer"
+         class="mac-card p-5 sm:p-6 flex items-center justify-between gap-3 group">
+        <div class="flex items-center gap-3.5 min-w-0">
+          <div class="w-11 h-11 rounded-2xl bg-mac-blue/15 border border-mac-blue/30 text-mac-blue flex items-center justify-center font-bold text-base shrink-0">
+            in
+          </div>
+          <div class="min-w-0">
+            <div class="text-sm font-semibold text-white group-hover:text-mac-blue transition-colors truncate">LinkedIn</div>
+            <div class="text-xs font-mono text-[#86868B] truncate">in/sanib-malik-89b9a5175</div>
+          </div>
+        </div>
+        <span class="text-xs font-mono text-mac-blue shrink-0">Connect →</span>
+      </a>
+
+      <!-- GitHub Organization Hub -->
+      <a href="https://github.com/webnix-space"
+         target="_blank" rel="noopener noreferrer"
+         class="mac-card p-5 sm:p-6 flex items-center justify-between gap-3 group sm:col-span-2">
+        <div class="flex items-center gap-3.5 min-w-0">
+          <div class="w-11 h-11 rounded-2xl bg-white/10 border border-white/20 text-white flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          </div>
+          <div class="min-w-0">
+            <div class="text-sm font-semibold text-white group-hover:text-mac-blue transition-colors truncate">GitHub Engineering Hub — Webnix Space</div>
+            <div class="text-xs font-mono text-[#86868B] truncate">github.com/webnix-space</div>
+          </div>
+        </div>
+        <span class="text-xs font-mono text-white shrink-0">Explore →</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- Clean Footer -->
+  <footer class="py-10 border-t border-white/10 text-[#86868B] text-xs font-mono">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-mac-green"></span>
+        <span class="text-white font-semibold">Sanib Malik</span>
+        <span>•</span>
+        <span>Webnix Space</span>
+      </div>
+      <div>Next.js • Groq Llama-3 • Multi-Agent Swarms</div>
+    </div>
+  </footer>
+
+  <!-- Interactive Runtime Scripts -->
+  <script>
+    // 1. Cursor Spotlight on mac-cards (Desktop)
+    document.querySelectorAll('.mac-card').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+        card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+      });
+    });
+
+    // 2. Live IST Clock
+    function updateClock() {
+      const el = document.getElementById('mac-clock');
+      if (!el) return;
+      const now = new Date();
+      const istTime = new Date(now.toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
+      const hh = String(istTime.getHours()).padStart(2, '0');
+      const mm = String(istTime.getMinutes()).padStart(2, '0');
+      const ss = String(istTime.getSeconds()).padStart(2, '0');
+      el.textContent = `IST ${hh}:${mm}:${ss}`;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // 3. Live Sparkline Telemetry
+    let sparkPoints = [42, 36, 48, 25, 30, 18, 38, 29, 40, 22, 26];
+    setInterval(() => {
+      sparkPoints.shift();
+      sparkPoints.push(Math.floor(Math.random() * 28) + 18);
+      const step = 300 / (sparkPoints.length - 1);
+      const lineCoords = sparkPoints.map((y, idx) => `${idx * step},${y}`).join(' L');
+      const linePath = `M${lineCoords}`;
+      const areaPath = `${linePath} L300,70 L0,70 Z`;
+      const sl = document.getElementById('spark-line');
+      const sa = document.getElementById('spark-area');
+      const rtt = document.getElementById('live-rtt-val');
+      if (sl && sa && rtt) {
+        sl.setAttribute('d', linePath);
+        sa.setAttribute('d', areaPath);
+        rtt.textContent = `${Math.floor(Math.random() * 45) + 245}ms`;
+      }
+    }, 2200);
+
+    // 4. Clipboard Copy + Dynamic Island Toast
+    function triggerEmailCopy() {
+      const email = 'sanibmalik850@gmail.com';
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(email).then(() => onCopied());
+      } else {
+        const temp = document.createElement('textarea');
+        temp.value = email;
+        document.body.appendChild(temp);
+        temp.select();
+        document.execCommand('copy');
+        document.body.removeChild(temp);
+        onCopied();
+      }
+    }
+
+    function onCopied() {
+      showMacToast('Copied: sanibmalik850@gmail.com');
+      const label = document.getElementById('hero-email-label');
+      if (label) {
+        label.textContent = 'Copied to Clipboard!';
+        setTimeout(() => { label.textContent = 'sanibmalik850@gmail.com'; }, 2000);
+      }
+    }
+
+    function showMacToast(message) {
+      const toast = document.getElementById('mac-toast');
+      const text = document.getElementById('mac-toast-text');
+      text.textContent = message;
+      toast.classList.remove('opacity-0', '-translate-y-4');
+      toast.classList.add('opacity-100', 'translate-y-0');
+      setTimeout(() => {
+        toast.classList.remove('opacity-100', 'translate-y-0');
+        toast.classList.add('opacity-0', '-translate-y-4');
+      }, 2400);
+    }
+
+    // 5. Split-Pane Terminal & JSON Inspector
+    let currentSimTab = 1;
+    const jsonPayloads = {
+      1: `{
+  "engine": "sososignal-v2",
+  "model": "llama3-70b-8192-groq",
+  "latency_ms": 278,
+  "etf_net_inflow_usd": 434000000,
+  "orderbook_delta": "+6.14%",
+  "signal": {
+    "action": "STRONG_ACCUMULATION",
+    "confidence": 0.926,
+    "invalidated_below": 64200
+  }
+}`,
+      2: `{
+  "swarm_controller": "shadowsignal-v1.4",
+  "active_workers": 4,
+  "consensus_score": 0.964,
+  "accounts_enriched": 28,
+  "duplicates_dropped": 0,
+  "webhook_dispatch": {
+    "destination": "hubspot_crm_v3",
+    "status_code": 200
+  }
+}`,
+      3: `{
+  "auditor": "vendor-guard-cli",
+  "policy": "strict-zero-trust",
+  "dependencies_scanned": 142,
+  "oauth_scopes_verified": true,
+  "critical_vulnerabilities": 0,
+  "status": "COMPLIANT_SIGNED"
+}`
+    };
+
+    function switchSim(tabId) {
+      currentSimTab = tabId;
+      for (let i = 1; i <= 3; i++) {
+        const btn = document.getElementById('sim-btn-' + i);
+        const view = document.getElementById('sim-view-' + i);
+        if (i === tabId) {
+          view.classList.remove('hidden');
+          btn.className = 'px-2 sm:px-3.5 py-1.5 rounded-lg text-[11px] sm:text-xs font-mono font-medium transition-all bg-white/15 text-white shadow-sm text-center truncate';
+        } else {
+          view.classList.add('hidden');
+          btn.className = 'px-2 sm:px-3.5 py-1.5 rounded-lg text-[11px] sm:text-xs font-mono font-medium transition-all text-[#86868B] hover:text-white text-center truncate';
+        }
+      }
+      document.getElementById('json-inspector').textContent = jsonPayloads[tabId];
+    }
+
+    function runSimCycle() {
+      const latency = Math.floor(Math.random() * 65 + 235);
+      if (currentSimTab === 1) {
+        const variants = [
+          { action: "STRONG_ACCUMULATION", conf: 0.942, head: "STRONG ACCUMULATION — CONFIDENCE: 94.2%" },
+          { action: "MOMENTUM_BREAKOUT", conf: 0.918, head: "MOMENTUM BREAKOUT — CONFIDENCE: 91.8%" }
+        ];
+        const pick = variants[Math.floor(Math.random() * variants.length)];
+        document.getElementById('soso-lat-tag').textContent = `${latency}ms RTT`;
+        document.getElementById('soso-sig-headline').textContent = pick.head;
+        document.getElementById('json-inspector').textContent = JSON.stringify({
+          engine: "sososignal-v2",
+          model: "llama3-70b-8192-groq",
+          latency_ms: latency,
+          etf_net_inflow_usd: 434000000,
+          orderbook_delta: "+6.14%",
+          signal: { action: pick.action, confidence: pick.conf }
+        }, null, 2);
+        showMacToast(`sososignal benchmark: ${latency}ms`);
+      } else if (currentSimTab === 2) {
+        const count = Math.floor(Math.random() * 18 + 24);
+        document.getElementById('shadow-sig-headline').textContent = `ENRICHED PAYLOAD: ${count} High-Intent Enterprise Accounts`;
+        showMacToast(`Shadowsignal enriched ${count} records`);
+      } else {
+        showMacToast('vendor-guard audit: 100% clean');
+      }
+    }
+
+    // 6. Spotlight Command Palette (⌘K / Ctrl+K)
+    function toggleCommandPalette() {
+      const modal = document.getElementById('cmd-modal');
+      const input = document.getElementById('cmd-input');
+      if (modal.classList.contains('hidden')) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        setTimeout(() => input.focus(), 50);
+      } else {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    }
+
+    function filterCommands(q) {
+      const term = q.toLowerCase();
+      document.querySelectorAll('.cmd-item').forEach(item => {
+        item.style.display = item.textContent.toLowerCase().includes(term) ? '' : 'none';
+      });
+    }
+
+    window.addEventListener('keydown', e => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        toggleCommandPalette();
+      } else if (e.key === 'Escape') {
+        const modal = document.getElementById('cmd-modal');
+        if (!modal.classList.contains('hidden')) toggleCommandPalette();
+      }
+    });
+  </script>
+</body>
+</html>
