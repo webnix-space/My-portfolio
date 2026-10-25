@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>Webnix Space — Autonomous AI Systems, Next.js & Sovereign Infrastructure</title>
-  <meta name="description" content="Webnix Space — Engineering sub-second Groq Llama-3 pipelines, offline on-device AI for Android, Python multi-agent swarms, and high-frequency Next.js web applications.">
+  <meta name="description" content="Webnix Space — Engineering sub-second Groq Llama-3 pipelines, offline on-device AI for Android, Python multi-agent swarms, FastAPI backends, and AI automation workflows.">
 
   <!-- Fonts: Inter + JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -219,7 +219,7 @@
         <svg class="w-4 h-4 text-mac-blue shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
         </svg>
-        <input id="cmd-input" type="text" placeholder="Jump to repo, inspect stack, or contact..." class="w-full bg-transparent text-sm text-white placeholder-[#86868B] focus:outline-none font-sans" oninput="filterCommands(this.value)">
+        <input id="cmd-input" type="text" placeholder="Jump to repo, live demo, or contact..." class="w-full bg-transparent text-sm text-white placeholder-[#86868B] focus:outline-none font-sans" oninput="filterCommands(this.value)">
         <button onclick="toggleCommandPalette()" class="text-[10px] font-mono px-2 py-1 rounded bg-white/10 text-[#A1A1A6] hover:text-white shrink-0">ESC</button>
       </div>
       <div id="cmd-list" class="p-2 max-h-72 overflow-y-auto divide-y divide-white/5 text-xs">
@@ -237,45 +237,34 @@
           </div>
           <span class="font-mono text-[10px] text-mac-cyan">Instant Channel</span>
         </a>
-        <button onclick="triggerEmailCopy(); toggleCommandPalette();" class="cmd-item w-full flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors text-left">
-          <div class="flex items-center gap-2.5">
-            <span class="w-2 h-2 rounded-full bg-mac-purple"></span>
-            <span class="text-white font-medium">Copy Direct Email Address</span>
-          </div>
-          <span class="font-mono text-[10px] text-[#86868B]">1-Click Copy</span>
-        </button>
-        <a href="https://github.com/webnix-space/sososignal" target="_blank" rel="noopener noreferrer" class="cmd-item flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors">
-          <span class="text-white font-mono">repo: webnix-space/sososignal</span>
-          <span class="font-mono text-[10px] text-mac-green">Groq Llama-3</span>
+        <a href="https://shadowsignal-drab.vercel.app/" target="_blank" rel="noopener noreferrer" class="cmd-item flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors">
+          <span class="text-white font-mono">live: shadowsignal-drab.vercel.app</span>
+          <span class="font-mono text-[10px] text-mac-cyan">Live Demo</span>
         </a>
-        <a href="https://github.com/webnix-space/webnix-ai" target="_blank" rel="noopener noreferrer" class="cmd-item flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors">
-          <span class="text-white font-mono">repo: webnix-space/webnix-ai</span>
-          <span class="font-mono text-[10px] text-mac-amber">On-Device RAG</span>
+        <a href="https://onchainedge.vercel.app/" target="_blank" rel="noopener noreferrer" class="cmd-item flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors">
+          <span class="text-white font-mono">live: onchainedge.vercel.app</span>
+          <span class="font-mono text-[10px] text-mac-green">Live Terminal</span>
         </a>
-        <a href="https://github.com/webnix-space/Shadowsignal" target="_blank" rel="noopener noreferrer" class="cmd-item flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors">
-          <span class="text-white font-mono">repo: webnix-space/Shadowsignal</span>
-          <span class="font-mono text-[10px] text-mac-cyan">Python Swarm</span>
+        <a href="https://serenasalon.vercel.app/" target="_blank" rel="noopener noreferrer" class="cmd-item flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors">
+          <span class="text-white font-mono">live: serenasalon.vercel.app</span>
+          <span class="font-mono text-[10px] text-mac-amber">AI Assistant</span>
         </a>
-        <a href="https://github.com/webnix-space/vendor-guard" target="_blank" rel="noopener noreferrer" class="cmd-item flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors">
-          <span class="text-white font-mono">repo: webnix-space/vendor-guard</span>
-          <span class="font-mono text-[10px] text-mac-purple">AWS DynamoDB</span>
-        </a>
-        <a href="https://github.com/webnix-space/mizan-treasury" target="_blank" rel="noopener noreferrer" class="cmd-item flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors">
-          <span class="text-white font-mono">repo: webnix-space/mizan-treasury</span>
-          <span class="font-mono text-[10px] text-mac-blue">Midnight ZK</span>
+        <a href="https://github.com/webnix-space/datahub-agent-crew" target="_blank" rel="noopener noreferrer" class="cmd-item flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors">
+          <span class="text-white font-mono">repo: webnix-space/datahub-agent-crew</span>
+          <span class="font-mono text-[10px] text-mac-blue">5-Agent MCP</span>
         </a>
       </div>
     </div>
   </div>
 
-  <!-- UNIFIED ADAPTIVE STICKY HEADER (Branded solely for Webnix Space) -->
+  <!-- UNIFIED ADAPTIVE STICKY HEADER -->
   <header class="sticky top-0 z-50 mac-navbar w-full">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <!-- Primary Row -->
       <div class="h-14 flex items-center justify-between gap-2">
         
-        <!-- Brand Identity: Pure Webnix Space -->
+        <!-- Brand Identity -->
         <a href="#" class="flex items-center gap-2.5 shrink-0 group">
           <div class="w-8 h-8 rounded-full bg-gradient-to-b from-white/20 to-white/5 border border-white/20 flex items-center justify-center font-mono font-bold text-xs text-white shadow-inner group-hover:border-mac-blue transition-colors">
             WX
@@ -296,7 +285,7 @@
           <a href="#contact" class="px-3.5 py-1.5 rounded-full hover:text-white hover:bg-white/[0.07] transition-all whitespace-nowrap">Direct Access</a>
         </nav>
 
-        <!-- Right Controls: Spotlight + Clock + Direct CTA -->
+        <!-- Right Controls -->
         <div class="flex items-center gap-2 shrink-0">
           <button onclick="toggleCommandPalette()" class="px-2.5 py-1.5 rounded-lg bg-white/[0.06] hover:bg-white/[0.12] border border-white/10 text-[#E5E5EA] font-mono text-[11px] flex items-center gap-1.5 transition-colors whitespace-nowrap">
             <svg class="w-3.5 h-3.5 text-[#86868B]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
@@ -316,7 +305,7 @@
         </div>
       </div>
 
-      <!-- Mobile-Only Clean Sub-Nav -->
+      <!-- Mobile Sub-Nav -->
       <nav class="flex md:hidden items-center justify-between border-t border-white/[0.07] py-2 text-[11px] font-medium text-[#A1A1A6]">
         <a href="#overview" class="px-2 py-1 rounded-md hover:text-white hover:bg-white/5 transition-colors whitespace-nowrap">Overview</a>
         <a href="#telemetry" class="px-2 py-1 rounded-md hover:text-white hover:bg-white/5 transition-colors whitespace-nowrap">Telemetry</a>
@@ -332,7 +321,7 @@
   <section id="overview" class="relative pt-8 pb-16 sm:pt-14 sm:pb-24 lg:pt-20 lg:pb-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
       
-      <!-- Left Column: Unique & Punchy Builder Tone -->
+      <!-- Left Column -->
       <div class="lg:col-span-7 flex flex-col items-start text-left">
         
         <!-- Status Pill -->
@@ -346,20 +335,19 @@
           </span>
         </div>
 
-        <!-- Catchy Display Headline -->
+        <!-- Display Headline -->
         <h1 class="text-3xl sm:text-5xl lg:text-[60px] font-bold tracking-tight leading-[1.08] mb-5 text-titanium">
           We Ship Autonomous AI, Real-Time Next.js &amp; <span class="text-accent-gradient">Zero-Fluff Systems.</span>
         </h1>
 
-        <!-- Technical Value Prop (Match your unique style) -->
+        <!-- Value Prop -->
         <p class="text-[#A1A1A6] text-sm sm:text-base lg:text-lg leading-relaxed mb-8 max-w-2xl font-normal">
-          No tutorial wrappers. No hand-holding. We engineer deterministic <span class="text-white font-medium">Groq LPU</span> inference pipelines, offline <span class="text-white font-medium">on-device SLMs</span> for Android, multi-agent <span class="text-white font-medium">Python swarms</span>, and battle-tested <span class="text-white font-medium">Next.js &amp; Mobile</span> architectures built for teams that move at breaking speed.
+          No tutorial wrappers. We engineer high-throughput <span class="text-white font-medium">FastAPI backends</span>, enterprise <span class="text-white font-medium">DataHub MCP multi-agent crews</span>, sub-second <span class="text-white font-medium">Groq LPU engines</span>, offline <span class="text-white font-medium">on-device SLMs</span>, and battle-tested <span class="text-white font-medium">Next.js &amp; Mobile</span> platforms.
         </p>
 
-        <!-- Primary Action Dock (Privacy-Safe: Zero raw numbers or usernames exposed in visible text) -->
+        <!-- Primary Action Dock -->
         <div class="grid grid-cols-1 sm:flex sm:flex-wrap items-center gap-3 w-full sm:w-auto mb-10">
           
-          <!-- WhatsApp Direct -->
           <a href="https://wa.me/919105358684?text=Hi%20Webnix,%20saw%20your%20portfolio%20and%20want%20to%20discuss%20a%20project"
              target="_blank"
              rel="noopener noreferrer"
@@ -370,7 +358,6 @@
             <span>WhatsApp Direct</span>
           </a>
 
-          <!-- Telegram Direct -->
           <a href="https://t.me/Surebreeze"
              target="_blank"
              rel="noopener noreferrer"
@@ -381,7 +368,6 @@
             <span>Telegram Direct</span>
           </a>
 
-          <!-- Copy Email -->
           <button onclick="triggerEmailCopy()"
                   class="w-full sm:w-auto px-5 py-3.5 rounded-xl btn-mac-glass font-mono text-xs text-[#E5E5EA] flex items-center justify-center gap-2 whitespace-nowrap">
             <svg class="w-4 h-4 text-[#86868B] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
@@ -396,8 +382,8 @@
             <div class="text-base sm:text-xl font-bold font-mono text-white mt-0.5 whitespace-nowrap">&lt; 350ms <span class="text-[10px] text-mac-green font-normal hidden sm:inline">P99</span></div>
           </div>
           <div>
-            <div class="text-[10px] font-mono uppercase tracking-wider text-[#86868B] truncate">MODELS &amp; SLMS</div>
-            <div class="text-base sm:text-xl font-bold font-mono text-white mt-0.5 whitespace-nowrap">Groq + QVAC</div>
+            <div class="text-[10px] font-mono uppercase tracking-wider text-[#86868B] truncate">AGENTS &amp; MCP</div>
+            <div class="text-base sm:text-xl font-bold font-mono text-white mt-0.5 whitespace-nowrap">FastAPI + DataHub</div>
           </div>
           <div>
             <div class="text-[10px] font-mono uppercase tracking-wider text-[#86868B] truncate">INTEGRATION</div>
@@ -435,7 +421,7 @@
               </div>
             </div>
             <div class="text-right font-mono text-[11px] text-[#86868B] shrink-0 whitespace-nowrap">
-              <div>ACTIVE NODES: <span class="text-white font-semibold">6 DAEMONS</span></div>
+              <div>ACTIVE NODES: <span class="text-white font-semibold">7 DAEMONS</span></div>
               <div class="mt-0.5">AVAILABILITY: <span class="text-mac-green font-semibold">99.98%</span></div>
             </div>
           </div>
@@ -465,17 +451,17 @@
             </div>
             <div class="mac-well px-3.5 py-2.5 flex items-center justify-between gap-2">
               <div class="flex items-center gap-2 min-w-0">
-                <span class="w-2 h-2 rounded-full bg-mac-amber shrink-0"></span>
-                <span class="text-white font-medium truncate">webnix-ai-qvac-rag</span>
+                <span class="w-2 h-2 rounded-full bg-mac-blue shrink-0"></span>
+                <span class="text-white font-medium truncate">datahub-mcp-crew</span>
               </div>
-              <span class="text-[#86868B] text-[11px] whitespace-nowrap shrink-0">Offline SLM Engine</span>
+              <span class="text-[#86868B] text-[11px] whitespace-nowrap shrink-0">5-Agent Bus</span>
             </div>
             <div class="mac-well px-3.5 py-2.5 flex items-center justify-between gap-2">
               <div class="flex items-center gap-2 min-w-0">
                 <span class="w-2 h-2 rounded-full bg-mac-cyan shrink-0"></span>
-                <span class="text-white font-medium truncate">shadowsignal-crawler</span>
+                <span class="text-white font-medium truncate">fastapi-automation-swarm</span>
               </div>
-              <span class="text-[#86868B] text-[11px] whitespace-nowrap shrink-0">Python Agent Swarm</span>
+              <span class="text-[#86868B] text-[11px] whitespace-nowrap shrink-0">FastAPI + Async Agents</span>
             </div>
           </div>
 
@@ -494,7 +480,7 @@
         <h2 class="text-2xl sm:text-4xl font-bold text-white tracking-tight">Interactive Execution Telemetry</h2>
       </div>
       <p class="text-[#A1A1A6] text-xs sm:text-sm max-w-md">
-        Inspect live trace outputs and validated JSON payloads from our crypto intelligence, on-device mobile AI, and vendor risk engines.
+        Inspect live trace outputs and validated JSON payloads from our crypto intelligence, on-device mobile AI, and DataHub 5-agent MCP pipeline.
       </p>
     </div>
 
@@ -526,7 +512,7 @@
             webnix-ai.apk
           </button>
           <button id="sim-btn-3" onclick="switchSim(3)" class="px-2 sm:px-3.5 py-1.5 rounded-lg text-[11px] sm:text-xs font-mono font-medium transition-all text-[#86868B] hover:text-white text-center truncate">
-            vendor-guard.ts
+            datahub-mcp.py
           </button>
         </div>
 
@@ -539,7 +525,7 @@
       <!-- Split Console Body -->
       <div class="grid grid-cols-1 lg:grid-cols-12 divide-y lg:divide-y-0 lg:divide-x divide-white/10 bg-black/50 font-mono text-xs">
         
-        <!-- Left Pane: Execution Trace Stream -->
+        <!-- Left Pane -->
         <div class="lg:col-span-7 p-4 sm:p-6 flex flex-col justify-between">
           
           <!-- TAB 1: sososignal -->
@@ -567,12 +553,12 @@
                 STRONG ACCUMULATION — CONFIDENCE: 92.6%
               </div>
               <p class="text-xs text-[#A1A1A6] font-sans leading-relaxed">
-                Spot ETF volume influx confirmed. Bid depth exceeds resistance tier. Sub-second signal rendered to terminal UI.
+                Spot ETF volume influx confirmed. Live dashboard deployed at onchainedge.vercel.app.
               </p>
             </div>
           </div>
 
-          <!-- TAB 2: webnix-AI (Corrected to QVAC Android On-Device) -->
+          <!-- TAB 2: webnix-AI -->
           <div id="sim-view-2" class="space-y-3 hidden">
             <div class="flex items-center justify-between gap-2 text-[#86868B] border-b border-white/10 pb-2.5">
               <span class="text-mac-amber font-semibold truncate">ON-DEVICE // @qvac/sdk v0.19.1 (Snapdragon CPU)</span>
@@ -602,32 +588,32 @@
             </div>
           </div>
 
-          <!-- TAB 3: vendor-guard (Corrected to DynamoDB + Groq) -->
+          <!-- TAB 3: DataHub Agent Crew -->
           <div id="sim-view-3" class="space-y-3 hidden">
             <div class="flex items-center justify-between gap-2 text-[#86868B] border-b border-white/10 pb-2.5">
-              <span class="text-mac-purple font-semibold truncate">RISK ENGINE // DynamoDB + Groq 3.3-70B Versatile</span>
-              <span class="text-mac-purple flex items-center gap-1.5 shrink-0 whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-mac-purple animate-ping"></span> VERCEL EDGE</span>
+              <span class="text-mac-blue font-semibold truncate">MCP PIPELINE // DataHub Agent Crew (5 Agents)</span>
+              <span class="text-mac-blue flex items-center gap-1.5 shrink-0 whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-mac-blue animate-ping"></span> GRAPHQL LIVE</span>
             </div>
             <div class="text-[#A1A1A6] leading-relaxed">
-              <span class="text-[#86868B]">[DYNAMODB]</span> Ingested vendor portfolio signals from `vendors_table` &amp; `signals_table`.
+              <span class="text-[#86868B]">[INVESTIGATOR]</span> Reading DataHub metadata graph via MCP search: 4 stale descriptions, 2 unowned datasets.
             </div>
             <div class="text-[#A1A1A6] leading-relaxed">
-              <span class="text-[#86868B]">[GROQ-AI]</span> Real-time telemetry summarized into deterministic KPI risk score.
+              <span class="text-[#86868B]">[STRATEGIST &rarr; REGULATORY]</span> Proposing ownership mappings &amp; compliance tags. Clearance granted.
             </div>
             <div class="text-[#A1A1A6] leading-relaxed">
-              <span class="text-[#86868B]">[ALERTS]</span> Critical risk threshold crossed for 1 vendor. Live alert dispatched to dashboard.
+              <span class="text-[#86868B]">[CODEBAND]</span> Executing GraphQL mutation back to `mcp-server-datahub`. Write confirmed.
             </div>
 
-            <div class="mac-well p-4 mt-3 border-l-2 border-l-mac-purple">
+            <div class="mac-well p-4 mt-3 border-l-2 border-l-mac-blue">
               <div class="flex items-center justify-between gap-2 mb-1.5">
-                <span class="text-[10px] uppercase tracking-wider text-[#86868B]">RISK AUDIT SUMMARY</span>
-                <span class="text-[11px] px-2 py-0.5 rounded bg-mac-purple/15 text-mac-purple font-bold whitespace-nowrap">PERSISTED</span>
+                <span class="text-[10px] uppercase tracking-wider text-[#86868B]">MCP GOVERNANCE BUS</span>
+                <span class="text-[11px] px-2 py-0.5 rounded bg-mac-blue/15 text-mac-blue font-bold whitespace-nowrap">MUTATION 200 OK</span>
               </div>
               <div class="text-xs sm:text-sm font-bold text-white mb-1">
-                VENDOR AUDIT CONFIRMED — RISK SCORE: 28/100 (LOW)
+                METADATA GRAPH REPAIRED AUTOMATICALLY
               </div>
               <p class="text-xs text-[#A1A1A6] font-sans leading-relaxed">
-                Full DynamoDB persistence confirmed. Live demo running at vendor-guard-neon.vercel.app.
+                SQLite local bus message routing verified. Built for "Build with DataHub: The Agent Hackathon".
               </p>
             </div>
           </div>
@@ -645,6 +631,7 @@
   "system": "sososignal-v2",
   "engine": "llama3-70b-8192-groq",
   "latency_ms": 268,
+  "live_demo": "https://onchainedge.vercel.app/",
   "etf_net_inflow_usd": 434000000,
   "orderbook_delta": "+6.14%",
   "signal": {
@@ -654,8 +641,8 @@
 }</pre>
           </div>
           <div class="pt-3 mt-4 border-t border-white/10 flex items-center justify-between text-[11px] text-[#86868B]">
-            <span>Verified Production Contract</span>
-            <span class="text-mac-green">● Validated Schema</span>
+            <span>Production Contract Validated</span>
+            <span class="text-mac-green">● Ready</span>
           </div>
         </div>
 
@@ -664,22 +651,22 @@
 
   </section>
 
-  <!-- SECTION 03: ALL 6 VERIFIED PRODUCTION REPOSITORIES (With correct details) -->
+  <!-- SECTION 03: VERIFIED PRODUCTION REPOSITORIES & LIVE DEMOS -->
   <section id="work" class="py-16 sm:py-24 relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
     <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-12 gap-3">
       <div>
-        <div class="text-xs font-mono uppercase tracking-widest text-mac-blue font-semibold mb-1.5">02 / VERIFIABLE CODE</div>
-        <h2 class="text-2xl sm:text-4xl font-bold text-white tracking-tight">Shipped Repositories &amp; Products</h2>
+        <div class="text-xs font-mono uppercase tracking-widest text-mac-blue font-semibold mb-1.5">02 / VERIFIABLE CODE &amp; DEPLOYMENTS</div>
+        <h2 class="text-2xl sm:text-4xl font-bold text-white tracking-tight">Shipped Repositories &amp; Live DApps</h2>
       </div>
       <p class="text-[#A1A1A6] text-xs sm:text-sm max-w-md">
-        Explore direct source code, architectures, and live demos across our autonomous AI swarms, on-device mobile SLMs, and Next.js platforms.
+        Explore source code and production deployments across our multi-agent pipelines, on-device mobile AI, and Next.js applications.
       </p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-6 gap-5 sm:gap-6">
 
-      <!-- 1. webnix-AI (Corrected: On-Device Android SLM + QVAC SDK) -->
+      <!-- 1. webnix-AI (With Photo Mockup Slot) -->
       <div class="mac-card p-6 sm:p-8 md:col-span-3 flex flex-col justify-between">
         <div>
           <div class="flex items-center justify-between gap-2 mb-5">
@@ -691,35 +678,44 @@
           </div>
 
           <h3 class="text-xl sm:text-2xl font-bold text-white tracking-tight mb-2.5">webnix-AI</h3>
-          <p class="text-[#A1A1A6] text-xs sm:text-sm leading-relaxed mb-5">
+          <p class="text-[#A1A1A6] text-xs sm:text-sm leading-relaxed mb-4">
             A fully air-gapped, offline AI assistant running natively on Android using <span class="text-white font-medium">Tether's QVAC SDK v0.19.1</span>. Executes <span class="text-white font-medium">Llama 3.2 1B Instruct</span> (Q4_0) and local <span class="text-white font-medium">GTE-Large embeddings</span> directly on mid-range Snapdragon CPUs with private on-device RAG indexing. Zero network required.
           </p>
 
-          <div class="mac-well p-3.5 sm:p-4 mb-5 font-mono text-xs">
-            <div class="flex items-center justify-between gap-2 text-[10px] sm:text-[11px] text-[#86868B] mb-2.5 pb-2 border-b border-white/10">
+          <!-- OPTIONAL SCREENSHOT / DEVICE PREVIEW SLOT -->
+          <!-- Place your screenshot file in the same folder as index.html (e.g. webnix-ai-preview.png) or paste a hosted URL below -->
+          <div class="mac-well mb-4 p-2 overflow-hidden rounded-xl border border-white/10 group">
+            <img src="./webnix-ai-preview.png"
+                 alt="Webnix AI Android App Interface"
+                 class="w-full h-44 object-cover object-top rounded-lg opacity-90 group-hover:scale-[1.02] transition-transform duration-300"
+                 onerror="this.parentElement.style.display='none'">
+          </div>
+
+          <div class="mac-well p-3.5 mb-5 font-mono text-xs">
+            <div class="flex items-center justify-between gap-2 text-[10px] text-[#86868B] mb-2 pb-2 border-b border-white/10">
               <span class="truncate">QVAC RUNTIME ARCHITECTURE</span>
               <span class="text-mac-amber whitespace-nowrap">● 100% PRIVATE ON-DEVICE</span>
             </div>
             <div class="grid grid-cols-3 gap-2 text-center">
-              <div class="bg-white/[0.03] p-2 rounded-lg">
-                <div class="text-[9px] sm:text-[10px] text-[#86868B] truncate">MODEL</div>
-                <div class="text-xs sm:text-sm font-bold text-mac-amber mt-0.5">Llama 3.2 1B</div>
+              <div class="bg-white/[0.03] p-1.5 rounded-lg">
+                <div class="text-[9px] text-[#86868B] truncate">MODEL</div>
+                <div class="text-xs font-bold text-mac-amber mt-0.5">Llama 3.2 1B</div>
               </div>
-              <div class="bg-white/[0.03] p-2 rounded-lg">
-                <div class="text-[9px] sm:text-[10px] text-[#86868B] truncate">EMBEDDINGS</div>
-                <div class="text-xs sm:text-sm font-bold text-white mt-0.5">GTE-Large FP16</div>
+              <div class="bg-white/[0.03] p-1.5 rounded-lg">
+                <div class="text-[9px] text-[#86868B] truncate">EMBEDDINGS</div>
+                <div class="text-xs font-bold text-white mt-0.5">GTE-Large FP16</div>
               </div>
-              <div class="bg-white/[0.03] p-2 rounded-lg">
-                <div class="text-[9px] sm:text-[10px] text-[#86868B] truncate">INFERENCE</div>
-                <div class="text-xs sm:text-sm font-bold text-mac-green mt-0.5">8–9 tok/s</div>
+              <div class="bg-white/[0.03] p-1.5 rounded-lg">
+                <div class="text-[9px] text-[#86868B] truncate">SPEED</div>
+                <div class="text-xs font-bold text-mac-green mt-0.5">8–9 tok/s</div>
               </div>
             </div>
           </div>
 
           <div class="flex flex-wrap gap-1.5 mb-6">
-            <span class="mac-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-[#E5E5EA]">React Native / Expo</span>
+            <span class="mac-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-[#E5E5EA]">React Native</span>
+            <span class="mac-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-[#E5E5EA]">Android APK</span>
             <span class="mac-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-[#E5E5EA]">QVAC SDK</span>
-            <span class="mac-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-[#E5E5EA]">Local RAG Vector Store</span>
           </div>
         </div>
 
@@ -730,58 +726,115 @@
         </a>
       </div>
 
-      <!-- 2. sososignal -->
+      <!-- 2. DataHub Agent Crew (NEW: 5-Agent MCP Pipeline) -->
       <div class="mac-card p-6 sm:p-8 md:col-span-3 flex flex-col justify-between">
         <div>
           <div class="flex items-center justify-between gap-2 mb-5">
             <div class="flex items-center gap-2 min-w-0">
-              <span class="w-2 h-2 rounded-full bg-mac-green shrink-0"></span>
-              <span class="text-[11px] font-mono uppercase tracking-wider text-mac-green font-semibold truncate">AI CRYPTO TERMINAL</span>
+              <span class="w-2 h-2 rounded-full bg-mac-blue shrink-0"></span>
+              <span class="text-[11px] font-mono uppercase tracking-wider text-mac-blue font-semibold truncate">5-AGENT MCP GOVERNANCE PIPELINE</span>
             </div>
-            <span class="mac-pill px-2.5 py-1 rounded-full text-[11px] font-mono text-[#A1A1A6]">Next.js • Groq LPU</span>
+            <span class="mac-pill px-2.5 py-1 rounded-full text-[11px] font-mono text-[#A1A1A6]">Python • DataHub MCP</span>
           </div>
 
-          <h3 class="text-xl sm:text-2xl font-bold text-white tracking-tight mb-2.5">sososignal</h3>
-          <p class="text-[#A1A1A6] text-xs sm:text-sm leading-relaxed mb-5">
-            AI-powered financial signal terminal using <span class="text-white font-medium">SoSoValue market data</span> + <span class="text-white font-medium">Groq Llama-3</span>. Merges live spot ETF inflows, Fear &amp; Greed telemetry, and order-book momentum to generate sub-second BUY/SELL/HOLD algorithmic signals.
+          <h3 class="text-xl sm:text-2xl font-bold text-white tracking-tight mb-2.5">DataHub Agent Crew</h3>
+          <p class="text-[#A1A1A6] text-xs sm:text-sm leading-relaxed mb-4">
+            Five-agent autonomous pipeline (<span class="text-white font-medium">Investigator, Analyst, Strategist, Regulatory, Codeband</span>) built for "Build with DataHub: The Agent Hackathon". Reads DataHub metadata graphs via Model Context Protocol (MCP), detects governance gaps (unowned datasets, stale descriptions, missing compliance tags), and writes validated repairs back through <span class="text-white font-medium">`mcp-server-datahub`</span> GraphQL execution.
           </p>
 
-          <div class="mac-well p-3.5 sm:p-4 mb-5 font-mono text-xs">
-            <div class="flex items-center justify-between gap-2 text-[10px] sm:text-[11px] text-[#86868B] mb-2.5 pb-2 border-b border-white/10">
-              <span class="truncate">MARKET DATA PIPELINE</span>
-              <span class="text-mac-green whitespace-nowrap">● SUB-350MS RTT</span>
+          <div class="mac-well p-3.5 mb-5 font-mono text-xs">
+            <div class="flex items-center justify-between gap-2 text-[10px] text-[#86868B] mb-2 pb-2 border-b border-white/10">
+              <span class="truncate">AGENT TOPOLOGY // SQLITE LOCAL BUS</span>
+              <span class="text-mac-blue whitespace-nowrap">● MCP TOOL HOOKS</span>
             </div>
-            <div class="grid grid-cols-3 gap-2 text-center">
-              <div class="bg-white/[0.03] p-2 rounded-lg">
-                <div class="text-[9px] sm:text-[10px] text-[#86868B] truncate">ETF FLOWS</div>
-                <div class="text-xs sm:text-sm font-bold text-mac-green mt-0.5">SoSoValue API</div>
-              </div>
-              <div class="bg-white/[0.03] p-2 rounded-lg">
-                <div class="text-[9px] sm:text-[10px] text-[#86868B] truncate">INFERENCE</div>
-                <div class="text-xs sm:text-sm font-bold text-mac-blue mt-0.5">Groq LPU</div>
-              </div>
-              <div class="bg-white/[0.03] p-2 rounded-lg">
-                <div class="text-[9px] sm:text-[10px] text-[#86868B] truncate">FRONTEND</div>
-                <div class="text-xs sm:text-sm font-bold text-white mt-0.5">Next.js UI</div>
-              </div>
+            <div class="text-[11px] text-[#A1A1A6] leading-relaxed">
+              <span class="text-white font-semibold">Investigator</span> (gaps) &rarr; <span class="text-white font-semibold">Analyst</span> (triage) &rarr; <span class="text-white font-semibold">Strategist</span> &rarr; <span class="text-white font-semibold">Regulatory</span> (clearance) &rarr; <span class="text-white font-semibold">Codeband</span> (MCP mutation write)
             </div>
           </div>
 
           <div class="flex flex-wrap gap-1.5 mb-6">
-            <span class="mac-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-[#E5E5EA]">Next.js</span>
-            <span class="mac-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-[#E5E5EA]">Groq API</span>
-            <span class="mac-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-[#E5E5EA]">SoSoValue</span>
+            <span class="mac-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-[#E5E5EA]">Model Context Protocol (MCP)</span>
+            <span class="mac-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-[#E5E5EA]">GraphQL Mutation</span>
+            <span class="mac-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-[#E5E5EA]">Python Async</span>
           </div>
         </div>
 
-        <a href="https://github.com/webnix-space/sososignal" target="_blank" rel="noopener noreferrer"
-           class="w-full py-3 px-4 rounded-xl btn-mac-glass text-xs font-mono font-semibold flex items-center justify-between group">
-          <span class="truncate">github.com/webnix-space/sososignal</span>
-          <span class="text-mac-green group-hover:translate-x-1 transition-transform shrink-0 ml-2">Inspect Repo →</span>
+        <a href="https://github.com/webnix-space/datahub-agent-crew" target="_blank" rel="noopener noreferrer"
+           class="w-full py-3 px-4 rounded-xl btn-mac-glass text-xs font-mono font-semibold flex items-center justify-between group border-mac-blue/30 text-mac-blue hover:text-white">
+          <span class="truncate">github.com/webnix-space/datahub-agent-crew</span>
+          <span class="group-hover:translate-x-1 transition-transform shrink-0 ml-2">Inspect Repo →</span>
         </a>
       </div>
 
-      <!-- 3. vendor-guard (Corrected: Next.js 16 + DynamoDB + Groq) -->
+      <!-- 3. sososignal (Live Link Added: onchainedge.vercel.app) -->
+      <div class="mac-card p-6 sm:p-7 md:col-span-3 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between gap-2 mb-4">
+            <span class="text-[11px] font-mono uppercase tracking-wider text-mac-green font-semibold truncate">● AI CRYPTO TERMINAL</span>
+            <span class="mac-pill px-2 py-0.5 rounded-full text-[10px] font-mono text-[#86868B]">Next.js • Groq LPU</span>
+          </div>
+
+          <h3 class="text-lg sm:text-xl font-bold text-white tracking-tight mb-2">sososignal (OnChainEdge)</h3>
+          <p class="text-[#A1A1A6] text-xs sm:text-sm leading-relaxed mb-4">
+            AI-powered financial signal terminal using SoSoValue market data + Groq Llama-3. Merges live spot ETF inflows, Fear &amp; Greed telemetry, and order-book momentum to generate sub-second BUY/SELL/HOLD algorithmic signals.
+          </p>
+
+          <div class="flex flex-wrap gap-1.5 mb-5">
+            <span class="mac-pill px-2 py-0.5 rounded text-[10px] font-mono text-[#A1A1A6]">Groq LPU</span>
+            <span class="mac-pill px-2 py-0.5 rounded text-[10px] font-mono text-[#A1A1A6]">SoSoValue API</span>
+            <span class="mac-pill px-2 py-0.5 rounded text-[10px] font-mono text-[#A1A1A6]">Next.js</span>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <a href="https://onchainedge.vercel.app/" target="_blank" rel="noopener noreferrer"
+             class="w-full py-2.5 px-3.5 rounded-xl btn-mac-primary text-xs font-mono font-semibold flex items-center justify-between group">
+            <span>Launch Live App (onchainedge.vercel.app)</span>
+            <span class="group-hover:translate-x-1 transition-transform">↗</span>
+          </a>
+          <a href="https://github.com/webnix-space/sososignal" target="_blank" rel="noopener noreferrer"
+             class="w-full py-2 px-3.5 rounded-xl btn-mac-glass text-xs font-mono text-[#A1A1A6] hover:text-white flex items-center justify-between group">
+            <span class="truncate">github.com/webnix-space/sososignal</span>
+            <span class="text-mac-green">Code →</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 4. Shadowsignal (Live Link Added: shadowsignal-drab.vercel.app) -->
+      <div class="mac-card p-6 sm:p-7 md:col-span-3 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between gap-2 mb-4">
+            <span class="text-[11px] font-mono uppercase tracking-wider text-mac-cyan font-semibold truncate">● MULTI-AGENT GTM SWARM</span>
+            <span class="mac-pill px-2 py-0.5 rounded-full text-[10px] font-mono text-[#86868B]">FastAPI • Python</span>
+          </div>
+
+          <h3 class="text-lg sm:text-xl font-bold text-white tracking-tight mb-2">Shadowsignal</h3>
+          <p class="text-[#A1A1A6] text-xs sm:text-sm leading-relaxed mb-4">
+            Autonomous GTM &amp; market intelligence multi-agent network built with FastAPI and Python. Orchestrates distributed scrapers, extracts hiring and buyer intent signals, and synthesizes structured lead batches via free AI/ML APIs.
+          </p>
+
+          <div class="flex flex-wrap gap-1.5 mb-5">
+            <span class="mac-pill px-2 py-0.5 rounded text-[10px] font-mono text-[#A1A1A6]">FastAPI</span>
+            <span class="mac-pill px-2 py-0.5 rounded text-[10px] font-mono text-[#A1A1A6]">Multi-Agent Swarm</span>
+            <span class="mac-pill px-2 py-0.5 rounded text-[10px] font-mono text-[#A1A1A6]">Live Scraping</span>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <a href="https://shadowsignal-drab.vercel.app/" target="_blank" rel="noopener noreferrer"
+             class="w-full py-2.5 px-3.5 rounded-xl btn-mac-primary text-xs font-mono font-semibold flex items-center justify-between group">
+            <span>Launch Live Platform (shadowsignal-drab.vercel.app)</span>
+            <span class="group-hover:translate-x-1 transition-transform">↗</span>
+          </a>
+          <a href="https://github.com/webnix-space/Shadowsignal" target="_blank" rel="noopener noreferrer"
+             class="w-full py-2 px-3.5 rounded-xl btn-mac-glass text-xs font-mono text-[#A1A1A6] hover:text-white flex items-center justify-between group">
+            <span class="truncate">github.com/webnix-space/Shadowsignal</span>
+            <span class="text-mac-cyan">Code →</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 5. vendor-guard (Live Link: vendor-guard-neon.vercel.app) -->
       <div class="mac-card p-6 sm:p-7 md:col-span-3 flex flex-col justify-between">
         <div>
           <div class="flex items-center justify-between gap-2 mb-4">
@@ -791,13 +844,13 @@
 
           <h3 class="text-lg sm:text-xl font-bold text-white tracking-tight mb-2">vendor-guard</h3>
           <p class="text-[#A1A1A6] text-xs sm:text-sm leading-relaxed mb-4">
-            AI-powered vendor risk intelligence platform for B2B enterprises. Built for <span class="text-white font-medium">H0: Hack the Zero Stack</span> with Vercel and AWS Databases. Provides real-time risk scoring, Groq Llama-3.3-70B summaries, and live threshold alerts persisted across AWS DynamoDB.
+            AI-powered vendor risk intelligence platform for B2B enterprises built for H0: Hack the Zero Stack with Vercel and AWS Databases. Real-time risk scoring, Groq Llama-3.3-70B summaries, and live threshold alerts persisted across AWS DynamoDB.
           </p>
 
           <div class="flex flex-wrap gap-1.5 mb-5">
             <span class="mac-pill px-2 py-0.5 rounded text-[10px] font-mono text-[#A1A1A6]">AWS DynamoDB</span>
             <span class="mac-pill px-2 py-0.5 rounded text-[10px] font-mono text-[#A1A1A6]">Groq 3.3-70B</span>
-            <span class="mac-pill px-2 py-0.5 rounded text-[10px] font-mono text-[#A1A1A6]">Vercel Edge</span>
+            <span class="mac-pill px-2 py-0.5 rounded text-[10px] font-mono text-[#A1A1A6]">Next.js 16</span>
           </div>
         </div>
 
@@ -815,68 +868,7 @@
         </div>
       </div>
 
-      <!-- 4. Shadowsignal -->
-      <div class="mac-card p-6 sm:p-7 md:col-span-3 flex flex-col justify-between">
-        <div>
-          <div class="flex items-center justify-between gap-2 mb-4">
-            <span class="text-[11px] font-mono uppercase tracking-wider text-mac-cyan font-semibold truncate">● MULTI-AGENT GTM SWARM</span>
-            <span class="mac-pill px-2 py-0.5 rounded-full text-[10px] font-mono text-[#86868B]">Python • Playwright</span>
-          </div>
-
-          <h3 class="text-lg sm:text-xl font-bold text-white tracking-tight mb-2">Shadowsignal</h3>
-          <p class="text-[#A1A1A6] text-xs sm:text-sm leading-relaxed mb-4">
-            Autonomous GTM &amp; market intelligence multi-agent network built in Python. Orchestrates distributed scrapers, extracts company hiring and intent signals from the live web, and synthesizes structured lead batches via free AI/ML APIs.
-          </p>
-
-          <div class="flex flex-wrap gap-1.5 mb-5">
-            <span class="mac-pill px-2 py-0.5 rounded text-[10px] font-mono text-[#A1A1A6]">Python Swarm</span>
-            <span class="mac-pill px-2 py-0.5 rounded text-[10px] font-mono text-[#A1A1A6]">Live Web Scraping</span>
-            <span class="mac-pill px-2 py-0.5 rounded text-[10px] font-mono text-[#A1A1A6]">FastAPI</span>
-          </div>
-        </div>
-
-        <a href="https://github.com/webnix-space/Shadowsignal" target="_blank" rel="noopener noreferrer"
-           class="w-full py-2.5 px-3.5 rounded-xl btn-mac-glass text-xs font-mono font-semibold flex items-center justify-between group">
-          <span class="truncate">github.com/webnix-space/Shadowsignal</span>
-          <span class="text-mac-cyan group-hover:translate-x-1 transition-transform">Inspect →</span>
-        </a>
-      </div>
-
-      <!-- 5. Mizan (mizan-treasury) (Midnight Network ZK Platform) -->
-      <div class="mac-card p-6 sm:p-7 md:col-span-3 flex flex-col justify-between">
-        <div>
-          <div class="flex items-center justify-between gap-2 mb-4">
-            <span class="text-[11px] font-mono uppercase tracking-wider text-mac-blue font-semibold truncate">● ZERO-KNOWLEDGE TREASURY</span>
-            <span class="mac-pill px-2 py-0.5 rounded-full text-[10px] font-mono text-[#86868B]">Midnight Compact</span>
-          </div>
-
-          <h3 class="text-lg sm:text-xl font-bold text-white tracking-tight mb-2">mizan-treasury (ميزان)</h3>
-          <p class="text-[#A1A1A6] text-xs sm:text-sm leading-relaxed mb-4">
-            Zero-Knowledge workforce &amp; sovereign treasury platform built on the <span class="text-white font-medium">Midnight Blockchain</span> for the Midnight Buildathon. Features Compact 0.16 circuits, browser-native WASM `.bzkir` provers, and 1AM wallet integration to prove payroll solvency with zero balance-sheet disclosure.
-          </p>
-
-          <div class="flex flex-wrap gap-1.5 mb-5">
-            <span class="mac-pill px-2 py-0.5 rounded text-[10px] font-mono text-[#A1A1A6]">Midnight Preprod</span>
-            <span class="mac-pill px-2 py-0.5 rounded text-[10px] font-mono text-[#A1A1A6]">Compact Circuits</span>
-            <span class="mac-pill px-2 py-0.5 rounded text-[10px] font-mono text-[#A1A1A6]">WASM ZK Prover</span>
-          </div>
-        </div>
-
-        <div class="space-y-2">
-          <a href="https://mizan-webnix.vercel.app" target="_blank" rel="noopener noreferrer"
-             class="w-full py-2.5 px-3.5 rounded-xl btn-mac-glass text-xs font-mono font-semibold flex items-center justify-between group border-mac-blue/40 text-mac-blue hover:text-white">
-            <span>Launch Live dApp (mizan-webnix.vercel.app)</span>
-            <span class="group-hover:translate-x-1 transition-transform">↗</span>
-          </a>
-          <a href="https://github.com/webnix-space/mizan-treasury" target="_blank" rel="noopener noreferrer"
-             class="w-full py-2 px-3.5 rounded-xl btn-mac-glass text-xs font-mono text-[#A1A1A6] hover:text-white flex items-center justify-between group">
-            <span class="truncate">github.com/webnix-space/mizan-treasury</span>
-            <span class="text-mac-blue">Inspect →</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- 6. Salon-service (Geetanjali Salon + Gemini Assistant) -->
+      <!-- 6. Salon-service (Live Link Added: serenasalon.vercel.app) -->
       <div class="mac-card p-6 sm:p-7 md:col-span-3 flex flex-col justify-between">
         <div>
           <div class="flex items-center justify-between gap-2 mb-4">
@@ -884,119 +876,132 @@
             <span class="mac-pill px-2 py-0.5 rounded-full text-[10px] font-mono text-[#86868B]">Gemini 3.6 Flash</span>
           </div>
 
-          <h3 class="text-lg sm:text-xl font-bold text-white tracking-tight mb-2">Salon-service</h3>
+          <h3 class="text-lg sm:text-xl font-bold text-white tracking-tight mb-2">Salon-service (Serena Salon)</h3>
           <p class="text-[#A1A1A6] text-xs sm:text-sm leading-relaxed mb-4">
-            Commercial salon website &amp; automated booking assistant powered by <span class="text-white font-medium">Gemini 3.6 Flash</span> (serverless Edge runtime with Anthropic fallback). Dispatches confirmed appointments and client leads directly to Google Sheets and WhatsApp webhook workflows.
+            Commercial salon platform &amp; automated booking assistant powered by Gemini 3.6 Flash (serverless Edge runtime with Anthropic fallback). Dispatches confirmed appointments and leads directly to Google Sheets and WhatsApp workflows.
           </p>
 
           <div class="flex flex-wrap gap-1.5 mb-5">
             <span class="mac-pill px-2 py-0.5 rounded text-[10px] font-mono text-[#A1A1A6]">Gemini 3.6 Flash</span>
-            <span class="mac-pill px-2 py-0.5 rounded text-[10px] font-mono text-[#A1A1A6]">Serverless API</span>
+            <span class="mac-pill px-2 py-0.5 rounded text-[10px] font-mono text-[#A1A1A6]">AI Automation</span>
             <span class="mac-pill px-2 py-0.5 rounded text-[10px] font-mono text-[#A1A1A6]">Google Sheets Webhook</span>
           </div>
         </div>
 
-        <a href="https://github.com/webnix-space/Salon-service" target="_blank" rel="noopener noreferrer"
-           class="w-full py-2.5 px-3.5 rounded-xl btn-mac-glass text-xs font-mono font-semibold flex items-center justify-between group">
-          <span class="truncate">github.com/webnix-space/Salon-service</span>
-          <span class="text-mac-green group-hover:translate-x-1 transition-transform">Inspect →</span>
-        </a>
+        <div class="space-y-2">
+          <a href="https://serenasalon.vercel.app/" target="_blank" rel="noopener noreferrer"
+             class="w-full py-2.5 px-3.5 rounded-xl btn-mac-primary text-xs font-mono font-semibold flex items-center justify-between group">
+            <span>Launch Live App (serenasalon.vercel.app)</span>
+            <span class="group-hover:translate-x-1 transition-transform">↗</span>
+          </a>
+          <a href="https://github.com/webnix-space/Salon-service" target="_blank" rel="noopener noreferrer"
+             class="w-full py-2 px-3.5 rounded-xl btn-mac-glass text-xs font-mono text-[#A1A1A6] hover:text-white flex items-center justify-between group">
+            <span class="truncate">github.com/webnix-space/Salon-service</span>
+            <span class="text-mac-green">Code →</span>
+          </a>
+        </div>
       </div>
 
     </div>
   </section>
 
-  <!-- SECTION 04: FULL-STACK CAPABILITIES & TECH MATRIX (Requested additions) -->
+  <!-- SECTION 04: FULL-STACK CAPABILITIES & TECH MATRIX -->
   <section id="stack" class="py-16 sm:py-24 relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
     <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
       <div class="text-xs font-mono uppercase tracking-widest text-mac-blue font-semibold mb-1.5">03 / CORE CAPABILITIES</div>
       <h2 class="text-2xl sm:text-4xl font-bold text-white tracking-tight">Full-Stack &amp; Systems Architecture</h2>
       <p class="text-[#A1A1A6] text-xs sm:text-sm mt-2.5">
-        Battle-tested engineering across modern frontend frameworks, systems languages, native mobile, and low-latency AI backends.
+        Production engineering across modern web frameworks, systems languages, native mobile apps, and enterprise AI automation.
       </p>
     </div>
 
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 font-mono text-xs">
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 font-mono text-xs">
       
-      <!-- Tech Pill 1 -->
       <div class="mac-card p-4 flex flex-col justify-between">
         <span class="text-[10px] text-mac-blue uppercase tracking-wider">Frontend</span>
         <div class="text-white font-bold text-sm mt-2">Next.js</div>
         <div class="text-[#86868B] text-[10px] mt-1">App Router &amp; SSR</div>
       </div>
 
-      <!-- Tech Pill 2 -->
       <div class="mac-card p-4 flex flex-col justify-between">
         <span class="text-[10px] text-mac-cyan uppercase tracking-wider">UI Engine</span>
         <div class="text-white font-bold text-sm mt-2">React.js</div>
         <div class="text-[#86868B] text-[10px] mt-1">SPA &amp; Component Arch</div>
       </div>
 
-      <!-- Tech Pill 3 -->
       <div class="mac-card p-4 flex flex-col justify-between">
         <span class="text-[10px] text-mac-amber uppercase tracking-wider">Mobile</span>
         <div class="text-white font-bold text-sm mt-2">React Native</div>
         <div class="text-[#86868B] text-[10px] mt-1">Android &amp; iOS Apps</div>
       </div>
 
-      <!-- Tech Pill 4 -->
+      <div class="mac-card p-4 flex flex-col justify-between border-mac-cyan/30 bg-mac-cyan/[0.04]">
+        <span class="text-[10px] text-mac-cyan uppercase tracking-wider">High Speed API</span>
+        <div class="text-white font-bold text-sm mt-2">FastAPI</div>
+        <div class="text-[#86868B] text-[10px] mt-1">Async Python &amp; Pydantic</div>
+      </div>
+
+      <div class="mac-card p-4 flex flex-col justify-between border-mac-green/30 bg-mac-green/[0.04]">
+        <span class="text-[10px] text-mac-green uppercase tracking-wider">Autonomous Ops</span>
+        <div class="text-white font-bold text-sm mt-2">AI Automation</div>
+        <div class="text-[#86868B] text-[10px] mt-1">Agent Swarms &amp; MCP</div>
+      </div>
+
+      <div class="mac-card p-4 flex flex-col justify-between border-mac-purple/30 bg-mac-purple/[0.04]">
+        <span class="text-[10px] text-mac-purple uppercase tracking-wider">LLM Ecosystem</span>
+        <div class="text-white font-bold text-sm mt-2">AI Integration</div>
+        <div class="text-[#86868B] text-[10px] mt-1">Tool Calling, RAG &amp; APIs</div>
+      </div>
+
       <div class="mac-card p-4 flex flex-col justify-between">
         <span class="text-[10px] text-mac-green uppercase tracking-wider">Backend</span>
         <div class="text-white font-bold text-sm mt-2">Node.js</div>
         <div class="text-[#86868B] text-[10px] mt-1">Fastify / Express / Edge</div>
       </div>
 
-      <!-- Tech Pill 5 -->
       <div class="mac-card p-4 flex flex-col justify-between">
         <span class="text-[10px] text-mac-blue uppercase tracking-wider">Safety</span>
         <div class="text-white font-bold text-sm mt-2">TypeScript</div>
         <div class="text-[#86868B] text-[10px] mt-1">Strict Type Contracts</div>
       </div>
 
-      <!-- Tech Pill 6 -->
       <div class="mac-card p-4 flex flex-col justify-between">
         <span class="text-[10px] text-mac-amber uppercase tracking-wider">Web Script</span>
         <div class="text-white font-bold text-sm mt-2">JavaScript</div>
         <div class="text-[#86868B] text-[10px] mt-1">ESNext &amp; Web APIs</div>
       </div>
 
-      <!-- Tech Pill 7 -->
       <div class="mac-card p-4 flex flex-col justify-between">
         <span class="text-[10px] text-mac-cyan uppercase tracking-wider">AI &amp; Data</span>
         <div class="text-white font-bold text-sm mt-2">Python</div>
         <div class="text-[#86868B] text-[10px] mt-1">Swarm Agents &amp; RAG</div>
       </div>
 
-      <!-- Tech Pill 8 -->
       <div class="mac-card p-4 flex flex-col justify-between">
         <span class="text-[10px] text-mac-red uppercase tracking-wider">Low-Level</span>
         <div class="text-white font-bold text-sm mt-2">Rust</div>
         <div class="text-[#86868B] text-[10px] mt-1">Memory Safe &amp; Fast RTT</div>
       </div>
 
-      <!-- Tech Pill 9 -->
       <div class="mac-card p-4 flex flex-col justify-between">
         <span class="text-[10px] text-mac-cyan uppercase tracking-wider">Microservices</span>
         <div class="text-white font-bold text-sm mt-2">Golang</div>
         <div class="text-[#86868B] text-[10px] mt-1">Concurrent Goroutines</div>
       </div>
 
-      <!-- Tech Pill 10 -->
       <div class="mac-card p-4 flex flex-col justify-between">
         <span class="text-[10px] text-mac-purple uppercase tracking-wider">Styling</span>
         <div class="text-white font-bold text-sm mt-2">Tailwind CSS</div>
         <div class="text-[#86868B] text-[10px] mt-1">HTML5 &amp; Glass Physics</div>
       </div>
 
-      <!-- Tech Pill 11 -->
       <div class="mac-card p-4 flex flex-col justify-between">
         <span class="text-[10px] text-mac-green uppercase tracking-wider">AI Hardware</span>
         <div class="text-white font-bold text-sm mt-2">Groq LPU</div>
         <div class="text-[#86868B] text-[10px] mt-1">Sub-350ms Inference</div>
       </div>
 
-      <!-- Tech Pill 12 -->
       <div class="mac-card p-4 flex flex-col justify-between">
         <span class="text-[10px] text-mac-purple uppercase tracking-wider">Cloud Data</span>
         <div class="text-white font-bold text-sm mt-2">AWS DynamoDB</div>
@@ -1029,7 +1034,7 @@
 
           <h3 class="text-xl sm:text-3xl font-bold text-white tracking-tight mb-3">White-Label Architecture Partner</h3>
           <p class="text-[#A1A1A6] text-xs sm:text-sm leading-relaxed mb-6">
-            When your agency books complex Next.js, mobile app, or AI automation projects beyond internal bandwidth, we step in as your silent engineering arm. Deliver production-ready code directly to your repositories under your branding.
+            When your agency books complex Next.js, mobile app, FastAPI services, or AI automation projects beyond internal bandwidth, we step in as your silent engineering arm. Deliver production-ready code directly to your repositories under your branding.
           </p>
 
           <div class="space-y-3.5 mb-8 text-xs sm:text-sm text-[#E5E5EA]">
@@ -1066,7 +1071,7 @@
 
           <h3 class="text-xl sm:text-3xl font-bold text-white tracking-tight mb-3">Remote Startup AI &amp; Full-Stack Engineer</h3>
           <p class="text-[#A1A1A6] text-xs sm:text-sm leading-relaxed mb-6">
-            High-cadence engineering for early-stage and funded startups. We take ownership of your product roadmap—from on-device mobile AI and low-latency Groq backends to scalable Next.js cloud platforms.
+            High-cadence engineering for early-stage and funded startups. We take ownership of your product roadmap—from high-throughput FastAPI microservices and AI automation swarms to low-latency Groq backends and scalable Next.js apps.
           </p>
 
           <div class="space-y-3.5 mb-8 text-xs sm:text-sm text-[#E5E5EA]">
@@ -1096,7 +1101,7 @@
     </div>
   </section>
 
-  <!-- SECTION 06: DIRECT ACCESS MATRIX (Privacy-Safe: Zero raw phone numbers, telegram, or linkedin usernames exposed) -->
+  <!-- SECTION 06: DIRECT ACCESS MATRIX -->
   <section id="contact" class="py-16 sm:py-24 relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
     
     <div class="text-center max-w-xl mx-auto mb-10 sm:mb-12">
@@ -1109,7 +1114,7 @@
 
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
       
-      <!-- WhatsApp (Number Hidden from UI text) -->
+      <!-- WhatsApp -->
       <a href="https://wa.me/919105358684?text=Hi%20Webnix,%20saw%20your%20portfolio%20and%20want%20to%20discuss%20a%20project"
          target="_blank" rel="noopener noreferrer"
          class="mac-card p-5 sm:p-6 flex items-center justify-between gap-3 group">
@@ -1125,7 +1130,7 @@
         <span class="text-xs font-mono text-mac-green shrink-0">Open Chat →</span>
       </a>
 
-      <!-- Telegram (Username Hidden from UI text) -->
+      <!-- Telegram -->
       <a href="https://t.me/Surebreeze"
          target="_blank" rel="noopener noreferrer"
          class="mac-card p-5 sm:p-6 flex items-center justify-between gap-3 group">
@@ -1141,7 +1146,7 @@
         <span class="text-xs font-mono text-mac-cyan shrink-0">Launch →</span>
       </a>
 
-      <!-- LinkedIn (Username Hidden from UI text) -->
+      <!-- LinkedIn -->
       <a href="https://www.linkedin.com/in/sanib-malik-89b9a5175"
          target="_blank" rel="noopener noreferrer"
          class="mac-card p-5 sm:p-6 flex items-center justify-between gap-3 group">
@@ -1183,7 +1188,7 @@
           </div>
           <div class="min-w-0">
             <div class="text-sm font-semibold text-white group-hover:text-mac-blue transition-colors truncate">GitHub Engineering Hub — Webnix Space</div>
-            <div class="text-xs font-mono text-[#86868B] truncate">11 Open Repositories • Multi-Agent Pipelines &amp; Next.js</div>
+            <div class="text-xs font-mono text-[#86868B] truncate">12 Repositories • Multi-Agent Pipelines, MCP, Next.js &amp; Mobile</div>
           </div>
         </div>
         <span class="text-xs font-mono text-white shrink-0">Explore All Repos →</span>
@@ -1201,7 +1206,7 @@
         <span>•</span>
         <span>Autonomous AI &amp; Modern Systems</span>
       </div>
-      <div>Next.js • Groq Llama-3 • QVAC On-Device SLM • Python Swarms</div>
+      <div>Next.js • FastAPI • MCP Agents • AI Automation • QVAC On-Device SLM</div>
     </div>
   </footer>
 
@@ -1293,6 +1298,7 @@
   "system": "sososignal-v2",
   "engine": "llama3-70b-8192-groq",
   "latency_ms": 268,
+  "live_demo": "https://onchainedge.vercel.app/",
   "etf_net_inflow_usd": 434000000,
   "orderbook_delta": "+6.14%",
   "signal": {
@@ -1310,13 +1316,13 @@
   "tok_per_sec": 8.7
 }`,
       3: `{
-  "auditor": "vendor-guard-neon",
-  "database": "aws-dynamodb-us-east-1",
-  "engine": "groq-llama-3.3-70b-versatile",
-  "tracked_vendors": 18,
-  "active_alerts": 1,
-  "risk_score": 28,
-  "status": "COMPLIANT"
+  "pipeline": "datahub-agent-crew",
+  "protocol": "model-context-protocol-mcp",
+  "agents_active": 5,
+  "bus": "sqlite-local-channel",
+  "detected_gaps": 6,
+  "graphql_mutations_executed": 6,
+  "status": "ALL_RESOLVED_200_OK"
 }`
     };
 
@@ -1344,6 +1350,7 @@
           system: "sososignal-v2",
           engine: "llama3-70b-8192-groq",
           latency_ms: latency,
+          live_demo: "https://onchainedge.vercel.app/",
           etf_net_inflow_usd: 434000000,
           orderbook_delta: "+6.14%",
           signal: { action: "STRONG_ACCUMULATION", confidence: 0.941 }
@@ -1352,7 +1359,7 @@
       } else if (currentSimTab === 2) {
         showMacToast(`QVAC on-device engine: 8.8 tokens/sec verified`);
       } else {
-        showMacToast('VendorGuard DynamoDB sync verified');
+        showMacToast('DataHub MCP Crew: 5-agent handoff verified');
       }
     }
 
