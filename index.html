@@ -4,8 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <meta name="theme-color" content="#120400">
-  <title>Webnix Space — Autonomous AI Systems, Next.js &amp; Sovereign Infrastructure</title>
-  <meta name="description" content="Webnix Space — Engineering sub-second Groq Llama-3 pipelines, offline on-device AI for Android, Python multi-agent swarms, FastAPI backends, and AI automation workflows.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Webnix Space — Full-Stack &amp; AI Systems Engineer">
+  <meta property="og:description" content="Multi-agent MCP pipelines, sub-second Groq inference, on-device AI and production Next.js / FastAPI systems.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'%3E%3Cpath d='M14 1.6 20.3 8 14 14.4 7.7 8Z' fill='%23FF6A00'/%3E%3Cpath d='M6.4 9.3 12.7 15.7 6.4 22.1 .1 15.7Z' fill='%23FF3D00'/%3E%3Cpath d='M21.6 9.3 27.9 15.7 21.6 22.1 15.3 15.7Z' fill='%23FF9A2E'/%3E%3C/svg%3E">
+  <title>Webnix Space — Full-Stack &amp; AI Systems Engineer</title>
+  <meta name="description" content="Full-stack &amp; AI systems engineer. Multi-agent MCP pipelines, sub-second Groq inference, offline on-device AI, typed FastAPI and Next.js backends — shipped to production.">
 
   <link rel="preload" as="video" href="hero-loop.mp4">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -340,6 +344,18 @@
       .hero__video { opacity: 1; transform: none; }
       .hero__panel { opacity: 1; }
     }
+  
+    @media (max-width: 1023px) { .hero { padding-top: 118px; } }
+    .nav__progress { position: absolute; left: 0; bottom: -1px; height: 2px; width: 0; background: linear-gradient(90deg, #ff3d00, #ff8a1f); box-shadow: 0 0 12px rgba(255,90,20,.7); }
+    .grp { display: flex; flex-direction: column; gap: 6px; }
+    .grp__t { font: 600 10px 'JetBrains Mono', monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--flame-lit); margin-bottom: 10px; }
+    .row { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 9px 0; border-top: 1px solid var(--hair-soft); font-size: 13px; }
+    .row:first-of-type { border-top: 0; }
+    .row b { color: #fff; font-weight: 600; white-space: nowrap; }
+    .row span { color: #A1A1A6; font-size: 11.5px; text-align: right; }
+    .row--hi { margin: 4px -10px; padding: 12px 10px; border: 1px solid rgba(255,138,31,.38); border-radius: 12px; background: linear-gradient(135deg, rgba(255,61,0,.14), rgba(255,138,31,.05)); align-items: center; }
+    .row--hi svg { width: 20px; height: 20px; color: var(--flame-lit); flex: none; }
+    .row--hi div { display: flex; align-items: center; gap: 10px; }
   </style>
 </head>
 <body class="selection:bg-mac-blue selection:text-white antialiased">
@@ -404,6 +420,7 @@
 
   <!-- GLASS NAVBAR -->
   <header class="nav" id="nav">
+    <i class="nav__progress" id="progress"></i>
     <div class="nav__row">
       <a href="#" class="nav__brand">
         <svg class="nav__logo" viewBox="0 0 28 28" fill="none" aria-hidden="true">
@@ -418,11 +435,11 @@
       <nav class="nav__pill" aria-label="Primary">
         <ul>
           <li><a href="#overview">Overview</a></li>
-          <li><a href="#telemetry">Telemetry</a></li>
-          <li><a href="#work">Production Builds</a></li>
-          <li><a href="#stack">Capabilities &amp; Stack</a></li>
-          <li><a href="#services">Engagements</a></li>
-          <li><a href="#contact">Direct Access</a></li>
+          <li><a href="#work">Work</a></li>
+          <li><a href="#telemetry">Traces</a></li>
+          <li><a href="#stack">Toolchain</a></li>
+          <li><a href="#services">Engage</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
 
@@ -437,7 +454,7 @@
     </div>
 
     <nav class="nav__sub no-scrollbar" aria-label="Sections">
-      <a href="#overview">Overview</a><a href="#telemetry">Telemetry</a><a href="#work">Builds</a><a href="#stack">Stack</a><a href="#services">Tracks</a><a href="#contact">Direct</a>
+      <a href="#overview">Overview</a><a href="#work">Work</a><a href="#telemetry">Traces</a><a href="#stack">Toolchain</a><a href="#services">Engage</a><a href="#contact">Contact</a>
     </nav>
   </header>
 
@@ -454,22 +471,22 @@
       <div class="hero__lead">
         <p class="hero__note">
           <span class="hero__dot" aria-hidden="true"></span>
-          <span>Accepting high-impact clients<br>&amp; white-label runtimes</span>
+          <span>Open to senior contract<br>&amp; white-label work</span>
         </p>
 
         <h1 class="hero__title">
-          We Ship<br>
+          I Ship<br>
           Autonomous AI<br>
           Not <em>Wrappers</em>
         </h1>
 
         <p class="hero__sub">
-          High-throughput <b>FastAPI backends</b>, <b>DataHub MCP agent crews</b>, sub-second <b>Groq LPU engines</b>, offline <b>on-device SLMs</b> and battle-tested <b>Next.js &amp; mobile</b> platforms.
+          <b>Full-stack &amp; AI systems engineer.</b> I design multi-agent MCP pipelines, sub-second Groq inference, offline on-device models and typed FastAPI / Next.js backends — then ship them to production.
         </p>
 
         <div class="hero__cta">
           <a class="hero__go btn-mac-primary" href="https://wa.me/919105358684?text=Hi%20Webnix,%20saw%20your%20portfolio%20and%20want%20to%20discuss%20a%20project" target="_blank" rel="noopener noreferrer">
-            WhatsApp Direct
+            Start a project
             <span class="hero__go-dot" aria-hidden="true">
               <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"/></svg>
             </span>
@@ -485,9 +502,9 @@
         </div>
 
         <ul class="hero__stats">
-          <li class="stat"><span class="stat__mark" aria-hidden="true">*</span><span class="stat__value">&lt;350ms<small>P99</small></span><span class="stat__label">Inference RTT</span></li>
-          <li class="stat"><span class="stat__mark" aria-hidden="true">*</span><span class="stat__value">99.98%</span><span class="stat__label">Availability</span></li>
-          <li class="stat"><span class="stat__mark" aria-hidden="true">*</span><span class="stat__value">5</span><span class="stat__label">Agent MCP crew</span></li>
+          <li class="stat"><span class="stat__mark" aria-hidden="true">*</span><span class="stat__value">6</span><span class="stat__label">Systems shipped</span></li>
+          <li class="stat"><span class="stat__mark" aria-hidden="true">*</span><span class="stat__value">&lt;350ms</span><span class="stat__label">Groq inference RTT</span></li>
+          <li class="stat"><span class="stat__mark" aria-hidden="true">*</span><span class="stat__value">12</span><span class="stat__label">Public repos</span></li>
         </ul>
       </div>
 
@@ -501,10 +518,10 @@
                 <span class="w-3 h-3 rounded-full bg-mac-amber/90 inline-block"></span>
                 <span class="w-3 h-3 rounded-full bg-mac-green/90 inline-block"></span>
               </div>
-              <span class="text-xs font-mono text-[#A1A1A6] truncate ml-1">Activity Monitor — webnix-cluster</span>
+              <span class="text-xs font-mono text-[#A1A1A6] truncate ml-1">Runtime Simulation — webnix-cluster</span>
             </div>
             <span class="text-[10px] font-mono uppercase px-2.5 py-0.5 rounded-full bg-mac-green/15 text-mac-green border border-mac-green/30 whitespace-nowrap shrink-0">
-              RUNNING
+              DEMO
             </span>
           </div>
 
@@ -518,8 +535,8 @@
               </div>
             </div>
             <div class="text-right font-mono text-[11px] text-[#86868B] shrink-0 whitespace-nowrap">
-              <div>ACTIVE NODES: <span class="text-white font-semibold">7 DAEMONS</span></div>
-              <div class="mt-0.5">AVAILABILITY: <span class="text-mac-green font-semibold">99.98%</span></div>
+              <div>SERVICES: <span class="text-white font-semibold">3 DAEMONS</span></div>
+              <div class="mt-0.5">DATA: <span class="text-mac-amber font-semibold">SIMULATED</span></div>
             </div>
           </div>
 
@@ -576,189 +593,10 @@
           <li><svg viewBox="0 0 22 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M2 16V6l4.5 6L11 6l4.5 6L20 6v10"/></svg><span>Next.js</span></li>
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 4.5A1.5 1.5 0 0 1 4.5 3H9v14H4.5A1.5 1.5 0 0 1 3 15.5v-11ZM17 4.5A1.5 1.5 0 0 0 15.5 3H11v14h4.5a1.5 1.5 0 0 0 1.5-1.5v-11Z"/></svg><span>DataHub</span></li>
           <li><svg viewBox="0 0 22 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M2 5l3.5 11L9 8l3.5 8L16 5"/><circle cx="19" cy="7" r="1.6"/></svg><span>Expo</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="2" y="9" width="3.5" height="3.5"/><rect x="6" y="9" width="3.5" height="3.5"/><rect x="10" y="9" width="3.5" height="3.5"/><rect x="6" y="5.5" width="3.5" height="3.5"/><rect x="10" y="5.5" width="3.5" height="3.5"/><path d="M1.5 14c1.5 2.5 5 3.5 9 3 4-.5 6.5-2.5 8-6-1-.7-2-.8-3-.3"/></svg><span>Docker</span></li>
         </ul>
       </div>
     </div>
-  </section>
-
-  <!-- SECTION 02: INTERACTIVE RUNTIME TELEMETRY & JSON INSPECTOR -->
-  <section id="telemetry" class="py-16 sm:py-24 relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-10 gap-3">
-      <div>
-        <div class="text-xs font-mono uppercase tracking-widest text-mac-blue font-semibold mb-1.5">01 / LIVE VERIFICATION</div>
-        <h2 class="text-2xl sm:text-4xl font-bold text-white tracking-tight">Interactive Execution Telemetry</h2>
-      </div>
-      <p class="text-[#A1A1A6] text-xs sm:text-sm max-w-md">
-        Inspect live trace outputs and validated JSON payloads from our crypto intelligence, on-device mobile AI, and DataHub 5-agent MCP pipeline.
-      </p>
-    </div>
-
-    <!-- macOS Split-Pane Window -->
-    <div class="mac-card overflow-hidden">
-      
-      <!-- Window Toolbar -->
-      <div class="bg-white/[0.03] px-4 sm:px-6 py-3.5 border-b border-white/10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-        
-        <div class="flex items-center justify-between gap-2">
-          <div class="flex items-center gap-2 min-w-0">
-            <span class="w-3 h-3 rounded-full bg-mac-red/90 shrink-0"></span>
-            <span class="w-3 h-3 rounded-full bg-mac-amber/90 shrink-0"></span>
-            <span class="w-3 h-3 rounded-full bg-mac-green/90 shrink-0"></span>
-            <span class="text-xs font-mono text-[#86868B] ml-1.5 truncate">zsh — webnix-runtime@edge</span>
-          </div>
-
-          <button onclick="runSimCycle()" class="sm:hidden px-3 py-1.5 rounded-lg btn-mac-primary text-[11px] font-mono font-semibold flex items-center gap-1.5 whitespace-nowrap shrink-0">
-            <span>▶ Test Cycle</span>
-          </button>
-        </div>
-
-        <!-- Segmented Tab Switcher -->
-        <div class="grid grid-cols-3 sm:inline-flex items-center bg-black/70 p-1 rounded-xl border border-white/10 gap-1 w-full sm:w-auto">
-          <button id="sim-btn-1" onclick="switchSim(1)" class="px-2 sm:px-3.5 py-1.5 rounded-lg text-[11px] sm:text-xs font-mono font-medium transition-all bg-white/15 text-white shadow-sm text-center truncate">
-            sososignal.ts
-          </button>
-          <button id="sim-btn-2" onclick="switchSim(2)" class="px-2 sm:px-3.5 py-1.5 rounded-lg text-[11px] sm:text-xs font-mono font-medium transition-all text-[#86868B] hover:text-white text-center truncate">
-            webnix-ai.apk
-          </button>
-          <button id="sim-btn-3" onclick="switchSim(3)" class="px-2 sm:px-3.5 py-1.5 rounded-lg text-[11px] sm:text-xs font-mono font-medium transition-all text-[#86868B] hover:text-white text-center truncate">
-            datahub-mcp.py
-          </button>
-        </div>
-
-        <button onclick="runSimCycle()" class="hidden sm:inline-flex px-4 py-1.5 rounded-lg btn-mac-primary text-xs font-mono font-semibold items-center gap-2 whitespace-nowrap shrink-0">
-          <span>▶ Run Benchmark Cycle</span>
-        </button>
-
-      </div>
-
-      <!-- Split Console Body -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 divide-y lg:divide-y-0 lg:divide-x divide-white/10 bg-black/50 font-mono text-xs">
-        
-        <!-- Left Pane -->
-        <div class="lg:col-span-7 p-4 sm:p-6 flex flex-col justify-between">
-          
-          <!-- TAB 1: sososignal -->
-          <div id="sim-view-1" class="space-y-3">
-            <div class="flex items-center justify-between gap-2 text-[#86868B] border-b border-white/10 pb-2.5">
-              <span class="text-mac-blue font-semibold truncate">STREAM // /ws/v1/sososignal/llama3</span>
-              <span class="text-mac-green flex items-center gap-1.5 shrink-0 whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-mac-green animate-ping"></span> CONNECTED</span>
-            </div>
-            <div class="text-[#A1A1A6] leading-relaxed">
-              <span class="text-[#86868B]">[LIVE]</span> Ingesting SoSoValue institutional ETF flows: <span class="text-white font-semibold">IBIT (+$341.2M)</span>, <span class="text-white font-semibold">FBTC (+$92.8M)</span>
-            </div>
-            <div class="text-[#A1A1A6] leading-relaxed">
-              <span class="text-[#86868B]">[ORDERBOOK]</span> Computing bid-side delta wall: <span class="text-mac-green font-semibold">+6.14% buy-side skew</span>
-            </div>
-            <div class="text-[#A1A1A6] leading-relaxed">
-              <span class="text-[#86868B]">[INFERENCE]</span> Dispatching context tensor to Groq LPU engine...
-            </div>
-
-            <div class="mac-well p-4 mt-3 border-l-2 border-l-mac-green">
-              <div class="flex items-center justify-between gap-2 mb-1.5">
-                <span class="text-[10px] uppercase tracking-wider text-[#86868B]">DETERMINISTIC OUTPUT</span>
-                <span id="soso-lat-tag" class="text-[11px] px-2 py-0.5 rounded bg-mac-green/15 text-mac-green font-bold whitespace-nowrap">268ms RTT</span>
-              </div>
-              <div id="soso-sig-headline" class="text-xs sm:text-sm font-bold text-white mb-1">
-                STRONG ACCUMULATION — CONFIDENCE: 92.6%
-              </div>
-              <p class="text-xs text-[#A1A1A6] font-sans leading-relaxed">
-                Spot ETF volume influx confirmed. Live dashboard deployed at onchainedge.vercel.app.
-              </p>
-            </div>
-          </div>
-
-          <!-- TAB 2: webnix-AI -->
-          <div id="sim-view-2" class="space-y-3 hidden">
-            <div class="flex items-center justify-between gap-2 text-[#86868B] border-b border-white/10 pb-2.5">
-              <span class="text-mac-amber font-semibold truncate">ON-DEVICE // @qvac/sdk v0.19.1 (Snapdragon CPU)</span>
-              <span class="text-mac-amber flex items-center gap-1.5 shrink-0 whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-mac-amber animate-ping"></span> 100% OFFLINE</span>
-            </div>
-            <div class="text-[#A1A1A6] leading-relaxed">
-              <span class="text-[#86868B]">[LOCAL-RAG]</span> Query vector embedded via GTE-Large (FP16) on-device. Zero network packets sent.
-            </div>
-            <div class="text-[#A1A1A6] leading-relaxed">
-              <span class="text-[#86868B]">[SIMILARITY]</span> Matched 2 chunks from private local workspace notes (cosine score: 0.892).
-            </div>
-            <div class="text-[#A1A1A6] leading-relaxed">
-              <span class="text-[#86868B]">[SLM-INFER]</span> Llama 3.2 1B Instruct (Q4_0 quantized) streaming tokens at ~8.5 tok/sec.
-            </div>
-
-            <div class="mac-well p-4 mt-3 border-l-2 border-l-mac-amber">
-              <div class="flex items-center justify-between gap-2 mb-1.5">
-                <span class="text-[10px] uppercase tracking-wider text-[#86868B]">AIR-GAPPED COMPLETION</span>
-                <span class="text-[11px] px-2 py-0.5 rounded bg-mac-amber/15 text-mac-amber font-bold whitespace-nowrap">LOCAL INFERENCE</span>
-              </div>
-              <div class="text-xs sm:text-sm font-bold text-white mb-1">
-                GROUNDED ANSWER RETURNED FROM LOCAL NOTES
-              </div>
-              <p class="text-xs text-[#A1A1A6] font-sans leading-relaxed">
-                Private user notes indexed locally via AsyncStorage. Zero API keys, zero cloud exposure, 100% on Android phone.
-              </p>
-            </div>
-          </div>
-
-          <!-- TAB 3: DataHub Agent Crew -->
-          <div id="sim-view-3" class="space-y-3 hidden">
-            <div class="flex items-center justify-between gap-2 text-[#86868B] border-b border-white/10 pb-2.5">
-              <span class="text-mac-blue font-semibold truncate">MCP PIPELINE // DataHub Agent Crew (5 Agents)</span>
-              <span class="text-mac-blue flex items-center gap-1.5 shrink-0 whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-mac-blue animate-ping"></span> GRAPHQL LIVE</span>
-            </div>
-            <div class="text-[#A1A1A6] leading-relaxed">
-              <span class="text-[#86868B]">[INVESTIGATOR]</span> Reading DataHub metadata graph via MCP search: 4 stale descriptions, 2 unowned datasets.
-            </div>
-            <div class="text-[#A1A1A6] leading-relaxed">
-              <span class="text-[#86868B]">[STRATEGIST &rarr; REGULATORY]</span> Proposing ownership mappings &amp; compliance tags. Clearance granted.
-            </div>
-            <div class="text-[#A1A1A6] leading-relaxed">
-              <span class="text-[#86868B]">[CODEBAND]</span> Executing GraphQL mutation back to `mcp-server-datahub`. Write confirmed.
-            </div>
-
-            <div class="mac-well p-4 mt-3 border-l-2 border-l-mac-blue">
-              <div class="flex items-center justify-between gap-2 mb-1.5">
-                <span class="text-[10px] uppercase tracking-wider text-[#86868B]">MCP GOVERNANCE BUS</span>
-                <span class="text-[11px] px-2 py-0.5 rounded bg-mac-blue/15 text-mac-blue font-bold whitespace-nowrap">MUTATION 200 OK</span>
-              </div>
-              <div class="text-xs sm:text-sm font-bold text-white mb-1">
-                METADATA GRAPH REPAIRED AUTOMATICALLY
-              </div>
-              <p class="text-xs text-[#A1A1A6] font-sans leading-relaxed">
-                SQLite local bus message routing verified. Built for "Build with DataHub: The Agent Hackathon".
-              </p>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Right Pane -->
-        <div class="lg:col-span-5 p-4 sm:p-6 bg-black/75 flex flex-col justify-between overflow-x-auto">
-          <div>
-            <div class="flex items-center justify-between text-[#86868B] border-b border-white/10 pb-2.5 mb-3">
-              <span class="text-[11px] uppercase tracking-wider">REAL-TIME DATA SCHEMA</span>
-              <span class="text-[10px] text-mac-blue">application/json</span>
-            </div>
-            <pre id="json-inspector" class="text-[11px] leading-relaxed text-[#E5E5EA] overflow-x-auto">{
-  "system": "sososignal-v2",
-  "engine": "llama3-70b-8192-groq",
-  "latency_ms": 268,
-  "live_demo": "https://onchainedge.vercel.app/",
-  "etf_net_inflow_usd": 434000000,
-  "orderbook_delta": "+6.14%",
-  "signal": {
-    "action": "STRONG_ACCUMULATION",
-    "confidence": 0.926
-  }
-}</pre>
-          </div>
-          <div class="pt-3 mt-4 border-t border-white/10 flex items-center justify-between text-[11px] text-[#86868B]">
-            <span>Production Contract Validated</span>
-            <span class="text-mac-green">● Ready</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
   </section>
 
   <!-- SECTION 03: VERIFIED PRODUCTION REPOSITORIES & LIVE DEMOS (All truncation & clipping fixed) -->
@@ -766,11 +604,11 @@
     
     <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-12 gap-3">
       <div>
-        <div class="text-xs font-mono uppercase tracking-widest text-mac-blue font-semibold mb-1.5">02 / VERIFIABLE CODE &amp; DEPLOYMENTS</div>
-        <h2 class="text-2xl sm:text-4xl font-bold text-white tracking-tight">Shipped Repositories &amp; Live DApps</h2>
+        <div class="text-xs font-mono uppercase tracking-widest text-mac-blue font-semibold mb-1.5">01 / SELECTED WORK</div>
+        <h2 class="text-2xl sm:text-4xl font-bold text-white tracking-tight">Selected Work</h2>
       </div>
       <p class="text-[#A1A1A6] text-xs sm:text-sm max-w-md">
-        Explore source code and production deployments across our multi-agent pipelines, on-device mobile AI, and Next.js applications.
+        Six shipped systems, each with source and, where hosted, a live deployment. Hackathon builds are labelled as such.
       </p>
     </div>
 
@@ -852,7 +690,7 @@
 
           <h3 class="text-xl sm:text-2xl font-bold text-white tracking-tight mb-2.5">DataHub Agent Crew</h3>
           <p class="text-[#A1A1A6] text-xs sm:text-sm leading-relaxed mb-4">
-            Five-agent autonomous pipeline (<span class="text-white font-medium">Investigator, Analyst, Strategist, Regulatory, Codeband</span>) built for "Build with DataHub: The Agent Hackathon". Reads DataHub metadata graphs via Model Context Protocol (MCP), detects governance gaps (unowned datasets, stale descriptions, missing compliance tags), and writes validated repairs back through <span class="text-white font-medium">`mcp-server-datahub`</span> GraphQL execution.
+            Flagship. Five-agent autonomous pipeline (<span class="text-white font-medium">Investigator, Analyst, Strategist, Regulatory, Codeband</span>) built for "Build with DataHub: The Agent Hackathon". Reads DataHub metadata graphs via Model Context Protocol (MCP), detects governance gaps (unowned datasets, stale descriptions, missing compliance tags), and writes validated repairs back through <span class="text-white font-medium">`mcp-server-datahub`</span> GraphQL execution.
           </p>
 
           <div class="mac-well p-3.5 mb-5 font-mono text-xs">
@@ -889,7 +727,7 @@
 
           <h3 class="text-lg sm:text-xl font-bold text-white tracking-tight mb-2">sososignal (OnChainEdge)</h3>
           <p class="text-[#A1A1A6] text-xs sm:text-sm leading-relaxed mb-4">
-            AI-powered financial signal terminal using SoSoValue market data + Groq Llama-3. Merges live spot ETF inflows, Fear &amp; Greed telemetry, and order-book momentum to generate sub-second BUY/SELL/HOLD algorithmic signals.
+            Signal terminal that fuses SoSoValue spot-ETF flows, Fear &amp; Greed and order-book momentum, then asks Groq Llama-3 for a sub-second BUY / SELL / HOLD call with a confidence score.
           </p>
 
           <div class="flex flex-wrap gap-1.5 mb-5">
@@ -923,7 +761,7 @@
 
           <h3 class="text-lg sm:text-xl font-bold text-white tracking-tight mb-2">Shadowsignal</h3>
           <p class="text-[#A1A1A6] text-xs sm:text-sm leading-relaxed mb-4">
-            Autonomous GTM &amp; market intelligence multi-agent network built with FastAPI and Python. Orchestrates distributed scrapers, extracts hiring and buyer intent signals, and synthesizes structured lead batches via free AI/ML APIs.
+            Multi-agent market-intelligence pipeline on FastAPI. Scraper agents pull hiring and buyer-intent signals; downstream agents score them and emit structured lead batches.
           </p>
 
           <div class="flex flex-wrap gap-1.5 mb-5">
@@ -957,7 +795,7 @@
 
           <h3 class="text-lg sm:text-xl font-bold text-white tracking-tight mb-2">vendor-guard</h3>
           <p class="text-[#A1A1A6] text-xs sm:text-sm leading-relaxed mb-4">
-            AI-powered vendor risk intelligence platform for B2B enterprises built for H0: Hack the Zero Stack with Vercel and AWS Databases. Real-time risk scoring, Groq Llama-3.3-70B summaries, and live threshold alerts persisted across AWS DynamoDB.
+            Vendor-risk platform built for the H0 hackathon (Vercel + AWS Databases). Real-time risk scoring, Groq Llama-3.3-70B summaries and threshold alerts persisted in DynamoDB.
           </p>
 
           <div class="flex flex-wrap gap-1.5 mb-5">
@@ -991,7 +829,7 @@
 
           <h3 class="text-lg sm:text-xl font-bold text-white tracking-tight mb-2">Salon-service (Serena Salon)</h3>
           <p class="text-[#A1A1A6] text-xs sm:text-sm leading-relaxed mb-4">
-            Commercial salon platform &amp; automated booking assistant powered by Gemini 3.6 Flash (serverless Edge runtime with Anthropic fallback). Dispatches confirmed appointments and leads directly to Google Sheets and WhatsApp workflows.
+            Client project: salon site with an AI booking assistant on a serverless Edge runtime (Gemini 3.6 Flash, Anthropic fallback). Confirmed appointments and leads are pushed to Google Sheets and WhatsApp.
           </p>
 
           <div class="flex flex-wrap gap-1.5 mb-5">
@@ -1018,120 +856,208 @@
     </div>
   </section>
 
+  <!-- SECTION 02: INTERACTIVE RUNTIME TELEMETRY & JSON INSPECTOR -->
+  <section id="telemetry" class="py-16 sm:py-24 relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-10 gap-3">
+      <div>
+        <div class="text-xs font-mono uppercase tracking-widest text-mac-blue font-semibold mb-1.5">02 / ENGINEERING TRACES</div>
+        <h2 class="text-2xl sm:text-4xl font-bold text-white tracking-tight">Execution Traces</h2>
+      </div>
+      <p class="text-[#A1A1A6] text-xs sm:text-sm max-w-md">
+        Representative traces and payload contracts from the shipped systems. Latency figures are illustrative — the live deployments are linked under Selected Work.
+      </p>
+    </div>
+
+    <!-- macOS Split-Pane Window -->
+    <div class="mac-card overflow-hidden">
+      
+      <!-- Window Toolbar -->
+      <div class="bg-white/[0.03] px-4 sm:px-6 py-3.5 border-b border-white/10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        
+        <div class="flex items-center justify-between gap-2">
+          <div class="flex items-center gap-2 min-w-0">
+            <span class="w-3 h-3 rounded-full bg-mac-red/90 shrink-0"></span>
+            <span class="w-3 h-3 rounded-full bg-mac-amber/90 shrink-0"></span>
+            <span class="w-3 h-3 rounded-full bg-mac-green/90 shrink-0"></span>
+            <span class="text-xs font-mono text-[#86868B] ml-1.5 truncate">zsh — webnix-runtime@edge</span>
+          </div>
+
+          <button onclick="runSimCycle()" class="sm:hidden px-3 py-1.5 rounded-lg btn-mac-primary text-[11px] font-mono font-semibold flex items-center gap-1.5 whitespace-nowrap shrink-0">
+            <span>▶ Replay</span>
+          </button>
+        </div>
+
+        <!-- Segmented Tab Switcher -->
+        <div class="grid grid-cols-3 sm:inline-flex items-center bg-black/70 p-1 rounded-xl border border-white/10 gap-1 w-full sm:w-auto">
+          <button id="sim-btn-1" onclick="switchSim(1)" class="px-2 sm:px-3.5 py-1.5 rounded-lg text-[11px] sm:text-xs font-mono font-medium transition-all bg-white/15 text-white shadow-sm text-center truncate">
+            sososignal.ts
+          </button>
+          <button id="sim-btn-2" onclick="switchSim(2)" class="px-2 sm:px-3.5 py-1.5 rounded-lg text-[11px] sm:text-xs font-mono font-medium transition-all text-[#86868B] hover:text-white text-center truncate">
+            webnix-ai.apk
+          </button>
+          <button id="sim-btn-3" onclick="switchSim(3)" class="px-2 sm:px-3.5 py-1.5 rounded-lg text-[11px] sm:text-xs font-mono font-medium transition-all text-[#86868B] hover:text-white text-center truncate">
+            datahub-mcp.py
+          </button>
+        </div>
+
+        <button onclick="runSimCycle()" class="hidden sm:inline-flex px-4 py-1.5 rounded-lg btn-mac-primary text-xs font-mono font-semibold items-center gap-2 whitespace-nowrap shrink-0">
+          <span>▶ Replay Trace</span>
+        </button>
+
+      </div>
+
+      <!-- Split Console Body -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 divide-y lg:divide-y-0 lg:divide-x divide-white/10 bg-black/50 font-mono text-xs">
+        
+        <!-- Left Pane -->
+        <div class="lg:col-span-7 p-4 sm:p-6 flex flex-col justify-between">
+          
+          <!-- TAB 1: sososignal -->
+          <div id="sim-view-1" class="space-y-3">
+            <div class="flex items-center justify-between gap-2 text-[#86868B] border-b border-white/10 pb-2.5">
+              <span class="text-mac-blue font-semibold truncate">STREAM // /ws/v1/sososignal/llama3</span>
+              <span class="text-mac-green flex items-center gap-1.5 shrink-0 whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-mac-green"></span> TRACE</span>
+            </div>
+            <div class="text-[#A1A1A6] leading-relaxed">
+              <span class="text-[#86868B]">[LIVE]</span> Ingesting SoSoValue institutional ETF flows: <span class="text-white font-semibold">IBIT (+$341.2M)</span>, <span class="text-white font-semibold">FBTC (+$92.8M)</span>
+            </div>
+            <div class="text-[#A1A1A6] leading-relaxed">
+              <span class="text-[#86868B]">[ORDERBOOK]</span> Computing bid-side delta wall: <span class="text-mac-green font-semibold">+6.14% buy-side skew</span>
+            </div>
+            <div class="text-[#A1A1A6] leading-relaxed">
+              <span class="text-[#86868B]">[INFERENCE]</span> Dispatching context tensor to Groq LPU engine...
+            </div>
+
+            <div class="mac-well p-4 mt-3 border-l-2 border-l-mac-green">
+              <div class="flex items-center justify-between gap-2 mb-1.5">
+                <span class="text-[10px] uppercase tracking-wider text-[#86868B]">DETERMINISTIC OUTPUT</span>
+                <span id="soso-lat-tag" class="text-[11px] px-2 py-0.5 rounded bg-mac-green/15 text-mac-green font-bold whitespace-nowrap">268ms RTT</span>
+              </div>
+              <div id="soso-sig-headline" class="text-xs sm:text-sm font-bold text-white mb-1">
+                STRONG ACCUMULATION — CONFIDENCE: 92.6%
+              </div>
+              <p class="text-xs text-[#A1A1A6] font-sans leading-relaxed">
+                Spot ETF volume influx confirmed. Live dashboard deployed at onchainedge.vercel.app.
+              </p>
+            </div>
+          </div>
+
+          <!-- TAB 2: webnix-AI -->
+          <div id="sim-view-2" class="space-y-3 hidden">
+            <div class="flex items-center justify-between gap-2 text-[#86868B] border-b border-white/10 pb-2.5">
+              <span class="text-mac-amber font-semibold truncate">ON-DEVICE // @qvac/sdk v0.19.1 (Snapdragon CPU)</span>
+              <span class="text-mac-amber flex items-center gap-1.5 shrink-0 whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-mac-amber animate-ping"></span> 100% OFFLINE</span>
+            </div>
+            <div class="text-[#A1A1A6] leading-relaxed">
+              <span class="text-[#86868B]">[LOCAL-RAG]</span> Query vector embedded via GTE-Large (FP16) on-device. Zero network packets sent.
+            </div>
+            <div class="text-[#A1A1A6] leading-relaxed">
+              <span class="text-[#86868B]">[SIMILARITY]</span> Matched 2 chunks from private local workspace notes (cosine score: 0.892).
+            </div>
+            <div class="text-[#A1A1A6] leading-relaxed">
+              <span class="text-[#86868B]">[SLM-INFER]</span> Llama 3.2 1B Instruct (Q4_0 quantized) streaming tokens at ~8.5 tok/sec.
+            </div>
+
+            <div class="mac-well p-4 mt-3 border-l-2 border-l-mac-amber">
+              <div class="flex items-center justify-between gap-2 mb-1.5">
+                <span class="text-[10px] uppercase tracking-wider text-[#86868B]">AIR-GAPPED COMPLETION</span>
+                <span class="text-[11px] px-2 py-0.5 rounded bg-mac-amber/15 text-mac-amber font-bold whitespace-nowrap">LOCAL INFERENCE</span>
+              </div>
+              <div class="text-xs sm:text-sm font-bold text-white mb-1">
+                GROUNDED ANSWER RETURNED FROM LOCAL NOTES
+              </div>
+              <p class="text-xs text-[#A1A1A6] font-sans leading-relaxed">
+                Private user notes indexed locally via AsyncStorage. Zero API keys, zero cloud exposure, 100% on Android phone.
+              </p>
+            </div>
+          </div>
+
+          <!-- TAB 3: DataHub Agent Crew -->
+          <div id="sim-view-3" class="space-y-3 hidden">
+            <div class="flex items-center justify-between gap-2 text-[#86868B] border-b border-white/10 pb-2.5">
+              <span class="text-mac-blue font-semibold truncate">MCP PIPELINE // DataHub Agent Crew (5 Agents)</span>
+              <span class="text-mac-blue flex items-center gap-1.5 shrink-0 whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-mac-blue animate-ping"></span> TRACE</span>
+            </div>
+            <div class="text-[#A1A1A6] leading-relaxed">
+              <span class="text-[#86868B]">[INVESTIGATOR]</span> Reading DataHub metadata graph via MCP search: 4 stale descriptions, 2 unowned datasets.
+            </div>
+            <div class="text-[#A1A1A6] leading-relaxed">
+              <span class="text-[#86868B]">[STRATEGIST &rarr; REGULATORY]</span> Proposing ownership mappings &amp; compliance tags. Clearance granted.
+            </div>
+            <div class="text-[#A1A1A6] leading-relaxed">
+              <span class="text-[#86868B]">[CODEBAND]</span> Executing GraphQL mutation back to `mcp-server-datahub`. Write confirmed.
+            </div>
+
+            <div class="mac-well p-4 mt-3 border-l-2 border-l-mac-blue">
+              <div class="flex items-center justify-between gap-2 mb-1.5">
+                <span class="text-[10px] uppercase tracking-wider text-[#86868B]">MCP GOVERNANCE BUS</span>
+                <span class="text-[11px] px-2 py-0.5 rounded bg-mac-blue/15 text-mac-blue font-bold whitespace-nowrap">MUTATION 200 OK</span>
+              </div>
+              <div class="text-xs sm:text-sm font-bold text-white mb-1">
+                METADATA GRAPH REPAIRED AUTOMATICALLY
+              </div>
+              <p class="text-xs text-[#A1A1A6] font-sans leading-relaxed">
+                SQLite local bus message routing verified. Built for "Build with DataHub: The Agent Hackathon".
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Pane -->
+        <div class="lg:col-span-5 p-4 sm:p-6 bg-black/75 flex flex-col justify-between overflow-x-auto">
+          <div>
+            <div class="flex items-center justify-between text-[#86868B] border-b border-white/10 pb-2.5 mb-3">
+              <span class="text-[11px] uppercase tracking-wider">REAL-TIME DATA SCHEMA</span>
+              <span class="text-[10px] text-mac-blue">application/json</span>
+            </div>
+            <pre id="json-inspector" class="text-[11px] leading-relaxed text-[#E5E5EA] overflow-x-auto">{
+  "system": "sososignal-v2",
+  "engine": "llama3-70b-8192-groq",
+  "latency_ms": 268,
+  "live_demo": "https://onchainedge.vercel.app/",
+  "etf_net_inflow_usd": 434000000,
+  "orderbook_delta": "+6.14%",
+  "signal": {
+    "action": "STRONG_ACCUMULATION",
+    "confidence": 0.926
+  }
+}</pre>
+          </div>
+          <div class="pt-3 mt-4 border-t border-white/10 flex items-center justify-between text-[11px] text-[#86868B]">
+            <span>Sample payload contract</span>
+            <span class="text-mac-green">● Ready</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
   <!-- SECTION 04: FULL-STACK CAPABILITIES & TECH MATRIX -->
   <section id="stack" class="py-16 sm:py-24 relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
     <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
-      <div class="text-xs font-mono uppercase tracking-widest text-mac-blue font-semibold mb-1.5">03 / CORE CAPABILITIES</div>
-      <h2 class="text-2xl sm:text-4xl font-bold text-white tracking-tight">Full-Stack &amp; Systems Architecture</h2>
+      <div class="text-xs font-mono uppercase tracking-widest text-mac-blue font-semibold mb-1.5">03 / TOOLCHAIN</div>
+      <h2 class="text-2xl sm:text-4xl font-bold text-white tracking-tight">Toolchain &amp; Delivery</h2>
       <p class="text-[#A1A1A6] text-xs sm:text-sm mt-2.5">
-        Production engineering across modern web frameworks, systems languages, native mobile apps, and enterprise AI automation.
+        The tools I ship with, grouped by where they sit in the system.
       </p>
     </div>
 
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 font-mono text-xs">
-      
-      <div class="mac-card p-4 flex flex-col justify-between">
-        <span class="text-[10px] text-mac-blue uppercase tracking-wider">Frontend</span>
-        <div class="text-white font-bold text-sm mt-2">Next.js</div>
-        <div class="text-[#86868B] text-[10px] mt-1">App Router &amp; SSR</div>
-      </div>
-
-      <div class="mac-card p-4 flex flex-col justify-between">
-        <span class="text-[10px] text-mac-cyan uppercase tracking-wider">UI Engine</span>
-        <div class="text-white font-bold text-sm mt-2">React.js</div>
-        <div class="text-[#86868B] text-[10px] mt-1">SPA &amp; Component Arch</div>
-      </div>
-
-      <div class="mac-card p-4 flex flex-col justify-between">
-        <span class="text-[10px] text-mac-amber uppercase tracking-wider">Mobile</span>
-        <div class="text-white font-bold text-sm mt-2">React Native</div>
-        <div class="text-[#86868B] text-[10px] mt-1">Android &amp; iOS Apps</div>
-      </div>
-
-      <div class="mac-card p-4 flex flex-col justify-between border-mac-cyan/30 bg-mac-cyan/[0.04]">
-        <span class="text-[10px] text-mac-cyan uppercase tracking-wider">High Speed API</span>
-        <div class="text-white font-bold text-sm mt-2">FastAPI</div>
-        <div class="text-[#86868B] text-[10px] mt-1">Async Python &amp; Pydantic</div>
-      </div>
-
-      <div class="mac-card p-4 flex flex-col justify-between border-mac-green/30 bg-mac-green/[0.04]">
-        <span class="text-[10px] text-mac-green uppercase tracking-wider">Autonomous Ops</span>
-        <div class="text-white font-bold text-sm mt-2">AI Automation</div>
-        <div class="text-[#86868B] text-[10px] mt-1">Agent Swarms &amp; MCP</div>
-      </div>
-
-      <div class="mac-card p-4 flex flex-col justify-between border-mac-purple/30 bg-mac-purple/[0.04]">
-        <span class="text-[10px] text-mac-purple uppercase tracking-wider">LLM Ecosystem</span>
-        <div class="text-white font-bold text-sm mt-2">AI Integration</div>
-        <div class="text-[#86868B] text-[10px] mt-1">Tool Calling, RAG &amp; APIs</div>
-      </div>
-
-      <div class="mac-card p-4 flex flex-col justify-between">
-        <span class="text-[10px] text-mac-green uppercase tracking-wider">Backend</span>
-        <div class="text-white font-bold text-sm mt-2">Node.js</div>
-        <div class="text-[#86868B] text-[10px] mt-1">Fastify / Express / Edge</div>
-      </div>
-
-      <div class="mac-card p-4 flex flex-col justify-between">
-        <span class="text-[10px] text-mac-blue uppercase tracking-wider">Safety</span>
-        <div class="text-white font-bold text-sm mt-2">TypeScript</div>
-        <div class="text-[#86868B] text-[10px] mt-1">Strict Type Contracts</div>
-      </div>
-
-      <div class="mac-card p-4 flex flex-col justify-between">
-        <span class="text-[10px] text-mac-amber uppercase tracking-wider">Web Script</span>
-        <div class="text-white font-bold text-sm mt-2">JavaScript</div>
-        <div class="text-[#86868B] text-[10px] mt-1">ESNext &amp; Web APIs</div>
-      </div>
-
-      <div class="mac-card p-4 flex flex-col justify-between">
-        <span class="text-[10px] text-mac-cyan uppercase tracking-wider">AI &amp; Data</span>
-        <div class="text-white font-bold text-sm mt-2">Python</div>
-        <div class="text-[#86868B] text-[10px] mt-1">Swarm Agents &amp; RAG</div>
-      </div>
-
-      <div class="mac-card p-4 flex flex-col justify-between">
-        <span class="text-[10px] text-mac-red uppercase tracking-wider">Low-Level</span>
-        <div class="text-white font-bold text-sm mt-2">Rust</div>
-        <div class="text-[#86868B] text-[10px] mt-1">Memory Safe &amp; Fast RTT</div>
-      </div>
-
-      <div class="mac-card p-4 flex flex-col justify-between">
-        <span class="text-[10px] text-mac-cyan uppercase tracking-wider">Microservices</span>
-        <div class="text-white font-bold text-sm mt-2">Golang</div>
-        <div class="text-[#86868B] text-[10px] mt-1">Concurrent Goroutines</div>
-      </div>
-
-      <div class="mac-card p-4 flex flex-col justify-between">
-        <span class="text-[10px] text-mac-purple uppercase tracking-wider">Styling</span>
-        <div class="text-white font-bold text-sm mt-2">Tailwind CSS</div>
-        <div class="text-[#86868B] text-[10px] mt-1">HTML5 &amp; Glass Physics</div>
-      </div>
-
-      <div class="mac-card p-4 flex flex-col justify-between">
-        <span class="text-[10px] text-mac-green uppercase tracking-wider">AI Hardware</span>
-        <div class="text-white font-bold text-sm mt-2">Groq LPU</div>
-        <div class="text-[#86868B] text-[10px] mt-1">Sub-350ms Inference</div>
-      </div>
-
-      <div class="mac-card p-4 flex flex-col justify-between">
-        <span class="text-[10px] text-mac-purple uppercase tracking-wider">Cloud Data</span>
-        <div class="text-white font-bold text-sm mt-2">AWS DynamoDB</div>
-        <div class="text-[#86868B] text-[10px] mt-1">Serverless NoSQL Storage</div>
-      </div>
-
-    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5"><div class="mac-card p-5 sm:p-6 grp"><div class="grp__t">Languages</div><div class="row"><b>TypeScript</b><span>strict type contracts</span></div><div class="row"><b>Python</b><span>agents, RAG, APIs</span></div><div class="row"><b>JavaScript</b><span>ESNext &amp; Web APIs</span></div><div class="row"><b>Rust</b><span>memory-safe, low latency</span></div><div class="row"><b>Go</b><span>concurrent services</span></div></div><div class="mac-card p-5 sm:p-6 grp"><div class="grp__t">Frontend &amp; Mobile</div><div class="row"><b>Next.js</b><span>App Router &amp; SSR</span></div><div class="row"><b>React</b><span>component architecture</span></div><div class="row"><b>React Native</b><span>Android &amp; iOS, Expo / EAS</span></div><div class="row"><b>Tailwind CSS</b><span>design systems</span></div></div><div class="mac-card p-5 sm:p-6 grp"><div class="grp__t">Backend &amp; Data</div><div class="row"><b>FastAPI</b><span>async Python, Pydantic</span></div><div class="row"><b>Node.js</b><span>Fastify / Express / Edge</span></div><div class="row"><b>GraphQL</b><span>typed mutations</span></div><div class="row"><b>AWS DynamoDB</b><span>serverless NoSQL</span></div></div><div class="mac-card p-5 sm:p-6 grp"><div class="grp__t">AI &amp; Agents</div><div class="row"><b>MCP</b><span>multi-agent crews</span></div><div class="row"><b>Groq LPU</b><span>sub-350ms inference</span></div><div class="row"><b>RAG &amp; tool calling</b><span>grounded LLM apps</span></div><div class="row"><b>On-device SLMs</b><span>QVAC, offline</span></div></div><div class="mac-card p-5 sm:p-6 grp"><div class="grp__t">Infra &amp; Delivery</div><div class="row row--hi"><div><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="2" y="9" width="3.5" height="3.5"/><rect x="6" y="9" width="3.5" height="3.5"/><rect x="10" y="9" width="3.5" height="3.5"/><rect x="6" y="5.5" width="3.5" height="3.5"/><rect x="10" y="5.5" width="3.5" height="3.5"/><path d="M1.5 14c1.5 2.5 5 3.5 9 3 4-.5 6.5-2.5 8-6-1-.7-2-.8-3-.3"/></svg><b>Docker</b></div><span>containerised, reproducible deploys</span></div><div class="row"><b>Vercel</b><span>Edge &amp; serverless</span></div><div class="row"><b>Railway</b><span>long-running services</span></div><div class="row"><b>GitHub</b><span>PR-driven delivery</span></div></div><div class="mac-card p-5 sm:p-6 grp"><div class="grp__t">How I build</div><div class="row"><b>Typed contracts</b><span>Strict types and schemas at every service boundary.</span></div><div class="row"><b>Latency budgets</b><span>Inference path measured and kept under a stated budget.</span></div><div class="row"><b>Inspectable agents</b><span>Agent handoffs go over a local bus I can replay and audit.</span></div><div class="row"><b>Ship first</b><span>Production deploy early, then iterate behind it.</span></div></div></div>
   </section>
 
   <!-- SECTION 05: ENGAGEMENT ARCHITECTURE -->
   <section id="services" class="py-16 sm:py-24 relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
     <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
-      <div class="text-xs font-mono uppercase tracking-widest text-mac-blue font-semibold mb-1.5">04 / ENGAGEMENT TRACKS</div>
-      <h2 class="text-2xl sm:text-4xl font-bold text-white tracking-tight">How Teams Partner With Us</h2>
+      <div class="text-xs font-mono uppercase tracking-widest text-mac-blue font-semibold mb-1.5">04 / ENGAGEMENTS</div>
+      <h2 class="text-2xl sm:text-4xl font-bold text-white tracking-tight">How I Work With Teams</h2>
       <p class="text-[#A1A1A6] text-xs sm:text-sm mt-2.5">
-        Choose between confidential agency overflow delivery or dedicated principal engineering for venture-backed startups.
+        Two ways to work together: confidential overflow capacity for agencies, or an embedded engineer for startups.
       </p>
     </div>
 
@@ -1142,22 +1068,22 @@
         <div>
           <div class="flex flex-wrap items-center justify-between gap-2 mb-6">
             <span class="mac-pill px-3 py-1 rounded-full text-[11px] font-mono text-white font-semibold">TRACK 01 // AGENCY OVERFLOW</span>
-            <span class="text-xs font-mono text-mac-green whitespace-nowrap">● 100% NDA &amp; Ghost Commits</span>
+            <span class="text-xs font-mono text-mac-green whitespace-nowrap">● NDA-friendly · your repos, your brand</span>
           </div>
 
-          <h3 class="text-xl sm:text-3xl font-bold text-white tracking-tight mb-3">White-Label Architecture Partner</h3>
+          <h3 class="text-xl sm:text-3xl font-bold text-white tracking-tight mb-3">White-Label Engineering Partner</h3>
           <p class="text-[#A1A1A6] text-xs sm:text-sm leading-relaxed mb-6">
-            When your agency books complex Next.js, mobile app, FastAPI services, or AI automation projects beyond internal bandwidth, we step in as your silent engineering arm. Deliver production-ready code directly to your repositories under your branding.
+            When your agency books Next.js, mobile, FastAPI or AI-automation work beyond internal bandwidth, I act as your silent engineering arm — production-ready code delivered to your repositories under your branding.
           </p>
 
           <div class="space-y-3.5 mb-8 text-xs sm:text-sm text-[#E5E5EA]">
             <div class="flex items-start gap-3">
               <span class="w-5 h-5 rounded-full bg-mac-green/15 text-mac-green flex items-center justify-center text-xs shrink-0 mt-0.5">✓</span>
-              <div><strong class="text-white">Strict Ghost Execution:</strong> All PRs pushed directly to your client repos under your organization name.</div>
+              <div><strong class="text-white">Your repos, your name:</strong> PRs land directly in your client repositories under your organisation.</div>
             </div>
             <div class="flex items-start gap-3">
               <span class="w-5 h-5 rounded-full bg-mac-green/15 text-mac-green flex items-center justify-center text-xs shrink-0 mt-0.5">✓</span>
-              <div><strong class="text-white">Zero Hand-Holding:</strong> Autonomous architectural execution, thorough edge-case handling, and clean TypeScript types.</div>
+              <div><strong class="text-white">Autonomous delivery:</strong> Autonomous architectural execution, thorough edge-case handling, and clean TypeScript types.</div>
             </div>
             <div class="flex items-start gap-3">
               <span class="w-5 h-5 rounded-full bg-mac-green/15 text-mac-green flex items-center justify-center text-xs shrink-0 mt-0.5">✓</span>
@@ -1179,18 +1105,18 @@
         <div>
           <div class="flex flex-wrap items-center justify-between gap-2 mb-6">
             <span class="mac-pill px-3 py-1 rounded-full text-[11px] font-mono text-mac-cyan font-semibold border-mac-cyan/30">TRACK 02 // STARTUP VELOCITY</span>
-            <span class="text-xs font-mono text-mac-cyan whitespace-nowrap">● US / EU / APAC Overlap</span>
+            <span class="text-xs font-mono text-mac-cyan whitespace-nowrap">● Flexible timezone overlap</span>
           </div>
 
-          <h3 class="text-xl sm:text-3xl font-bold text-white tracking-tight mb-3">Remote Startup AI &amp; Full-Stack Engineer</h3>
+          <h3 class="text-xl sm:text-3xl font-bold text-white tracking-tight mb-3">Embedded AI &amp; Full-Stack Engineer</h3>
           <p class="text-[#A1A1A6] text-xs sm:text-sm leading-relaxed mb-6">
-            High-cadence engineering for early-stage and funded startups. We take ownership of your product roadmap—from high-throughput FastAPI microservices and AI automation swarms to low-latency Groq backends and scalable Next.js apps.
+            High-cadence engineering for early-stage and funded startups. I own roadmap items end to end — FastAPI services, agent pipelines, low-latency Groq backends and scalable Next.js apps.
           </p>
 
           <div class="space-y-3.5 mb-8 text-xs sm:text-sm text-[#E5E5EA]">
             <div class="flex items-start gap-3">
               <span class="w-5 h-5 rounded-full bg-mac-cyan/15 text-mac-cyan flex items-center justify-center text-xs shrink-0 mt-0.5">✓</span>
-              <div><strong class="text-white">Day-One PR Delivery:</strong> Instant contribution to production branches with zero ramp-up overhead.</div>
+              <div><strong class="text-white">Fast first PR:</strong> Contributing to production branches from week one.</div>
             </div>
             <div class="flex items-start gap-3">
               <span class="w-5 h-5 rounded-full bg-mac-cyan/15 text-mac-cyan flex items-center justify-center text-xs shrink-0 mt-0.5">✓</span>
@@ -1218,10 +1144,10 @@
   <section id="contact" class="py-16 sm:py-24 relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
     
     <div class="text-center max-w-xl mx-auto mb-10 sm:mb-12">
-      <div class="text-xs font-mono uppercase tracking-widest text-mac-blue font-semibold mb-1.5">05 / DIRECT ACCESS</div>
-      <h2 class="text-2xl sm:text-4xl font-bold text-white tracking-tight">Direct Access Channels</h2>
+      <div class="text-xs font-mono uppercase tracking-widest text-mac-blue font-semibold mb-1.5">05 / CONTACT</div>
+      <h2 class="text-2xl sm:text-4xl font-bold text-white tracking-tight">Get in Touch</h2>
       <p class="text-[#A1A1A6] text-xs sm:text-sm mt-2">
-        Instant routing to our team. Click below to initiate direct conversation.
+        Reach me directly — WhatsApp or Telegram for project inquiries, email for anything formal.
       </p>
     </div>
 
@@ -1237,7 +1163,7 @@
           </div>
           <div class="min-w-0">
             <div class="text-sm font-semibold text-white group-hover:text-mac-green transition-colors truncate">WhatsApp Direct</div>
-            <div class="text-xs font-mono text-[#86868B] truncate">Fastest response for project inquiries</div>
+            <div class="text-xs font-mono text-[#86868B] truncate">Best for project inquiries</div>
           </div>
         </div>
         <span class="text-xs font-mono text-mac-green shrink-0">Open Chat →</span>
@@ -1313,13 +1239,8 @@
   <!-- Clean Footer -->
   <footer class="py-10 border-t border-white/10 text-[#86868B] text-xs font-mono">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-      <div class="flex items-center gap-2">
-        <span class="w-2 h-2 rounded-full bg-mac-green"></span>
-        <span class="text-white font-semibold">Webnix Space</span>
-        <span>•</span>
-        <span>Autonomous AI &amp; Modern Systems</span>
-      </div>
-      <div>Next.js • FastAPI • MCP Agents • AI Automation • QVAC On-Device SLM</div>
+      <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-mac-green"></span><span class="text-white font-semibold">Webnix Space</span><span>•</span><span>© <span id="yr">2026</span> Full-Stack &amp; AI Systems Engineering</span></div>
+      <div class="flex items-center gap-5"><a href="#work" class="hover:text-white">Work</a><a href="https://github.com/webnix-space" target="_blank" rel="noopener noreferrer" class="hover:text-white">GitHub</a><a href="#contact" class="hover:text-white">Contact</a><a href="#overview" class="hover:text-white">↑ Top</a></div>
     </div>
   </footer>
 
@@ -1468,11 +1389,11 @@
           orderbook_delta: "+6.14%",
           signal: { action: "STRONG_ACCUMULATION", confidence: 0.941 }
         }, null, 2);
-        showMacToast(`sososignal benchmark: ${latency}ms RTT`);
+        showMacToast(`Trace replayed (illustrative): ${latency}ms`);
       } else if (currentSimTab === 2) {
-        showMacToast(`QVAC on-device engine: 8.8 tokens/sec verified`);
+        showMacToast(`Trace replayed: on-device inference ~8–9 tok/s`);
       } else {
-        showMacToast('DataHub MCP Crew: 5-agent handoff verified');
+        showMacToast('Trace replayed: 5-agent handoff');
       }
     }
 
@@ -1516,6 +1437,8 @@
       function onScroll() {
         const y = window.scrollY;
         nav.classList.toggle('is-scrolled', y > 24);
+        const pg = document.getElementById('progress'), h = document.documentElement.scrollHeight - innerHeight;
+        if (pg) pg.style.width = (h > 0 ? y / h * 100 : 0) + '%';
         if (media && !reduce && y < window.innerHeight * 1.2) {
           media.style.transform = 'translate3d(0,' + Math.min(y * 0.16, 70) + 'px,0)';
         }
@@ -1530,7 +1453,9 @@
       const v = document.getElementById('hero-video');
       if (!v) return;
       const ready = () => v.classList.add('is-ready');
-      v.addEventListener('canplay', ready);
+      ['canplay', 'loadeddata', 'playing'].forEach(e => v.addEventListener(e, ready));
+      ['touchstart', 'scroll', 'click'].forEach(e => window.addEventListener(e, () => v.play().catch(() => {}), { once: true, passive: true }));
+      const yr = document.getElementById('yr'); if (yr) yr.textContent = new Date().getFullYear();
       const p = v.play(); if (p && p.catch) p.catch(() => {});
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { v.pause(); ready(); }
     })();
