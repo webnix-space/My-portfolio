@@ -1,0 +1,1553 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="theme-color" content="#120400">
+  <title>Webnix Space — Autonomous AI Systems, Next.js &amp; Sovereign Infrastructure</title>
+  <meta name="description" content="Webnix Space — Engineering sub-second Groq Llama-3 pipelines, offline on-device AI for Android, Python multi-agent swarms, FastAPI backends, and AI automation workflows.">
+
+  <link rel="preload" as="video" href="hero-loop.mp4">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Inter"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            display: ['"Inter Tight"', '-apple-system', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            obsidian: '#120400',
+            elevated: '#1a0600',
+            mac: {
+              /* ember remap — every existing mac-* class now speaks flame */
+              blue: '#ff8a1f',
+              green: '#30D158',
+              amber: '#ffc24a',
+              red: '#ff453a',
+              purple: '#ff5c7a',
+              cyan: '#ffb27a'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --ground: #2a0b02;
+      --ground-deep: #120400;
+      --flame: #ff3d00;
+      --flame-lit: #ff8a1f;
+      --ink-soft: rgba(255,255,255,.72);
+      --ink-faint: rgba(255,255,255,.46);
+      --glass: rgba(56,20,6,.42);
+      --glass-strong: rgba(40,13,3,.62);
+      --hair: rgba(255,255,255,.14);
+      --hair-soft: rgba(255,255,255,.08);
+      --ease-out: cubic-bezier(.16,1,.3,1);
+      --gutter: clamp(18px, 2.6vw, 44px);
+      --font-display: 'Inter Tight', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      --font-italic: 'Instrument Serif', Georgia, serif;
+    }
+
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+    html, body {
+      background-color: var(--ground-deep);
+      color: #F5F5F7;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      overflow-x: hidden;
+      width: 100%;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    h1, h2, h3 { font-family: var(--font-display); }
+    img, svg, video { max-width: 100%; }
+
+    /* ---------- ambient ember lighting (fixed, slowly breathing) ---------- */
+    .studio-lighting {
+      background:
+        radial-gradient(70% 45% at 50% -8%, rgba(255,90,20,.20), transparent 70%),
+        radial-gradient(55% 40% at 92% 30%, rgba(255,138,31,.10), transparent 65%),
+        radial-gradient(60% 50% at 8% 70%, rgba(216,67,75,.10), transparent 65%);
+      animation: breathe 14s ease-in-out infinite alternate;
+    }
+    @keyframes breathe { from { opacity: .75; } to { opacity: 1; } }
+
+    .bg-mac-grid {
+      background-size: 44px 44px;
+      background-image:
+        linear-gradient(to right, rgba(255,255,255,.028) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,.028) 1px, transparent 1px);
+      mask-image: radial-gradient(ellipse 90% 60% at 50% 25%, black 35%, transparent 95%);
+      -webkit-mask-image: radial-gradient(ellipse 90% 60% at 50% 25%, black 35%, transparent 95%);
+    }
+
+    /* ---------- warm glass card (VisionOS / Apple material) ---------- */
+    .mac-card {
+      position: relative;
+      background: linear-gradient(160deg, rgba(70,26,8,.46) 0%, rgba(26,8,2,.66) 100%);
+      backdrop-filter: blur(30px) saturate(170%);
+      -webkit-backdrop-filter: blur(30px) saturate(170%);
+      border: 1px solid var(--hair);
+      box-shadow:
+        0 24px 60px -16px rgba(0,0,0,.8),
+        inset 0 1px 0 0 rgba(255,255,255,.18),
+        inset 0 -1px 0 0 rgba(255,138,31,.06);
+      border-radius: 22px;
+      transition: transform .35s var(--ease-out), border-color .3s ease, box-shadow .35s ease;
+      overflow: hidden;
+    }
+    @media (min-width: 768px) {
+      .mac-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(255,170,90,.38);
+        box-shadow:
+          0 32px 70px -14px rgba(0,0,0,.9),
+          inset 0 1px 0 0 rgba(255,255,255,.28),
+          0 0 46px -10px rgba(255,90,20,.32);
+      }
+    }
+    /* cursor spotlight */
+    .mac-card::before {
+      content: ""; position: absolute; inset: 0; border-radius: inherit;
+      background: radial-gradient(520px circle at var(--mouse-x,-500px) var(--mouse-y,-500px), rgba(255,160,80,.10), transparent 42%);
+      pointer-events: none; z-index: 1;
+    }
+    /* specular sheen sweep on hover */
+    .mac-card::after {
+      content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 1;
+      background: linear-gradient(115deg, transparent 38%, rgba(255,255,255,.07) 50%, transparent 62%);
+      transform: translateX(-120%);
+      transition: transform .9s var(--ease-out);
+    }
+    .mac-card:hover::after { transform: translateX(120%); }
+
+    .mac-well {
+      background: rgba(14,4,0,.55);
+      border: 1px solid rgba(255,255,255,.07);
+      box-shadow: inset 0 2px 8px rgba(0,0,0,.7);
+      border-radius: 14px;
+    }
+    .mac-pill {
+      display: inline-flex; align-items: center;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.1);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.1);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    }
+
+    /* ---------- buttons ---------- */
+    .btn-mac-primary {
+      background: linear-gradient(96deg, var(--flame) 0%, var(--flame-lit) 100%);
+      box-shadow: 0 12px 34px -6px rgba(255,61,0,.45), inset 0 1px 0 0 rgba(255,255,255,.35);
+      color: #fff;
+      transition: transform .35s var(--ease-out), box-shadow .35s var(--ease-out), filter .35s;
+    }
+    .btn-mac-primary:hover { transform: translateY(-2px); box-shadow: 0 18px 46px -6px rgba(255,61,0,.6), inset 0 1px 0 0 rgba(255,255,255,.45); filter: brightness(1.06); }
+    .btn-mac-primary:active { transform: scale(.98); }
+
+    .btn-mac-glass {
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.15);
+      box-shadow: inset 0 1px 0 0 rgba(255,255,255,.16);
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      color: #F5F5F7;
+      transition: all .3s var(--ease-out);
+    }
+    .btn-mac-glass:hover { background: rgba(255,255,255,.13); border-color: rgba(255,200,150,.35); transform: translateY(-1px); }
+
+    .btn-light {
+      background: #fff; color: #180600;
+      box-shadow: 0 10px 26px rgba(0,0,0,.35);
+      transition: transform .35s var(--ease-out), background-color .35s var(--ease-out);
+    }
+    .btn-light:hover { transform: translateY(-1px); background: #fff4ec; }
+
+    .text-titanium {
+      background: linear-gradient(180deg, #FFFFFF 0%, #FFE9DA 55%, #C9A592 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .text-accent-gradient {
+      background: linear-gradient(135deg, #ffb27a 0%, #ff8a1f 45%, #ff3d00 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: var(--ground-deep); }
+    ::-webkit-scrollbar-thumb { background: rgba(255,170,100,.25); border-radius: 9999px; }
+    :focus-visible { outline: 2px solid var(--flame-lit); outline-offset: 3px; border-radius: 6px; }
+
+    /* ---------- scroll reveal ---------- */
+    .reveal { opacity: 0; translate: 0 30px; transition: opacity .9s var(--ease-out), translate .9s var(--ease-out), transform .35s var(--ease-out), border-color .3s ease, box-shadow .35s ease; }
+    .reveal.is-in { opacity: 1; translate: 0 0; }
+
+    /* =====================  NAVBAR  ===================== */
+    .nav {
+      position: fixed; inset: 0 0 auto; z-index: 50;
+      padding: clamp(10px, 1.3vw, 18px) var(--gutter) 0;
+      transition: background-color .4s var(--ease-out), backdrop-filter .4s, padding .4s var(--ease-out), border-color .4s;
+      border-bottom: 1px solid transparent;
+    }
+    .nav.is-scrolled {
+      background: rgba(18,4,0,.62);
+      backdrop-filter: blur(26px) saturate(180%); -webkit-backdrop-filter: blur(26px) saturate(180%);
+      border-bottom-color: var(--hair-soft);
+    }
+    .nav__row { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-bottom: 10px; max-width: 1440px; margin: 0 auto; }
+    .nav__brand { display: inline-flex; align-items: center; gap: 9px; font-family: var(--font-display); font-size: clamp(17px,1.4vw,21px); font-weight: 600; letter-spacing: -.025em; white-space: nowrap; }
+    .nav__logo { width: 1.3em; height: 1.3em; }
+    .nav__tag { font: 500 10px 'JetBrains Mono', monospace; letter-spacing: 0; color: var(--flame-lit); background: rgba(255,138,31,.1); border: 1px solid rgba(255,138,31,.32); padding: 2px 6px; border-radius: 5px; }
+    .nav__pill { display: none; padding: 5px; border: 1px solid var(--hair); border-radius: 14px; background: rgba(28,10,2,.38); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+    .nav__pill ul { display: flex; align-items: center; gap: 3px; margin: 0; padding: 0; list-style: none; }
+    .nav__pill a { display: inline-flex; padding: 8px 13px; border-radius: 9px; font-size: 13px; font-weight: 450; white-space: nowrap; color: rgba(255,255,255,.82); background: rgba(255,255,255,.05); transition: background-color .3s var(--ease-out), color .3s; }
+    .nav__pill a:hover { background: rgba(255,255,255,.15); color: #fff; }
+    .nav__actions { display: flex; align-items: center; gap: 10px; }
+    .nav__search { display: inline-flex; align-items: center; gap: 7px; padding: 8px 11px; border-radius: 10px; border: 1px solid var(--hair); background: rgba(28,10,2,.4); backdrop-filter: blur(10px); font: 500 11px 'JetBrains Mono', monospace; color: #F0E4DC; transition: background-color .3s; }
+    .nav__search:hover { background: rgba(255,255,255,.12); }
+    .nav__search kbd { color: var(--ink-faint); font: inherit; }
+    .nav__clock { display: none; font: 400 11px 'JetBrains Mono', monospace; color: var(--ink-faint); white-space: nowrap; }
+    .nav__cta { display: inline-flex; align-items: center; gap: 8px; padding: .62em 1.2em; border-radius: 999px; font-size: 13px; font-weight: 600; white-space: nowrap; letter-spacing: -.01em; }
+    .nav__cta i { width: 6px; height: 6px; border-radius: 50%; background: var(--flame); animation: pulse 1.8s ease-in-out infinite; }
+    @keyframes pulse { 50% { transform: scale(1.7); opacity: .45; } }
+    .nav__sub { display: flex; gap: 6px; overflow-x: auto; padding: 0 0 10px; font-size: 12px; font-weight: 500; color: rgba(255,255,255,.7); max-width: 1440px; margin: 0 auto; }
+    .nav__sub a { padding: 6px 12px; border-radius: 999px; background: rgba(255,255,255,.06); border: 1px solid var(--hair-soft); white-space: nowrap; }
+    .nav__sub a:hover { color: #fff; background: rgba(255,255,255,.13); }
+    @media (min-width: 1024px) { .nav__pill { display: block; } .nav__sub { display: none; } }
+    @media (min-width: 1280px) { .nav__clock { display: inline-block; } }
+    @media (max-width: 560px) { .nav__search span, .nav__search kbd { display: none; } }
+
+    /* =====================  HERO  ===================== */
+    .hero {
+      position: relative; isolation: isolate; display: flex; flex-direction: column;
+      min-height: 100svh; overflow: hidden;
+      padding: 150px var(--gutter) 26px;
+      background: linear-gradient(165deg, var(--ground) 0%, var(--ground-deep) 70%);
+    }
+    @media (min-width: 1024px) { .hero { padding-top: 104px; } }
+
+    .hero__media { position: absolute; inset: -70px 0; z-index: -1; will-change: transform; }
+
+    /* animated ember aurora — always visible, sits under the video (and IS the hero if the video file is missing) */
+    .hero__aurora { position: absolute; inset: 0; overflow: hidden; }
+    .hero__aurora i { position: absolute; border-radius: 50%; filter: blur(80px); opacity: .75; will-change: transform; }
+    .hero__aurora i:nth-child(1) { width: 52vw; height: 52vw; right: -8vw; top: 6%; background: radial-gradient(circle, #ff5a14 0%, rgba(255,61,0,0) 68%); animation: drift1 16s ease-in-out infinite alternate; }
+    .hero__aurora i:nth-child(2) { width: 40vw; height: 40vw; right: 18vw; bottom: -12%; background: radial-gradient(circle, #ff9a2e 0%, rgba(255,138,31,0) 68%); animation: drift2 20s ease-in-out infinite alternate; }
+    .hero__aurora i:nth-child(3) { width: 34vw; height: 34vw; left: -6vw; bottom: 8%; background: radial-gradient(circle, #a8260f 0%, rgba(168,38,15,0) 68%); animation: drift3 22s ease-in-out infinite alternate; }
+    @keyframes drift1 { to { transform: translate(-9vw, 8vh) scale(1.15); } }
+    @keyframes drift2 { to { transform: translate(8vw, -9vh) scale(.88); } }
+    @keyframes drift3 { to { transform: translate(7vw, -6vh) scale(1.2); } }
+
+    .hero__video {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; object-position: 68% center;
+      opacity: 0; transform: scale(1.04);
+      transition: opacity 1.1s var(--ease-out), transform 2.4s var(--ease-out);
+    }
+    .hero__video.is-ready { opacity: 1; transform: scale(1); }
+
+    /* asymmetric scrim: heavy under the copy, floor for the foot band, near-zero over the subject */
+    .hero__scrim {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(96deg, rgba(10,3,0,.9) 0%, rgba(14,4,0,.66) 30%, rgba(20,6,0,.16) 52%, rgba(20,6,0,0) 68%),
+        linear-gradient(0deg, rgba(9,2,0,.85) 0%, rgba(9,2,0,.14) 28%, rgba(0,0,0,0) 46%),
+        linear-gradient(180deg, rgba(8,2,0,.5) 0%, rgba(0,0,0,0) 22%);
+    }
+    .hero__rules { position: absolute; inset: 0; display: flex; justify-content: space-between; padding: 0 30%; pointer-events: none; }
+    .hero__rules span { width: 1px; background: rgba(255,255,255,.055); }
+    .hero__rules span:nth-child(2) { margin-left: 14px; }
+
+    .hero__inner { flex: 1; display: grid; grid-template-columns: minmax(0,1fr); align-content: center; gap: 40px; max-width: 1440px; width: 100%; margin: 0 auto; }
+    @media (min-width: 1024px) { .hero__inner { grid-template-columns: minmax(0,1fr) minmax(0,.7fr); align-items: center; gap: 56px; } }
+    .hero__lead { max-width: 660px; }
+    .hero__panel { width: 100%; max-width: 480px; justify-self: end; animation: float 9s ease-in-out infinite; }
+    @keyframes float { 50% { transform: translateY(-10px); } }
+
+    .hero__note { display: flex; align-items: center; gap: 10px; padding-top: 13px; border-top: 1px solid var(--hair-soft); width: fit-content; font-size: 11.5px; line-height: 1.45; color: var(--ink-faint); text-transform: uppercase; letter-spacing: .08em; font-family: 'JetBrains Mono', monospace; }
+    .hero__dot { position: relative; display: inline-flex; width: 8px; height: 8px; flex: none; }
+    .hero__dot::before, .hero__dot::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background: #30D158; }
+    .hero__dot::before { animation: ping 1.8s cubic-bezier(0,0,.2,1) infinite; opacity: .7; }
+    @keyframes ping { 75%, 100% { transform: scale(2.6); opacity: 0; } }
+
+    .hero__title { margin-top: 24px; font-family: var(--font-display); font-size: clamp(2.7rem, 6.4vw, 6.1rem); font-weight: 600; line-height: .9; letter-spacing: -.035em; text-shadow: 0 6px 40px rgba(0,0,0,.45); }
+    .hero__title em { font-family: var(--font-italic); font-weight: 400; font-style: italic; letter-spacing: -.005em; }
+    .hero__sub { margin-top: 20px; max-width: 470px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+    .hero__sub b { color: #fff; font-weight: 500; }
+
+    .hero__cta { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+    .hero__go { display: inline-flex; align-items: center; gap: 10px; padding: .5em .5em .5em 1.5em; border-radius: 999px; font-size: 15px; font-weight: 600; white-space: nowrap; letter-spacing: -.01em; }
+    .hero__go-dot { display: grid; place-items: center; width: 2.55em; height: 2.55em; border-radius: 999px; background: #fff; color: #1a0600; transition: transform .35s var(--ease-out); }
+    .hero__go:hover .hero__go-dot { transform: translateX(3px) rotate(-8deg); }
+    .hero__go-dot svg { width: 1.15em; height: 1.15em; }
+    .hero__ghostbtn { display: inline-flex; align-items: center; gap: 9px; padding: .85em 1.35em; border-radius: 999px; font-size: 14px; font-weight: 500; white-space: nowrap; }
+
+    .hero__stats { display: flex; flex-wrap: wrap; gap: 14px; margin: 30px 0 0; padding: 0; list-style: none; }
+    .stat { position: relative; display: grid; align-content: space-between; gap: 18px; width: 168px; min-height: 124px; padding: 18px; border: 1px solid var(--hair); border-radius: 18px; background: var(--glass); backdrop-filter: blur(18px) saturate(1.2); -webkit-backdrop-filter: blur(18px) saturate(1.2); box-shadow: inset 0 1px 0 rgba(255,255,255,.1); transition: transform .4s var(--ease-out), border-color .3s; }
+    .stat:hover { transform: translateY(-4px); border-color: rgba(255,170,90,.4); }
+    .stat:nth-child(2) { background: linear-gradient(150deg, rgba(120,30,4,.5), rgba(48,14,2,.5)); }
+    .stat__mark { position: absolute; top: 14px; right: 16px; font-size: 15px; color: var(--ink-faint); }
+    .stat__value { font-family: var(--font-display); font-size: clamp(1.6rem, 2.3vw, 2.1rem); font-weight: 500; line-height: 1; letter-spacing: -.03em; }
+    .stat__value small { font-size: .45em; color: #30D158; letter-spacing: 0; margin-left: 3px; }
+    .stat__label { font: 500 10px 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-faint); }
+
+    .hero__foot { position: relative; display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-top: 28px; max-width: 1440px; width: 100%; margin-inline: auto; }
+    .hero__watermark { font-family: var(--font-display); font-size: clamp(3rem, 8vw, 7rem); font-weight: 700; line-height: .8; letter-spacing: -.05em; color: rgba(255,255,255,.055); user-select: none; }
+    .hero__partners { text-align: right; }
+    .hero__partners-label { display: block; margin-bottom: 14px; font-size: 11.5px; color: var(--ink-faint); }
+    .hero__partners ul { display: flex; align-items: center; gap: clamp(16px,2.2vw,32px); margin: 0; padding: 0; list-style: none; }
+    .hero__partners li { display: inline-flex; align-items: center; gap: 7px; font-size: 15px; font-weight: 450; letter-spacing: -.01em; color: rgba(255,255,255,.86); }
+    .hero__partners li svg { width: 17px; height: 17px; }
+
+    /* entrance stagger */
+    .hero__note, .hero__title, .hero__sub, .hero__cta, .hero__stats, .hero__foot { animation: rise .95s var(--ease-out) both; }
+    .hero__title { animation-delay: .06s; } .hero__sub { animation-delay: .14s; } .hero__cta { animation-delay: .2s; } .hero__stats { animation-delay: .28s; } .hero__foot { animation-delay: .36s; }
+    .hero__panel { opacity: 0; animation: rise .95s var(--ease-out) .3s both, float 9s ease-in-out 1.3s infinite; }
+    @keyframes rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+
+    @media (max-width: 860px) {
+      .hero__rules { display: none; }
+      .hero__foot { flex-direction: column; align-items: flex-start; }
+      .hero__partners { text-align: left; }
+      .hero__partners ul { flex-wrap: wrap; }
+      .hero__watermark { font-size: 3.4rem; }
+      .hero__panel { justify-self: stretch; max-width: none; }
+    }
+    @media (max-width: 560px) {
+      .stat { flex: 1 1 130px; width: auto; }
+      .hero__watermark { display: none; }
+      .hero__go, .hero__ghostbtn { width: 100%; justify-content: space-between; }
+      .hero__ghostbtn { justify-content: center; }
+    }
+
+    /* anchor offset for fixed nav */
+    section[id] { scroll-margin-top: 90px; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+      .reveal { opacity: 1; translate: 0 0; }
+      .hero__video { opacity: 1; transform: none; }
+      .hero__panel { opacity: 1; }
+    }
+  </style>
+</head>
+<body class="selection:bg-mac-blue selection:text-white antialiased">
+
+  <!-- Ambient Ember Background -->
+  <div class="fixed inset-0 pointer-events-none -z-10 studio-lighting">
+    <div class="absolute inset-0 bg-mac-grid"></div>
+  </div>
+
+  <!-- Dynamic Toast Notification -->
+  <div id="mac-toast" class="fixed top-20 left-1/2 -translate-x-1/2 z-[70] pointer-events-none opacity-0 -translate-y-4 transition-all duration-300">
+    <div class="px-4 py-2.5 rounded-full bg-black/95 backdrop-blur-2xl border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.9)] flex items-center gap-2.5 whitespace-nowrap">
+      <span class="w-2 h-2 rounded-full bg-mac-green shadow-[0_0_10px_#30D158]"></span>
+      <span id="mac-toast-text" class="text-xs font-mono font-medium text-white">Copied to clipboard</span>
+    </div>
+  </div>
+
+  <!-- Command Palette Modal (⌘K) -->
+  <div id="cmd-modal" class="fixed inset-0 z-[80] hidden items-start justify-center pt-20 px-4 bg-black/75 backdrop-blur-md transition-opacity">
+    <div class="mac-card w-full max-w-lg rounded-2xl border border-white/20 overflow-hidden shadow-2xl">
+      <div class="px-4 py-3.5 border-b border-white/10 flex items-center gap-3 bg-white/[0.03]">
+        <svg class="w-4 h-4 text-mac-blue shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+        </svg>
+        <input id="cmd-input" type="text" placeholder="Jump to repo, live demo, or contact..." class="w-full bg-transparent text-sm text-white placeholder-[#86868B] focus:outline-none font-sans" oninput="filterCommands(this.value)">
+        <button onclick="toggleCommandPalette()" class="text-[10px] font-mono px-2 py-1 rounded bg-white/10 text-[#A1A1A6] hover:text-white shrink-0">ESC</button>
+      </div>
+      <div id="cmd-list" class="p-2 max-h-72 overflow-y-auto divide-y divide-white/5 text-xs">
+        <a href="https://wa.me/919105358684?text=Hi%20Webnix,%20saw%20your%20portfolio%20and%20want%20to%20discuss%20a%20project" target="_blank" rel="noopener noreferrer" class="cmd-item flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors">
+          <div class="flex items-center gap-2.5">
+            <span class="w-2 h-2 rounded-full bg-mac-green"></span>
+            <span class="text-white font-medium">Message on WhatsApp</span>
+          </div>
+          <span class="font-mono text-[10px] text-mac-green">Direct Chat</span>
+        </a>
+        <a href="https://t.me/Surebreeze" target="_blank" rel="noopener noreferrer" class="cmd-item flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors">
+          <div class="flex items-center gap-2.5">
+            <span class="w-2 h-2 rounded-full bg-mac-cyan"></span>
+            <span class="text-white font-medium">Open Telegram Direct</span>
+          </div>
+          <span class="font-mono text-[10px] text-mac-cyan">Instant Channel</span>
+        </a>
+        <a href="https://shadowsignal-drab.vercel.app/" target="_blank" rel="noopener noreferrer" class="cmd-item flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors">
+          <span class="text-white font-mono truncate">live: shadowsignal-drab.vercel.app</span>
+          <span class="font-mono text-[10px] text-mac-cyan shrink-0 ml-2">Live Demo</span>
+        </a>
+        <a href="https://onchainedge.vercel.app/" target="_blank" rel="noopener noreferrer" class="cmd-item flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors">
+          <span class="text-white font-mono truncate">live: onchainedge.vercel.app</span>
+          <span class="font-mono text-[10px] text-mac-green shrink-0 ml-2">Live Terminal</span>
+        </a>
+        <a href="https://serenasalon.vercel.app/" target="_blank" rel="noopener noreferrer" class="cmd-item flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors">
+          <span class="text-white font-mono truncate">live: serenasalon.vercel.app</span>
+          <span class="font-mono text-[10px] text-mac-amber shrink-0 ml-2">AI Assistant</span>
+        </a>
+        <a href="https://github.com/webnix-space/datahub-agent-crew" target="_blank" rel="noopener noreferrer" class="cmd-item flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-white/10 transition-colors">
+          <span class="text-white font-mono truncate">repo: datahub-agent-crew</span>
+          <span class="font-mono text-[10px] text-mac-blue shrink-0 ml-2">5-Agent MCP</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- GLASS NAVBAR -->
+  <header class="nav" id="nav">
+    <div class="nav__row">
+      <a href="#" class="nav__brand">
+        <svg class="nav__logo" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+          <path d="M14 1.6 20.3 8 14 14.4 7.7 8 14 1.6Z" fill="#FF6A00"/>
+          <path d="M6.4 9.3 12.7 15.7 6.4 22.1 0.1 15.7 6.4 9.3Z" fill="#FF3D00"/>
+          <path d="M21.6 9.3 27.9 15.7 21.6 22.1 15.3 15.7 21.6 9.3Z" fill="#FF9A2E"/>
+        </svg>
+        <span>Webnix Space</span>
+        <span class="nav__tag">LABS</span>
+      </a>
+
+      <nav class="nav__pill" aria-label="Primary">
+        <ul>
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#telemetry">Telemetry</a></li>
+          <li><a href="#work">Production Builds</a></li>
+          <li><a href="#stack">Capabilities &amp; Stack</a></li>
+          <li><a href="#services">Engagements</a></li>
+          <li><a href="#contact">Direct Access</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav__actions">
+        <button onclick="toggleCommandPalette()" class="nav__search" aria-label="Search">
+          <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          <span>Search</span><kbd>⌘K</kbd>
+        </button>
+        <span id="mac-clock" class="nav__clock">IST --:--:--</span>
+        <a href="https://wa.me/919105358684?text=Hi%20Webnix,%20saw%20your%20portfolio%20and%20want%20to%20discuss%20a%20project" target="_blank" rel="noopener noreferrer" class="nav__cta btn-light"><i></i>Hire / Partner</a>
+      </div>
+    </div>
+
+    <nav class="nav__sub no-scrollbar" aria-label="Sections">
+      <a href="#overview">Overview</a><a href="#telemetry">Telemetry</a><a href="#work">Builds</a><a href="#stack">Stack</a><a href="#services">Tracks</a><a href="#contact">Direct</a>
+    </nav>
+  </header>
+
+  <!-- SECTION 01: HERO -->
+  <section id="overview" class="hero">
+    <div class="hero__media" id="hero-media" aria-hidden="true">
+      <div class="hero__aurora"><i></i><i></i><i></i></div>
+      <video id="hero-video" class="hero__video" src="hero-loop.mp4" autoplay muted loop playsinline preload="auto"></video>
+      <div class="hero__scrim"></div>
+      <div class="hero__rules"><span></span><span></span><span></span></div>
+    </div>
+
+    <div class="hero__inner">
+      <div class="hero__lead">
+        <p class="hero__note">
+          <span class="hero__dot" aria-hidden="true"></span>
+          <span>Accepting high-impact clients<br>&amp; white-label runtimes</span>
+        </p>
+
+        <h1 class="hero__title">
+          We Ship<br>
+          Autonomous AI<br>
+          Not <em>Wrappers</em>
+        </h1>
+
+        <p class="hero__sub">
+          High-throughput <b>FastAPI backends</b>, <b>DataHub MCP agent crews</b>, sub-second <b>Groq LPU engines</b>, offline <b>on-device SLMs</b> and battle-tested <b>Next.js &amp; mobile</b> platforms.
+        </p>
+
+        <div class="hero__cta">
+          <a class="hero__go btn-mac-primary" href="https://wa.me/919105358684?text=Hi%20Webnix,%20saw%20your%20portfolio%20and%20want%20to%20discuss%20a%20project" target="_blank" rel="noopener noreferrer">
+            WhatsApp Direct
+            <span class="hero__go-dot" aria-hidden="true">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"/></svg>
+            </span>
+          </a>
+          <a class="hero__ghostbtn btn-mac-glass" href="https://t.me/Surebreeze" target="_blank" rel="noopener noreferrer">
+            <svg width="16" height="16" class="text-mac-cyan fill-current shrink-0" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.19-.08-.05-.19-.02-.27 0-.12.03-1.99 1.27-5.62 3.72-.53.36-1.01.54-1.44.53-.47-.01-1.38-.27-2.06-.49-.83-.27-1.49-.42-1.43-.88.03-.24.38-.49 1.03-.75 4.04-1.76 6.74-2.92 8.09-3.49 3.85-1.63 4.65-1.91 5.17-1.92.11 0 .37.03.54.17.14.12.18.28.2.45-.02.07-.02.14-.04.22z"/></svg>
+            Telegram
+          </a>
+          <button onclick="triggerEmailCopy()" class="hero__ghostbtn btn-mac-glass font-mono text-xs">
+            <svg width="15" height="15" class="text-[#c9a592] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+            <span id="hero-email-label">Copy Direct Email</span>
+          </button>
+        </div>
+
+        <ul class="hero__stats">
+          <li class="stat"><span class="stat__mark" aria-hidden="true">*</span><span class="stat__value">&lt;350ms<small>P99</small></span><span class="stat__label">Inference RTT</span></li>
+          <li class="stat"><span class="stat__mark" aria-hidden="true">*</span><span class="stat__value">99.98%</span><span class="stat__label">Availability</span></li>
+          <li class="stat"><span class="stat__mark" aria-hidden="true">*</span><span class="stat__value">5</span><span class="stat__label">Agent MCP crew</span></li>
+        </ul>
+      </div>
+
+      <aside class="hero__panel" aria-label="Live system monitor">
+        <div class="mac-card p-5 sm:p-6">
+          
+          <div class="flex items-center justify-between pb-4 mb-4 border-b border-white/10 gap-2">
+            <div class="flex items-center gap-2 min-w-0">
+              <div class="flex items-center gap-1.5 shrink-0">
+                <span class="w-3 h-3 rounded-full bg-mac-red/90 inline-block"></span>
+                <span class="w-3 h-3 rounded-full bg-mac-amber/90 inline-block"></span>
+                <span class="w-3 h-3 rounded-full bg-mac-green/90 inline-block"></span>
+              </div>
+              <span class="text-xs font-mono text-[#A1A1A6] truncate ml-1">Activity Monitor — webnix-cluster</span>
+            </div>
+            <span class="text-[10px] font-mono uppercase px-2.5 py-0.5 rounded-full bg-mac-green/15 text-mac-green border border-mac-green/30 whitespace-nowrap shrink-0">
+              RUNNING
+            </span>
+          </div>
+
+          <!-- LPU Stream Telemetry -->
+          <div class="flex items-center justify-between gap-2 mb-4">
+            <div>
+              <div class="text-[10px] font-mono uppercase tracking-wider text-[#86868B]">GROQ LLAMA-3.3-70B LPU STREAM</div>
+              <div class="flex items-baseline gap-2 mt-1 whitespace-nowrap">
+                <span id="live-rtt-val" class="text-2xl sm:text-3xl font-bold font-mono text-white">268ms</span>
+                <span class="text-xs font-mono text-mac-green">+950 tok/s</span>
+              </div>
+            </div>
+            <div class="text-right font-mono text-[11px] text-[#86868B] shrink-0 whitespace-nowrap">
+              <div>ACTIVE NODES: <span class="text-white font-semibold">7 DAEMONS</span></div>
+              <div class="mt-0.5">AVAILABILITY: <span class="text-mac-green font-semibold">99.98%</span></div>
+            </div>
+          </div>
+
+          <!-- Live Animated Sparkline -->
+          <div class="mac-well p-3 mb-4 relative overflow-hidden">
+            <svg class="w-full h-20 overflow-visible" viewBox="0 0 300 70" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="sparkGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#ff8a1f" stop-opacity="0.4"/>
+                  <stop offset="100%" stop-color="#ff8a1f" stop-opacity="0.0"/>
+                </linearGradient>
+              </defs>
+              <path id="spark-area" d="M0,70 L0,42 L30,36 L60,48 L90,25 L120,30 L150,18 L180,38 L210,29 L240,40 L270,22 L300,26 L300,70 Z" fill="url(#sparkGrad)"/>
+              <path id="spark-line" d="M0,42 L30,36 L60,48 L90,25 L120,30 L150,18 L180,38 L210,29 L240,40 L270,22 L300,26" fill="none" stroke="#ff8a1f" stroke-width="2.2" stroke-linecap="round"/>
+            </svg>
+          </div>
+
+          <!-- Active System Daemons -->
+          <div class="space-y-2 font-mono text-xs">
+            <div class="mac-well px-3.5 py-2.5 flex items-center justify-between gap-2">
+              <div class="flex items-center gap-2 min-w-0">
+                <span class="w-2 h-2 rounded-full bg-mac-green shrink-0"></span>
+                <span class="text-white font-medium truncate">sososignal-market-ws</span>
+              </div>
+              <span class="text-[#86868B] text-[11px] whitespace-nowrap shrink-0">Groq + SoSoValue</span>
+            </div>
+            <div class="mac-well px-3.5 py-2.5 flex items-center justify-between gap-2">
+              <div class="flex items-center gap-2 min-w-0">
+                <span class="w-2 h-2 rounded-full bg-mac-blue shrink-0"></span>
+                <span class="text-white font-medium truncate">datahub-mcp-crew</span>
+              </div>
+              <span class="text-[#86868B] text-[11px] whitespace-nowrap shrink-0">5-Agent Bus</span>
+            </div>
+            <div class="mac-well px-3.5 py-2.5 flex items-center justify-between gap-2">
+              <div class="flex items-center gap-2 min-w-0">
+                <span class="w-2 h-2 rounded-full bg-mac-cyan shrink-0"></span>
+                <span class="text-white font-medium truncate">fastapi-automation-swarm</span>
+              </div>
+              <span class="text-[#86868B] text-[11px] whitespace-nowrap shrink-0">FastAPI + Async</span>
+            </div>
+          </div>
+
+        </div>
+      </aside>
+    </div>
+
+    <div class="hero__foot">
+      <span class="hero__watermark" aria-hidden="true">WEBNIX</span>
+      <div class="hero__partners">
+        <span class="hero__partners-label">Built With</span>
+        <ul>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M10 2.5 17 10l-7 7.5L3 10l7-7.5Z"/></svg><span>Groq</span></li>
+          <li><svg viewBox="0 0 20 20" fill="currentColor"><path d="M2 3h16l-5.6 6.9L18 17H2l5.6-7.1L2 3Zm4.4 1.6 4 5 4-5h-8Z"/></svg><span>FastAPI</span></li>
+          <li><svg viewBox="0 0 22 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M2 16V6l4.5 6L11 6l4.5 6L20 6v10"/></svg><span>Next.js</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 4.5A1.5 1.5 0 0 1 4.5 3H9v14H4.5A1.5 1.5 0 0 1 3 15.5v-11ZM17 4.5A1.5 1.5 0 0 0 15.5 3H11v14h4.5a1.5 1.5 0 0 0 1.5-1.5v-11Z"/></svg><span>DataHub</span></li>
+          <li><svg viewBox="0 0 22 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M2 5l3.5 11L9 8l3.5 8L16 5"/><circle cx="19" cy="7" r="1.6"/></svg><span>Expo</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 02: INTERACTIVE RUNTIME TELEMETRY & JSON INSPECTOR -->
+  <section id="telemetry" class="py-16 sm:py-24 relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-10 gap-3">
+      <div>
+        <div class="text-xs font-mono uppercase tracking-widest text-mac-blue font-semibold mb-1.5">01 / LIVE VERIFICATION</div>
+        <h2 class="text-2xl sm:text-4xl font-bold text-white tracking-tight">Interactive Execution Telemetry</h2>
+      </div>
+      <p class="text-[#A1A1A6] text-xs sm:text-sm max-w-md">
+        Inspect live trace outputs and validated JSON payloads from our crypto intelligence, on-device mobile AI, and DataHub 5-agent MCP pipeline.
+      </p>
+    </div>
+
+    <!-- macOS Split-Pane Window -->
+    <div class="mac-card overflow-hidden">
+      
+      <!-- Window Toolbar -->
+      <div class="bg-white/[0.03] px-4 sm:px-6 py-3.5 border-b border-white/10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        
+        <div class="flex items-center justify-between gap-2">
+          <div class="flex items-center gap-2 min-w-0">
+            <span class="w-3 h-3 rounded-full bg-mac-red/90 shrink-0"></span>
+            <span class="w-3 h-3 rounded-full bg-mac-amber/90 shrink-0"></span>
+            <span class="w-3 h-3 rounded-full bg-mac-green/90 shrink-0"></span>
+            <span class="text-xs font-mono text-[#86868B] ml-1.5 truncate">zsh — webnix-runtime@edge</span>
+          </div>
+
+          <button onclick="runSimCycle()" class="sm:hidden px-3 py-1.5 rounded-lg btn-mac-primary text-[11px] font-mono font-semibold flex items-center gap-1.5 whitespace-nowrap shrink-0">
+            <span>▶ Test Cycle</span>
+          </button>
+        </div>
+
+        <!-- Segmented Tab Switcher -->
+        <div class="grid grid-cols-3 sm:inline-flex items-center bg-black/70 p-1 rounded-xl border border-white/10 gap-1 w-full sm:w-auto">
+          <button id="sim-btn-1" onclick="switchSim(1)" class="px-2 sm:px-3.5 py-1.5 rounded-lg text-[11px] sm:text-xs font-mono font-medium transition-all bg-white/15 text-white shadow-sm text-center truncate">
+            sososignal.ts
+          </button>
+          <button id="sim-btn-2" onclick="switchSim(2)" class="px-2 sm:px-3.5 py-1.5 rounded-lg text-[11px] sm:text-xs font-mono font-medium transition-all text-[#86868B] hover:text-white text-center truncate">
+            webnix-ai.apk
+          </button>
+          <button id="sim-btn-3" onclick="switchSim(3)" class="px-2 sm:px-3.5 py-1.5 rounded-lg text-[11px] sm:text-xs font-mono font-medium transition-all text-[#86868B] hover:text-white text-center truncate">
+            datahub-mcp.py
+          </button>
+        </div>
+
+        <button onclick="runSimCycle()" class="hidden sm:inline-flex px-4 py-1.5 rounded-lg btn-mac-primary text-xs font-mono font-semibold items-center gap-2 whitespace-nowrap shrink-0">
+          <span>▶ Run Benchmark Cycle</span>
+        </button>
+
+      </div>
+
+      <!-- Split Console Body -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 divide-y lg:divide-y-0 lg:divide-x divide-white/10 bg-black/50 font-mono text-xs">
+        
+        <!-- Left Pane -->
+        <div class="lg:col-span-7 p-4 sm:p-6 flex flex-col justify-between">
+          
+          <!-- TAB 1: sososignal -->
+          <div id="sim-view-1" class="space-y-3">
+            <div class="flex items-center justify-between gap-2 text-[#86868B] border-b border-white/10 pb-2.5">
+              <span class="text-mac-blue font-semibold truncate">STREAM // /ws/v1/sososignal/llama3</span>
+              <span class="text-mac-green flex items-center gap-1.5 shrink-0 whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-mac-green animate-ping"></span> CONNECTED</span>
+            </div>
+            <div class="text-[#A1A1A6] leading-relaxed">
+              <span class="text-[#86868B]">[LIVE]</span> Ingesting SoSoValue institutional ETF flows: <span class="text-white font-semibold">IBIT (+$341.2M)</span>, <span class="text-white font-semibold">FBTC (+$92.8M)</span>
+            </div>
+            <div class="text-[#A1A1A6] leading-relaxed">
+              <span class="text-[#86868B]">[ORDERBOOK]</span> Computing bid-side delta wall: <span class="text-mac-green font-semibold">+6.14% buy-side skew</span>
+            </div>
+            <div class="text-[#A1A1A6] leading-relaxed">
+              <span class="text-[#86868B]">[INFERENCE]</span> Dispatching context tensor to Groq LPU engine...
+            </div>
+
+            <div class="mac-well p-4 mt-3 border-l-2 border-l-mac-green">
+              <div class="flex items-center justify-between gap-2 mb-1.5">
+                <span class="text-[10px] uppercase tracking-wider text-[#86868B]">DETERMINISTIC OUTPUT</span>
+                <span id="soso-lat-tag" class="text-[11px] px-2 py-0.5 rounded bg-mac-green/15 text-mac-green font-bold whitespace-nowrap">268ms RTT</span>
+              </div>
+              <div id="soso-sig-headline" class="text-xs sm:text-sm font-bold text-white mb-1">
+                STRONG ACCUMULATION — CONFIDENCE: 92.6%
+              </div>
+              <p class="text-xs text-[#A1A1A6] font-sans leading-relaxed">
+                Spot ETF volume influx confirmed. Live dashboard deployed at onchainedge.vercel.app.
+              </p>
+            </div>
+          </div>
+
+          <!-- TAB 2: webnix-AI -->
+          <div id="sim-view-2" class="space-y-3 hidden">
+            <div class="flex items-center justify-between gap-2 text-[#86868B] border-b border-white/10 pb-2.5">
+              <span class="text-mac-amber font-semibold truncate">ON-DEVICE // @qvac/sdk v0.19.1 (Snapdragon CPU)</span>
+              <span class="text-mac-amber flex items-center gap-1.5 shrink-0 whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-mac-amber animate-ping"></span> 100% OFFLINE</span>
+            </div>
+            <div class="text-[#A1A1A6] leading-relaxed">
+              <span class="text-[#86868B]">[LOCAL-RAG]</span> Query vector embedded via GTE-Large (FP16) on-device. Zero network packets sent.
+            </div>
+            <div class="text-[#A1A1A6] leading-relaxed">
+              <span class="text-[#86868B]">[SIMILARITY]</span> Matched 2 chunks from private local workspace notes (cosine score: 0.892).
+            </div>
+            <div class="text-[#A1A1A6] leading-relaxed">
+              <span class="text-[#86868B]">[SLM-INFER]</span> Llama 3.2 1B Instruct (Q4_0 quantized) streaming tokens at ~8.5 tok/sec.
+            </div>
+
+            <div class="mac-well p-4 mt-3 border-l-2 border-l-mac-amber">
+              <div class="flex items-center justify-between gap-2 mb-1.5">
+                <span class="text-[10px] uppercase tracking-wider text-[#86868B]">AIR-GAPPED COMPLETION</span>
+                <span class="text-[11px] px-2 py-0.5 rounded bg-mac-amber/15 text-mac-amber font-bold whitespace-nowrap">LOCAL INFERENCE</span>
+              </div>
+              <div class="text-xs sm:text-sm font-bold text-white mb-1">
+                GROUNDED ANSWER RETURNED FROM LOCAL NOTES
+              </div>
+              <p class="text-xs text-[#A1A1A6] font-sans leading-relaxed">
+                Private user notes indexed locally via AsyncStorage. Zero API keys, zero cloud exposure, 100% on Android phone.
+              </p>
+            </div>
+          </div>
+
+          <!-- TAB 3: DataHub Agent Crew -->
+          <div id="sim-view-3" class="space-y-3 hidden">
+            <div class="flex items-center justify-between gap-2 text-[#86868B] border-b border-white/10 pb-2.5">
+              <span class="text-mac-blue font-semibold truncate">MCP PIPELINE // DataHub Agent Crew (5 Agents)</span>
+              <span class="text-mac-blue flex items-center gap-1.5 shrink-0 whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-mac-blue animate-ping"></span> GRAPHQL LIVE</span>
+            </div>
+            <div class="text-[#A1A1A6] leading-relaxed">
+              <span class="text-[#86868B]">[INVESTIGATOR]</span> Reading DataHub metadata graph via MCP search: 4 stale descriptions, 2 unowned datasets.
+            </div>
+            <div class="text-[#A1A1A6] leading-relaxed">
+              <span class="text-[#86868B]">[STRATEGIST &rarr; REGULATORY]</span> Proposing ownership mappings &amp; compliance tags. Clearance granted.
+            </div>
+            <div class="text-[#A1A1A6] leading-relaxed">
+              <span class="text-[#86868B]">[CODEBAND]</span> Executing GraphQL mutation back to `mcp-server-datahub`. Write confirmed.
+            </div>
+
+            <div class="mac-well p-4 mt-3 border-l-2 border-l-mac-blue">
+              <div class="flex items-center justify-between gap-2 mb-1.5">
+                <span class="text-[10px] uppercase tracking-wider text-[#86868B]">MCP GOVERNANCE BUS</span>
+                <span class="text-[11px] px-2 py-0.5 rounded bg-mac-blue/15 text-mac-blue font-bold whitespace-nowrap">MUTATION 200 OK</span>
+              </div>
+              <div class="text-xs sm:text-sm font-bold text-white mb-1">
+                METADATA GRAPH REPAIRED AUTOMATICALLY
+              </div>
+              <p class="text-xs text-[#A1A1A6] font-sans leading-relaxed">
+                SQLite local bus message routing verified. Built for "Build with DataHub: The Agent Hackathon".
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Pane -->
+        <div class="lg:col-span-5 p-4 sm:p-6 bg-black/75 flex flex-col justify-between overflow-x-auto">
+          <div>
+            <div class="flex items-center justify-between text-[#86868B] border-b border-white/10 pb-2.5 mb-3">
+              <span class="text-[11px] uppercase tracking-wider">REAL-TIME DATA SCHEMA</span>
+              <span class="text-[10px] text-mac-blue">application/json</span>
+            </div>
+            <pre id="json-inspector" class="text-[11px] leading-relaxed text-[#E5E5EA] overflow-x-auto">{
+  "system": "sososignal-v2",
+  "engine": "llama3-70b-8192-groq",
+  "latency_ms": 268,
+  "live_demo": "https://onchainedge.vercel.app/",
+  "etf_net_inflow_usd": 434000000,
+  "orderbook_delta": "+6.14%",
+  "signal": {
+    "action": "STRONG_ACCUMULATION",
+    "confidence": 0.926
+  }
+}</pre>
+          </div>
+          <div class="pt-3 mt-4 border-t border-white/10 flex items-center justify-between text-[11px] text-[#86868B]">
+            <span>Production Contract Validated</span>
+            <span class="text-mac-green">● Ready</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+  <!-- SECTION 03: VERIFIED PRODUCTION REPOSITORIES & LIVE DEMOS (All truncation & clipping fixed) -->
+  <section id="work" class="py-16 sm:py-24 relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-12 gap-3">
+      <div>
+        <div class="text-xs font-mono uppercase tracking-widest text-mac-blue font-semibold mb-1.5">02 / VERIFIABLE CODE &amp; DEPLOYMENTS</div>
+        <h2 class="text-2xl sm:text-4xl font-bold text-white tracking-tight">Shipped Repositories &amp; Live DApps</h2>
+      </div>
+      <p class="text-[#A1A1A6] text-xs sm:text-sm max-w-md">
+        Explore source code and production deployments across our multi-agent pipelines, on-device mobile AI, and Next.js applications.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-6 gap-5 sm:gap-6">
+
+      <!-- 1. webnix-AI -->
+      <div class="mac-card p-6 sm:p-8 md:col-span-3 flex flex-col justify-between">
+        <div>
+          <!-- Top Badge: Fixed with flex-wrap and zero truncation -->
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-5">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-mac-amber shrink-0"></span>
+              <span class="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-mac-amber font-semibold">ON-DEVICE AI ASSISTANT</span>
+            </div>
+            <span class="mac-pill px-2.5 py-1 rounded-full text-[10px] sm:text-[11px] font-mono text-[#A1A1A6]">React Native • Expo</span>
+          </div>
+
+          <h3 class="text-xl sm:text-2xl font-bold text-white tracking-tight mb-2.5">webnix-AI</h3>
+          <p class="text-[#A1A1A6] text-xs sm:text-sm leading-relaxed mb-4">
+            A fully air-gapped, offline AI assistant running natively on Android using <span class="text-white font-medium">Tether's QVAC SDK v0.19.1</span>. Executes <span class="text-white font-medium">Llama 3.2 1B Instruct</span> (Q4_0) and local <span class="text-white font-medium">GTE-Large embeddings</span> directly on mid-range Snapdragon CPUs with private on-device RAG indexing. Zero network required.
+          </p>
+
+          <!-- Screenshot / Device Preview Slot -->
+          <div class="mac-well mb-4 p-2 overflow-hidden rounded-xl border border-white/10 group">
+            <img src="./webnix-ai-preview.png"
+                 alt="Webnix AI Android App Interface"
+                 class="w-full h-44 object-cover object-top rounded-lg opacity-90 group-hover:scale-[1.02] transition-transform duration-300"
+                 onerror="this.parentElement.style.display='none'">
+          </div>
+
+          <!-- Architecture Header Strip: Fixed -->
+          <div class="mac-well p-3.5 mb-5 font-mono text-xs">
+            <div class="flex items-center justify-between gap-1 text-[10px] text-[#86868B] mb-2 pb-2 border-b border-white/10">
+              <span>QVAC RUNTIME</span>
+              <span class="text-mac-amber font-medium whitespace-nowrap">● 100% PRIVATE</span>
+            </div>
+            <div class="grid grid-cols-3 gap-2 text-center">
+              <div class="bg-white/[0.03] p-1.5 rounded-lg">
+                <div class="text-[9px] text-[#86868B] truncate">MODEL</div>
+                <div class="text-xs font-bold text-mac-amber mt-0.5">Llama 3.2 1B</div>
+              </div>
+              <div class="bg-white/[0.03] p-1.5 rounded-lg">
+                <div class="text-[9px] text-[#86868B] truncate">EMBEDDINGS</div>
+                <div class="text-xs font-bold text-white mt-0.5">GTE-Large FP16</div>
+              </div>
+              <div class="bg-white/[0.03] p-1.5 rounded-lg">
+                <div class="text-[9px] text-[#86868B] truncate">SPEED</div>
+                <div class="text-xs font-bold text-mac-green mt-0.5">8–9 tok/s</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-1.5 mb-6">
+            <span class="mac-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-[#E5E5EA]">React Native</span>
+            <span class="mac-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-[#E5E5EA]">Android APK</span>
+            <span class="mac-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-[#E5E5EA]">QVAC SDK</span>
+          </div>
+        </div>
+
+        <!-- Button: Fixed -->
+        <a href="https://github.com/webnix-space/webnix-ai" target="_blank" rel="noopener noreferrer"
+           class="w-full py-3 px-4 rounded-xl btn-mac-glass text-xs font-mono font-semibold flex items-center justify-between group">
+          <span class="text-white truncate">webnix-space/webnix-ai</span>
+          <span class="text-mac-amber group-hover:translate-x-1 transition-transform shrink-0 ml-2">Repo →</span>
+        </a>
+      </div>
+
+      <!-- 2. DataHub Agent Crew -->
+      <div class="mac-card p-6 sm:p-8 md:col-span-3 flex flex-col justify-between">
+        <div>
+          <!-- Top Badge: Fixed with flex-wrap and zero truncation -->
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-5">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-mac-blue shrink-0"></span>
+              <span class="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-mac-blue font-semibold">5-AGENT MCP PIPELINE</span>
+            </div>
+            <span class="mac-pill px-2.5 py-1 rounded-full text-[10px] sm:text-[11px] font-mono text-[#A1A1A6]">Python • DataHub MCP</span>
+          </div>
+
+          <h3 class="text-xl sm:text-2xl font-bold text-white tracking-tight mb-2.5">DataHub Agent Crew</h3>
+          <p class="text-[#A1A1A6] text-xs sm:text-sm leading-relaxed mb-4">
+            Five-agent autonomous pipeline (<span class="text-white font-medium">Investigator, Analyst, Strategist, Regulatory, Codeband</span>) built for "Build with DataHub: The Agent Hackathon". Reads DataHub metadata graphs via Model Context Protocol (MCP), detects governance gaps (unowned datasets, stale descriptions, missing compliance tags), and writes validated repairs back through <span class="text-white font-medium">`mcp-server-datahub`</span> GraphQL execution.
+          </p>
+
+          <div class="mac-well p-3.5 mb-5 font-mono text-xs">
+            <div class="flex items-center justify-between gap-1 text-[10px] text-[#86868B] mb-2 pb-2 border-b border-white/10">
+              <span>SQLITE LOCAL BUS</span>
+              <span class="text-mac-blue font-medium whitespace-nowrap">● MCP TOOL HOOKS</span>
+            </div>
+            <div class="text-[11px] text-[#A1A1A6] leading-relaxed">
+              <span class="text-white font-semibold">Investigator</span> &rarr; <span class="text-white font-semibold">Analyst</span> &rarr; <span class="text-white font-semibold">Strategist</span> &rarr; <span class="text-white font-semibold">Regulatory</span> &rarr; <span class="text-white font-semibold">Codeband</span> (MCP mutation write)
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-1.5 mb-6">
+            <span class="mac-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-[#E5E5EA]">Model Context Protocol (MCP)</span>
+            <span class="mac-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-[#E5E5EA]">GraphQL Mutation</span>
+            <span class="mac-pill px-2.5 py-1 rounded-md text-[11px] font-mono text-[#E5E5EA]">Python Async</span>
+          </div>
+        </div>
+
+        <a href="https://github.com/webnix-space/datahub-agent-crew" target="_blank" rel="noopener noreferrer"
+           class="w-full py-3 px-4 rounded-xl btn-mac-glass text-xs font-mono font-semibold flex items-center justify-between group border-mac-blue/30 text-mac-blue hover:text-white">
+          <span class="truncate">webnix-space/datahub-agent-crew</span>
+          <span class="group-hover:translate-x-1 transition-transform shrink-0 ml-2">Repo →</span>
+        </a>
+      </div>
+
+      <!-- 3. sososignal -->
+      <div class="mac-card p-6 sm:p-7 md:col-span-3 flex flex-col justify-between">
+        <div>
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+            <span class="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-mac-green font-semibold">● AI CRYPTO TERMINAL</span>
+            <span class="mac-pill px-2 py-0.5 rounded-full text-[10px] font-mono text-[#86868B]">Next.js • Groq LPU</span>
+          </div>
+
+          <h3 class="text-lg sm:text-xl font-bold text-white tracking-tight mb-2">sososignal (OnChainEdge)</h3>
+          <p class="text-[#A1A1A6] text-xs sm:text-sm leading-relaxed mb-4">
+            AI-powered financial signal terminal using SoSoValue market data + Groq Llama-3. Merges live spot ETF inflows, Fear &amp; Greed telemetry, and order-book momentum to generate sub-second BUY/SELL/HOLD algorithmic signals.
+          </p>
+
+          <div class="flex flex-wrap gap-1.5 mb-5">
+            <span class="mac-pill px-2 py-0.5 rounded text-[10px] font-mono text-[#A1A1A6]">Groq LPU</span>
+            <span class="mac-pill px-2 py-0.5 rounded text-[10px] font-mono text-[#A1A1A6]">SoSoValue API</span>
+            <span class="mac-pill px-2 py-0.5 rounded text-[10px] font-mono text-[#A1A1A6]">Next.js</span>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <a href="https://onchainedge.vercel.app/" target="_blank" rel="noopener noreferrer"
+             class="w-full py-2.5 px-3.5 rounded-xl btn-mac-primary text-xs font-mono font-semibold flex items-center justify-between group">
+            <span>Launch Live App</span>
+            <span class="group-hover:translate-x-1 transition-transform">↗</span>
+          </a>
+          <a href="https://github.com/webnix-space/sososignal" target="_blank" rel="noopener noreferrer"
+             class="w-full py-2 px-3.5 rounded-xl btn-mac-glass text-xs font-mono text-[#A1A1A6] hover:text-white flex items-center justify-between group">
+            <span class="truncate">webnix-space/sososignal</span>
+            <span class="text-mac-green">Repo →</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 4. Shadowsignal -->
+      <div class="mac-card p-6 sm:p-7 md:col-span-3 flex flex-col justify-between">
+        <div>
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+            <span class="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-mac-cyan font-semibold">● MULTI-AGENT GTM SWARM</span>
+            <span class="mac-pill px-2 py-0.5 rounded-full text-[10px] font-mono text-[#86868B]">FastAPI • Python</span>
+          </div>
+
+          <h3 class="text-lg sm:text-xl font-bold text-white tracking-tight mb-2">Shadowsignal</h3>
+          <p class="text-[#A1A1A6] text-xs sm:text-sm leading-relaxed mb-4">
+            Autonomous GTM &amp; market intelligence multi-agent network built with FastAPI and Python. Orchestrates distributed scrapers, extracts hiring and buyer intent signals, and synthesizes structured lead batches via free AI/ML APIs.
+          </p>
+
+          <div class="flex flex-wrap gap-1.5 mb-5">
+            <span class="mac-pill px-2 py-0.5 rounded text-[10px] font-mono text-[#A1A1A6]">FastAPI</span>
+            <span class="mac-pill px-2 py-0.5 rounded text-[10px] font-mono text-[#A1A1A6]">Multi-Agent Swarm</span>
+            <span class="mac-pill px-2 py-0.5 rounded text-[10px] font-mono text-[#A1A1A6]">Live Scraping</span>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <a href="https://shadowsignal-drab.vercel.app/" target="_blank" rel="noopener noreferrer"
+             class="w-full py-2.5 px-3.5 rounded-xl btn-mac-primary text-xs font-mono font-semibold flex items-center justify-between group">
+            <span>Launch Live Platform</span>
+            <span class="group-hover:translate-x-1 transition-transform">↗</span>
+          </a>
+          <a href="https://github.com/webnix-space/Shadowsignal" target="_blank" rel="noopener noreferrer"
+             class="w-full py-2 px-3.5 rounded-xl btn-mac-glass text-xs font-mono text-[#A1A1A6] hover:text-white flex items-center justify-between group">
+            <span class="truncate">webnix-space/Shadowsignal</span>
+            <span class="text-mac-cyan">Repo →</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 5. vendor-guard -->
+      <div class="mac-card p-6 sm:p-7 md:col-span-3 flex flex-col justify-between">
+        <div>
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+            <span class="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-mac-purple font-semibold">● B2B RISK INTELLIGENCE</span>
+            <span class="mac-pill px-2 py-0.5 rounded-full text-[10px] font-mono text-[#86868B]">Next.js 16 • DynamoDB</span>
+          </div>
+
+          <h3 class="text-lg sm:text-xl font-bold text-white tracking-tight mb-2">vendor-guard</h3>
+          <p class="text-[#A1A1A6] text-xs sm:text-sm leading-relaxed mb-4">
+            AI-powered vendor risk intelligence platform for B2B enterprises built for H0: Hack the Zero Stack with Vercel and AWS Databases. Real-time risk scoring, Groq Llama-3.3-70B summaries, and live threshold alerts persisted across AWS DynamoDB.
+          </p>
+
+          <div class="flex flex-wrap gap-1.5 mb-5">
+            <span class="mac-pill px-2 py-0.5 rounded text-[10px] font-mono text-[#A1A1A6]">AWS DynamoDB</span>
+            <span class="mac-pill px-2 py-0.5 rounded text-[10px] font-mono text-[#A1A1A6]">Groq 3.3-70B</span>
+            <span class="mac-pill px-2 py-0.5 rounded text-[10px] font-mono text-[#A1A1A6]">Next.js 16</span>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <a href="https://vendor-guard-neon.vercel.app" target="_blank" rel="noopener noreferrer"
+             class="w-full py-2.5 px-3.5 rounded-xl btn-mac-primary text-xs font-mono font-semibold flex items-center justify-between group">
+            <span>Launch Live Demo</span>
+            <span class="group-hover:translate-x-1 transition-transform">↗</span>
+          </a>
+          <a href="https://github.com/webnix-space/vendor-guard" target="_blank" rel="noopener noreferrer"
+             class="w-full py-2 px-3.5 rounded-xl btn-mac-glass text-xs font-mono text-[#A1A1A6] hover:text-white flex items-center justify-between group">
+            <span class="truncate">webnix-space/vendor-guard</span>
+            <span class="text-mac-purple">Repo →</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 6. Salon-service -->
+      <div class="mac-card p-6 sm:p-7 md:col-span-3 flex flex-col justify-between">
+        <div>
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+            <span class="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-mac-green font-semibold">● AI ASSISTANT &amp; BOOKING SAAS</span>
+            <span class="mac-pill px-2 py-0.5 rounded-full text-[10px] font-mono text-[#86868B]">Gemini 3.6 Flash</span>
+          </div>
+
+          <h3 class="text-lg sm:text-xl font-bold text-white tracking-tight mb-2">Salon-service (Serena Salon)</h3>
+          <p class="text-[#A1A1A6] text-xs sm:text-sm leading-relaxed mb-4">
+            Commercial salon platform &amp; automated booking assistant powered by Gemini 3.6 Flash (serverless Edge runtime with Anthropic fallback). Dispatches confirmed appointments and leads directly to Google Sheets and WhatsApp workflows.
+          </p>
+
+          <div class="flex flex-wrap gap-1.5 mb-5">
+            <span class="mac-pill px-2 py-0.5 rounded text-[10px] font-mono text-[#A1A1A6]">Gemini 3.6 Flash</span>
+            <span class="mac-pill px-2 py-0.5 rounded text-[10px] font-mono text-[#A1A1A6]">AI Automation</span>
+            <span class="mac-pill px-2 py-0.5 rounded text-[10px] font-mono text-[#A1A1A6]">Sheets Webhook</span>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <a href="https://serenasalon.vercel.app/" target="_blank" rel="noopener noreferrer"
+             class="w-full py-2.5 px-3.5 rounded-xl btn-mac-primary text-xs font-mono font-semibold flex items-center justify-between group">
+            <span>Launch Live App</span>
+            <span class="group-hover:translate-x-1 transition-transform">↗</span>
+          </a>
+          <a href="https://github.com/webnix-space/Salon-service" target="_blank" rel="noopener noreferrer"
+             class="w-full py-2 px-3.5 rounded-xl btn-mac-glass text-xs font-mono text-[#A1A1A6] hover:text-white flex items-center justify-between group">
+            <span class="truncate">webnix-space/Salon-service</span>
+            <span class="text-mac-green">Repo →</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 04: FULL-STACK CAPABILITIES & TECH MATRIX -->
+  <section id="stack" class="py-16 sm:py-24 relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
+      <div class="text-xs font-mono uppercase tracking-widest text-mac-blue font-semibold mb-1.5">03 / CORE CAPABILITIES</div>
+      <h2 class="text-2xl sm:text-4xl font-bold text-white tracking-tight">Full-Stack &amp; Systems Architecture</h2>
+      <p class="text-[#A1A1A6] text-xs sm:text-sm mt-2.5">
+        Production engineering across modern web frameworks, systems languages, native mobile apps, and enterprise AI automation.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 font-mono text-xs">
+      
+      <div class="mac-card p-4 flex flex-col justify-between">
+        <span class="text-[10px] text-mac-blue uppercase tracking-wider">Frontend</span>
+        <div class="text-white font-bold text-sm mt-2">Next.js</div>
+        <div class="text-[#86868B] text-[10px] mt-1">App Router &amp; SSR</div>
+      </div>
+
+      <div class="mac-card p-4 flex flex-col justify-between">
+        <span class="text-[10px] text-mac-cyan uppercase tracking-wider">UI Engine</span>
+        <div class="text-white font-bold text-sm mt-2">React.js</div>
+        <div class="text-[#86868B] text-[10px] mt-1">SPA &amp; Component Arch</div>
+      </div>
+
+      <div class="mac-card p-4 flex flex-col justify-between">
+        <span class="text-[10px] text-mac-amber uppercase tracking-wider">Mobile</span>
+        <div class="text-white font-bold text-sm mt-2">React Native</div>
+        <div class="text-[#86868B] text-[10px] mt-1">Android &amp; iOS Apps</div>
+      </div>
+
+      <div class="mac-card p-4 flex flex-col justify-between border-mac-cyan/30 bg-mac-cyan/[0.04]">
+        <span class="text-[10px] text-mac-cyan uppercase tracking-wider">High Speed API</span>
+        <div class="text-white font-bold text-sm mt-2">FastAPI</div>
+        <div class="text-[#86868B] text-[10px] mt-1">Async Python &amp; Pydantic</div>
+      </div>
+
+      <div class="mac-card p-4 flex flex-col justify-between border-mac-green/30 bg-mac-green/[0.04]">
+        <span class="text-[10px] text-mac-green uppercase tracking-wider">Autonomous Ops</span>
+        <div class="text-white font-bold text-sm mt-2">AI Automation</div>
+        <div class="text-[#86868B] text-[10px] mt-1">Agent Swarms &amp; MCP</div>
+      </div>
+
+      <div class="mac-card p-4 flex flex-col justify-between border-mac-purple/30 bg-mac-purple/[0.04]">
+        <span class="text-[10px] text-mac-purple uppercase tracking-wider">LLM Ecosystem</span>
+        <div class="text-white font-bold text-sm mt-2">AI Integration</div>
+        <div class="text-[#86868B] text-[10px] mt-1">Tool Calling, RAG &amp; APIs</div>
+      </div>
+
+      <div class="mac-card p-4 flex flex-col justify-between">
+        <span class="text-[10px] text-mac-green uppercase tracking-wider">Backend</span>
+        <div class="text-white font-bold text-sm mt-2">Node.js</div>
+        <div class="text-[#86868B] text-[10px] mt-1">Fastify / Express / Edge</div>
+      </div>
+
+      <div class="mac-card p-4 flex flex-col justify-between">
+        <span class="text-[10px] text-mac-blue uppercase tracking-wider">Safety</span>
+        <div class="text-white font-bold text-sm mt-2">TypeScript</div>
+        <div class="text-[#86868B] text-[10px] mt-1">Strict Type Contracts</div>
+      </div>
+
+      <div class="mac-card p-4 flex flex-col justify-between">
+        <span class="text-[10px] text-mac-amber uppercase tracking-wider">Web Script</span>
+        <div class="text-white font-bold text-sm mt-2">JavaScript</div>
+        <div class="text-[#86868B] text-[10px] mt-1">ESNext &amp; Web APIs</div>
+      </div>
+
+      <div class="mac-card p-4 flex flex-col justify-between">
+        <span class="text-[10px] text-mac-cyan uppercase tracking-wider">AI &amp; Data</span>
+        <div class="text-white font-bold text-sm mt-2">Python</div>
+        <div class="text-[#86868B] text-[10px] mt-1">Swarm Agents &amp; RAG</div>
+      </div>
+
+      <div class="mac-card p-4 flex flex-col justify-between">
+        <span class="text-[10px] text-mac-red uppercase tracking-wider">Low-Level</span>
+        <div class="text-white font-bold text-sm mt-2">Rust</div>
+        <div class="text-[#86868B] text-[10px] mt-1">Memory Safe &amp; Fast RTT</div>
+      </div>
+
+      <div class="mac-card p-4 flex flex-col justify-between">
+        <span class="text-[10px] text-mac-cyan uppercase tracking-wider">Microservices</span>
+        <div class="text-white font-bold text-sm mt-2">Golang</div>
+        <div class="text-[#86868B] text-[10px] mt-1">Concurrent Goroutines</div>
+      </div>
+
+      <div class="mac-card p-4 flex flex-col justify-between">
+        <span class="text-[10px] text-mac-purple uppercase tracking-wider">Styling</span>
+        <div class="text-white font-bold text-sm mt-2">Tailwind CSS</div>
+        <div class="text-[#86868B] text-[10px] mt-1">HTML5 &amp; Glass Physics</div>
+      </div>
+
+      <div class="mac-card p-4 flex flex-col justify-between">
+        <span class="text-[10px] text-mac-green uppercase tracking-wider">AI Hardware</span>
+        <div class="text-white font-bold text-sm mt-2">Groq LPU</div>
+        <div class="text-[#86868B] text-[10px] mt-1">Sub-350ms Inference</div>
+      </div>
+
+      <div class="mac-card p-4 flex flex-col justify-between">
+        <span class="text-[10px] text-mac-purple uppercase tracking-wider">Cloud Data</span>
+        <div class="text-white font-bold text-sm mt-2">AWS DynamoDB</div>
+        <div class="text-[#86868B] text-[10px] mt-1">Serverless NoSQL Storage</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 05: ENGAGEMENT ARCHITECTURE -->
+  <section id="services" class="py-16 sm:py-24 relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
+      <div class="text-xs font-mono uppercase tracking-widest text-mac-blue font-semibold mb-1.5">04 / ENGAGEMENT TRACKS</div>
+      <h2 class="text-2xl sm:text-4xl font-bold text-white tracking-tight">How Teams Partner With Us</h2>
+      <p class="text-[#A1A1A6] text-xs sm:text-sm mt-2.5">
+        Choose between confidential agency overflow delivery or dedicated principal engineering for venture-backed startups.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      
+      <!-- Track 01: White-Label Agency Partner -->
+      <div class="mac-card p-6 sm:p-10 flex flex-col justify-between">
+        <div>
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-6">
+            <span class="mac-pill px-3 py-1 rounded-full text-[11px] font-mono text-white font-semibold">TRACK 01 // AGENCY OVERFLOW</span>
+            <span class="text-xs font-mono text-mac-green whitespace-nowrap">● 100% NDA &amp; Ghost Commits</span>
+          </div>
+
+          <h3 class="text-xl sm:text-3xl font-bold text-white tracking-tight mb-3">White-Label Architecture Partner</h3>
+          <p class="text-[#A1A1A6] text-xs sm:text-sm leading-relaxed mb-6">
+            When your agency books complex Next.js, mobile app, FastAPI services, or AI automation projects beyond internal bandwidth, we step in as your silent engineering arm. Deliver production-ready code directly to your repositories under your branding.
+          </p>
+
+          <div class="space-y-3.5 mb-8 text-xs sm:text-sm text-[#E5E5EA]">
+            <div class="flex items-start gap-3">
+              <span class="w-5 h-5 rounded-full bg-mac-green/15 text-mac-green flex items-center justify-center text-xs shrink-0 mt-0.5">✓</span>
+              <div><strong class="text-white">Strict Ghost Execution:</strong> All PRs pushed directly to your client repos under your organization name.</div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="w-5 h-5 rounded-full bg-mac-green/15 text-mac-green flex items-center justify-center text-xs shrink-0 mt-0.5">✓</span>
+              <div><strong class="text-white">Zero Hand-Holding:</strong> Autonomous architectural execution, thorough edge-case handling, and clean TypeScript types.</div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="w-5 h-5 rounded-full bg-mac-green/15 text-mac-green flex items-center justify-center text-xs shrink-0 mt-0.5">✓</span>
+              <div><strong class="text-white">Commercial Velocity:</strong> Flat milestone pricing or monthly bandwidth retainers.</div>
+            </div>
+          </div>
+        </div>
+
+        <a href="https://wa.me/919105358684?text=Hey%20Webnix,%20I%20run%20an%20agency%20and%20want%20to%20discuss%20white-label%20dev%20overflow"
+           target="_blank" rel="noopener noreferrer"
+           class="w-full py-3.5 px-5 rounded-xl btn-mac-primary font-semibold text-xs sm:text-sm text-center flex items-center justify-center gap-2">
+          <span>Book White-Label Partnership on WhatsApp</span>
+          <span class="shrink-0">→</span>
+        </a>
+      </div>
+
+      <!-- Track 02: Remote Startup Principal Engineer -->
+      <div class="mac-card p-6 sm:p-10 flex flex-col justify-between">
+        <div>
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-6">
+            <span class="mac-pill px-3 py-1 rounded-full text-[11px] font-mono text-mac-cyan font-semibold border-mac-cyan/30">TRACK 02 // STARTUP VELOCITY</span>
+            <span class="text-xs font-mono text-mac-cyan whitespace-nowrap">● US / EU / APAC Overlap</span>
+          </div>
+
+          <h3 class="text-xl sm:text-3xl font-bold text-white tracking-tight mb-3">Remote Startup AI &amp; Full-Stack Engineer</h3>
+          <p class="text-[#A1A1A6] text-xs sm:text-sm leading-relaxed mb-6">
+            High-cadence engineering for early-stage and funded startups. We take ownership of your product roadmap—from high-throughput FastAPI microservices and AI automation swarms to low-latency Groq backends and scalable Next.js apps.
+          </p>
+
+          <div class="space-y-3.5 mb-8 text-xs sm:text-sm text-[#E5E5EA]">
+            <div class="flex items-start gap-3">
+              <span class="w-5 h-5 rounded-full bg-mac-cyan/15 text-mac-cyan flex items-center justify-center text-xs shrink-0 mt-0.5">✓</span>
+              <div><strong class="text-white">Day-One PR Delivery:</strong> Instant contribution to production branches with zero ramp-up overhead.</div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="w-5 h-5 rounded-full bg-mac-cyan/15 text-mac-cyan flex items-center justify-center text-xs shrink-0 mt-0.5">✓</span>
+              <div><strong class="text-white">Practical AI Integration:</strong> Proven builds spanning on-device SLMs, multi-agent networks, and deterministic APIs.</div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="w-5 h-5 rounded-full bg-mac-cyan/15 text-mac-cyan flex items-center justify-center text-xs shrink-0 mt-0.5">✓</span>
+              <div><strong class="text-white">Tight Communication:</strong> Real-time alignment on Slack, GitHub, Linear, or Discord.</div>
+            </div>
+          </div>
+        </div>
+
+        <a href="https://t.me/Surebreeze"
+           target="_blank" rel="noopener noreferrer"
+           class="w-full py-3.5 px-5 rounded-xl btn-mac-glass font-semibold text-xs sm:text-sm text-center flex items-center justify-center gap-2 border-mac-cyan/40 hover:border-mac-cyan">
+          <span>Discuss Startup Role on Telegram</span>
+          <span class="shrink-0">→</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 06: DIRECT ACCESS MATRIX -->
+  <section id="contact" class="py-16 sm:py-24 relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="text-center max-w-xl mx-auto mb-10 sm:mb-12">
+      <div class="text-xs font-mono uppercase tracking-widest text-mac-blue font-semibold mb-1.5">05 / DIRECT ACCESS</div>
+      <h2 class="text-2xl sm:text-4xl font-bold text-white tracking-tight">Direct Access Channels</h2>
+      <p class="text-[#A1A1A6] text-xs sm:text-sm mt-2">
+        Instant routing to our team. Click below to initiate direct conversation.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      
+      <!-- WhatsApp -->
+      <a href="https://wa.me/919105358684?text=Hi%20Webnix,%20saw%20your%20portfolio%20and%20want%20to%20discuss%20a%20project"
+         target="_blank" rel="noopener noreferrer"
+         class="mac-card p-5 sm:p-6 flex items-center justify-between gap-3 group">
+        <div class="flex items-center gap-3.5 min-w-0">
+          <div class="w-11 h-11 rounded-2xl bg-mac-green/15 border border-mac-green/30 text-mac-green flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.299.144.35.49 1.196.533 1.284.043.088.072.19.014.305-.058.115-.087.19-.174.29-.087.101-.183.226-.262.304-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.144.39-.086s1.011.477 1.184.564c.173.087.289.13.332.202.043.073.043.419-.101.824z"/></svg>
+          </div>
+          <div class="min-w-0">
+            <div class="text-sm font-semibold text-white group-hover:text-mac-green transition-colors truncate">WhatsApp Direct</div>
+            <div class="text-xs font-mono text-[#86868B] truncate">Fastest response for project inquiries</div>
+          </div>
+        </div>
+        <span class="text-xs font-mono text-mac-green shrink-0">Open Chat →</span>
+      </a>
+
+      <!-- Telegram -->
+      <a href="https://t.me/Surebreeze"
+         target="_blank" rel="noopener noreferrer"
+         class="mac-card p-5 sm:p-6 flex items-center justify-between gap-3 group">
+        <div class="flex items-center gap-3.5 min-w-0">
+          <div class="w-11 h-11 rounded-2xl bg-mac-cyan/15 border border-mac-cyan/30 text-mac-cyan flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.19-.08-.05-.19-.02-.27 0-.12.03-1.99 1.27-5.62 3.72-.53.36-1.01.54-1.44.53-.47-.01-1.38-.27-2.06-.49-.83-.27-1.49-.42-1.43-.88.03-.24.38-.49 1.03-.75 4.04-1.76 6.74-2.92 8.09-3.49 3.85-1.63 4.65-1.91 5.17-1.92.11 0 .37.03.54.17.14.12.18.28.2.45-.02.07-.02.14-.04.22z"/></svg>
+          </div>
+          <div class="min-w-0">
+            <div class="text-sm font-semibold text-white group-hover:text-mac-cyan transition-colors truncate">Telegram Direct</div>
+            <div class="text-xs font-mono text-[#86868B] truncate">Direct technical messaging</div>
+          </div>
+        </div>
+        <span class="text-xs font-mono text-mac-cyan shrink-0">Launch →</span>
+      </a>
+
+      <!-- LinkedIn -->
+      <a href="https://www.linkedin.com/in/sanib-malik-89b9a5175"
+         target="_blank" rel="noopener noreferrer"
+         class="mac-card p-5 sm:p-6 flex items-center justify-between gap-3 group">
+        <div class="flex items-center gap-3.5 min-w-0">
+          <div class="w-11 h-11 rounded-2xl bg-mac-blue/15 border border-mac-blue/30 text-mac-blue flex items-center justify-center font-bold text-base shrink-0">
+            in
+          </div>
+          <div class="min-w-0">
+            <div class="text-sm font-semibold text-white group-hover:text-mac-blue transition-colors truncate">LinkedIn Profile</div>
+            <div class="text-xs font-mono text-[#86868B] truncate">Professional network &amp; background</div>
+          </div>
+        </div>
+        <span class="text-xs font-mono text-mac-blue shrink-0">Connect →</span>
+      </a>
+
+      <!-- Direct Email -->
+      <div class="mac-card p-5 sm:p-6 flex items-center justify-between gap-3 group">
+        <a href="mailto:sanibmalik850@gmail.com" class="flex items-center gap-3.5 min-w-0 flex-1">
+          <div class="w-11 h-11 rounded-2xl bg-mac-purple/15 border border-mac-purple/30 text-mac-purple flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <div class="min-w-0">
+            <div class="text-sm font-semibold text-white group-hover:text-mac-purple transition-colors truncate">Direct Email</div>
+            <div class="text-xs font-mono text-[#86868B] truncate">Click to compose or copy address</div>
+          </div>
+        </a>
+        <button onclick="triggerEmailCopy()" class="px-3 py-1.5 rounded-lg btn-mac-glass text-xs font-mono text-mac-purple shrink-0">
+          Copy
+        </button>
+      </div>
+
+      <!-- GitHub Organization Hub -->
+      <a href="https://github.com/webnix-space"
+         target="_blank" rel="noopener noreferrer"
+         class="mac-card p-5 sm:p-6 flex items-center justify-between gap-3 group sm:col-span-2">
+        <div class="flex items-center gap-3.5 min-w-0">
+          <div class="w-11 h-11 rounded-2xl bg-white/10 border border-white/20 text-white flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          </div>
+          <div class="min-w-0">
+            <div class="text-sm font-semibold text-white group-hover:text-mac-blue transition-colors truncate">GitHub Engineering Hub — Webnix Space</div>
+            <div class="text-xs font-mono text-[#86868B] truncate">12 Repositories • Multi-Agent Pipelines, MCP, Next.js &amp; Mobile</div>
+          </div>
+        </div>
+        <span class="text-xs font-mono text-white shrink-0">Explore All Repos →</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- Clean Footer -->
+  <footer class="py-10 border-t border-white/10 text-[#86868B] text-xs font-mono">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-mac-green"></span>
+        <span class="text-white font-semibold">Webnix Space</span>
+        <span>•</span>
+        <span>Autonomous AI &amp; Modern Systems</span>
+      </div>
+      <div>Next.js • FastAPI • MCP Agents • AI Automation • QVAC On-Device SLM</div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // 1. Cursor Spotlight (Desktop)
+    document.querySelectorAll('.mac-card').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+        card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+      });
+    });
+
+    // 2. Live IST Clock
+    function updateClock() {
+      const el = document.getElementById('mac-clock');
+      if (!el) return;
+      const now = new Date();
+      const istTime = new Date(now.toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
+      const hh = String(istTime.getHours()).padStart(2, '0');
+      const mm = String(istTime.getMinutes()).padStart(2, '0');
+      const ss = String(istTime.getSeconds()).padStart(2, '0');
+      el.textContent = `IST ${hh}:${mm}:${ss}`;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // 3. Live Sparkline Telemetry
+    let sparkPoints = [42, 36, 48, 25, 30, 18, 38, 29, 40, 22, 26];
+    setInterval(() => {
+      sparkPoints.shift();
+      sparkPoints.push(Math.floor(Math.random() * 28) + 18);
+      const step = 300 / (sparkPoints.length - 1);
+      const lineCoords = sparkPoints.map((y, idx) => `${idx * step},${y}`).join(' L');
+      const linePath = `M${lineCoords}`;
+      const areaPath = `${linePath} L300,70 L0,70 Z`;
+      const sl = document.getElementById('spark-line');
+      const sa = document.getElementById('spark-area');
+      const rtt = document.getElementById('live-rtt-val');
+      if (sl && sa && rtt) {
+        sl.setAttribute('d', linePath);
+        sa.setAttribute('d', areaPath);
+        rtt.textContent = `${Math.floor(Math.random() * 45) + 245}ms`;
+      }
+    }, 2200);
+
+    // 4. Clipboard Copy
+    function triggerEmailCopy() {
+      const email = 'sanibmalik850@gmail.com';
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(email).then(() => onCopied());
+      } else {
+        const temp = document.createElement('textarea');
+        temp.value = email;
+        document.body.appendChild(temp);
+        temp.select();
+        document.execCommand('copy');
+        document.body.removeChild(temp);
+        onCopied();
+      }
+    }
+
+    function onCopied() {
+      showMacToast('Copied email to clipboard');
+      const label = document.getElementById('hero-email-label');
+      if (label) {
+        label.textContent = 'Copied to Clipboard!';
+        setTimeout(() => { label.textContent = 'Copy Direct Email'; }, 2000);
+      }
+    }
+
+    function showMacToast(message) {
+      const toast = document.getElementById('mac-toast');
+      const text = document.getElementById('mac-toast-text');
+      text.textContent = message;
+      toast.classList.remove('opacity-0', '-translate-y-4');
+      toast.classList.add('opacity-100', 'translate-y-0');
+      setTimeout(() => {
+        toast.classList.remove('opacity-100', 'translate-y-0');
+        toast.classList.add('opacity-0', '-translate-y-4');
+      }, 2400);
+    }
+
+    // 5. Split-Pane Terminal & JSON Inspector
+    let currentSimTab = 1;
+    const jsonPayloads = {
+      1: `{
+  "system": "sososignal-v2",
+  "engine": "llama3-70b-8192-groq",
+  "latency_ms": 268,
+  "live_demo": "https://onchainedge.vercel.app/",
+  "etf_net_inflow_usd": 434000000,
+  "orderbook_delta": "+6.14%",
+  "signal": {
+    "action": "STRONG_ACCUMULATION",
+    "confidence": 0.926
+  }
+}`,
+      2: `{
+  "app": "webnix-ai-android",
+  "runtime": "qvac-sdk-v0.19.1",
+  "model": "llama-3.2-1b-instruct-q4_0",
+  "embeddings": "gte-large-fp16",
+  "mode": "air-gapped-offline",
+  "indexed_chunks": 142,
+  "tok_per_sec": 8.7
+}`,
+      3: `{
+  "pipeline": "datahub-agent-crew",
+  "protocol": "model-context-protocol-mcp",
+  "agents_active": 5,
+  "bus": "sqlite-local-channel",
+  "detected_gaps": 6,
+  "graphql_mutations_executed": 6,
+  "status": "ALL_RESOLVED_200_OK"
+}`
+    };
+
+    function switchSim(tabId) {
+      currentSimTab = tabId;
+      for (let i = 1; i <= 3; i++) {
+        const btn = document.getElementById('sim-btn-' + i);
+        const view = document.getElementById('sim-view-' + i);
+        if (i === tabId) {
+          view.classList.remove('hidden');
+          btn.className = 'px-2 sm:px-3.5 py-1.5 rounded-lg text-[11px] sm:text-xs font-mono font-medium transition-all bg-white/15 text-white shadow-sm text-center truncate';
+        } else {
+          view.classList.add('hidden');
+          btn.className = 'px-2 sm:px-3.5 py-1.5 rounded-lg text-[11px] sm:text-xs font-mono font-medium transition-all text-[#86868B] hover:text-white text-center truncate';
+        }
+      }
+      document.getElementById('json-inspector').textContent = jsonPayloads[tabId];
+    }
+
+    function runSimCycle() {
+      const latency = Math.floor(Math.random() * 55 + 235);
+      if (currentSimTab === 1) {
+        document.getElementById('soso-lat-tag').textContent = `${latency}ms RTT`;
+        document.getElementById('json-inspector').textContent = JSON.stringify({
+          system: "sososignal-v2",
+          engine: "llama3-70b-8192-groq",
+          latency_ms: latency,
+          live_demo: "https://onchainedge.vercel.app/",
+          etf_net_inflow_usd: 434000000,
+          orderbook_delta: "+6.14%",
+          signal: { action: "STRONG_ACCUMULATION", confidence: 0.941 }
+        }, null, 2);
+        showMacToast(`sososignal benchmark: ${latency}ms RTT`);
+      } else if (currentSimTab === 2) {
+        showMacToast(`QVAC on-device engine: 8.8 tokens/sec verified`);
+      } else {
+        showMacToast('DataHub MCP Crew: 5-agent handoff verified');
+      }
+    }
+
+    // 6. Spotlight Command Palette (⌘K / Ctrl+K)
+    function toggleCommandPalette() {
+      const modal = document.getElementById('cmd-modal');
+      const input = document.getElementById('cmd-input');
+      if (modal.classList.contains('hidden')) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        setTimeout(() => input.focus(), 50);
+      } else {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    }
+
+    function filterCommands(q) {
+      const term = q.toLowerCase();
+      document.querySelectorAll('.cmd-item').forEach(item => {
+        item.style.display = item.textContent.toLowerCase().includes(term) ? '' : 'none';
+      });
+    }
+
+    window.addEventListener('keydown', e => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        toggleCommandPalette();
+      } else if (e.key === 'Escape') {
+        const modal = document.getElementById('cmd-modal');
+        if (!modal.classList.contains('hidden')) toggleCommandPalette();
+      }
+    });
+  
+    // 7. Nav glass-on-scroll + hero video parallax
+    (function () {
+      const nav = document.getElementById('nav');
+      const media = document.getElementById('hero-media');
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let ticking = false;
+      function onScroll() {
+        const y = window.scrollY;
+        nav.classList.toggle('is-scrolled', y > 24);
+        if (media && !reduce && y < window.innerHeight * 1.2) {
+          media.style.transform = 'translate3d(0,' + Math.min(y * 0.16, 70) + 'px,0)';
+        }
+        ticking = false;
+      }
+      window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+      onScroll();
+    })();
+
+    // 8. Hero video cross-fade (is-ready) + autoplay nudge + reduced-motion
+    (function () {
+      const v = document.getElementById('hero-video');
+      if (!v) return;
+      const ready = () => v.classList.add('is-ready');
+      v.addEventListener('canplay', ready);
+      const p = v.play(); if (p && p.catch) p.catch(() => {});
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { v.pause(); ready(); }
+    })();
+
+    // 9. Scroll reveal for every glass card + section header
+    (function () {
+      const targets = document.querySelectorAll('section:not(#overview) .mac-card, section:not(#overview) > div:first-child');
+      if (!('IntersectionObserver' in window)) return;
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); } });
+      }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+      targets.forEach((el, i) => {
+        el.classList.add('reveal');
+        el.style.transitionDelay = (i % 3) * 70 + 'ms';
+        io.observe(el);
+      });
+    })();
+  </script>
+</body>
+</html>
