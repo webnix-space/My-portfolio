@@ -383,6 +383,9 @@
           linear-gradient(180deg, rgba(9,2,0,0) 0%, rgba(9,2,0,.35) 45%, rgba(9,2,0,.75) 100%) left top / 100% 100svh no-repeat;
       }
     }
+      /* nav legibility over the bright visor before the bar turns to glass */
+    .nav:not(.is-scrolled) { background: linear-gradient(180deg, rgba(8,2,0,.6) 0%, rgba(8,2,0,0) 100%); }
+    .nav__sub a { background: rgba(18,5,0,.55); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
   </style>
 </head>
 <body class="selection:bg-mac-blue selection:text-white antialiased">
