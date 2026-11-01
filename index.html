@@ -366,6 +366,23 @@
     .row--hi { margin: 4px -10px; padding: 12px 10px; border: 1px solid rgba(255,138,31,.38); border-radius: 12px; background: linear-gradient(135deg, rgba(255,61,0,.14), rgba(255,138,31,.05)); align-items: center; }
     .row--hi svg { width: 20px; height: 20px; color: var(--flame-lit); flex: none; }
     .row--hi div { display: flex; align-items: center; gap: 10px; }
+  
+    /* PORTRAIT (phones, "desktop site" on a phone): face gets its own band on top, copy sits below it,
+       and the subject is pushed right so the visor never sits behind the headline. */
+    @media (max-aspect-ratio: 1/1) {
+      .hero { padding-top: max(46svh, 58vw); }
+      .hero__video {
+        height: 92svh;
+        object-position: 57% center; /* lower = face moves right, higher = face moves left */
+        -webkit-mask-image: linear-gradient(180deg, #000 70%, transparent 100%);
+        mask-image: linear-gradient(180deg, #000 70%, transparent 100%);
+      }
+      .hero__scrim {
+        background:
+          linear-gradient(180deg, rgba(8,2,0,.4) 0%, rgba(0,0,0,0) 100%) left top / 100% 130px no-repeat,
+          linear-gradient(180deg, rgba(9,2,0,0) 0%, rgba(9,2,0,.35) 45%, rgba(9,2,0,.75) 100%) left top / 100% 100svh no-repeat;
+      }
+    }
   </style>
 </head>
 <body class="selection:bg-mac-blue selection:text-white antialiased">
